@@ -8,46 +8,31 @@ class Migration(SchemaMigration):
 
     def forwards(self, orm):
         
-        # Adding model 'Password'
-        db.create_table('password_password', (
+        # Adding model 'Login'
+        db.create_table('password_login', (
             ('id', self.gf('django.db.models.fields.AutoField')(primary_key=True)),
-            ('password', self.gf('django.db.models.fields.TextField')(max_length=255)),
-            ('username', self.gf('django.db.models.fields.related.ForeignKey')(to=orm['password.Username'])),
+            ('name', self.gf('django.db.models.fields.CharField')(max_length=255)),
+            ('username', self.gf('django.db.models.fields.CharField')(max_length=255, null=True, blank=True)),
+            ('domain', self.gf('django.db.models.fields.CharField')(max_length=255, null=True, blank=True)),
+            ('passwd', self.gf('django.db.models.fields.CharField')(max_length=255)),
         ))
-        db.send_create_signal('password', ['Password'])
-
-        # Adding model 'Username'
-        db.create_table('password_username', (
-            ('id', self.gf('django.db.models.fields.AutoField')(primary_key=True)),
-            ('name', self.gf('django.db.models.fields.TextField')(max_length=255)),
-            ('username', self.gf('django.db.models.fields.TextField')(max_length=255)),
-            ('domain', self.gf('django.db.models.fields.TextField')(max_length=255)),
-        ))
-        db.send_create_signal('password', ['Username'])
+        db.send_create_signal('password', ['Login'])
 
 
     def backwards(self, orm):
         
-        # Deleting model 'Password'
-        db.delete_table('password_password')
-
-        # Deleting model 'Username'
-        db.delete_table('password_username')
+        # Deleting model 'Login'
+        db.delete_table('password_login')
 
 
     models = {
-        'password.password': {
-            'Meta': {'object_name': 'Password'},
+        'password.login': {
+            'Meta': {'object_name': 'Login'},
+            'domain': ('django.db.models.fields.CharField', [], {'max_length': '255', 'null': 'True', 'blank': 'True'}),
             'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
-            'password': ('django.db.models.fields.TextField', [], {'max_length': '255'}),
-            'username': ('django.db.models.fields.related.ForeignKey', [], {'to': "orm['password.Username']"})
-        },
-        'password.username': {
-            'Meta': {'object_name': 'Username'},
-            'domain': ('django.db.models.fields.TextField', [], {'max_length': '255'}),
-            'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
-            'name': ('django.db.models.fields.TextField', [], {'max_length': '255'}),
-            'username': ('django.db.models.fields.TextField', [], {'max_length': '255'})
+            'name': ('django.db.models.fields.CharField', [], {'max_length': '255'}),
+            'passwd': ('django.db.models.fields.CharField', [], {'max_length': '255'}),
+            'username': ('django.db.models.fields.CharField', [], {'max_length': '255', 'null': 'True', 'blank': 'True'})
         }
     }
 
