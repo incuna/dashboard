@@ -1,15 +1,11 @@
 from django.contrib import admin
 
 from forms import PasswordForm
-from models import Login, Password
-
-class PasswordInline(admin.TabularInline):
-    model = Password
-    extra = 0
-    form = PasswordForm
+from models import Login
 
 class LoginAdmin(admin.ModelAdmin):
-    inlines = [PasswordInline]
+    form = PasswordForm
+    search_fields = ['name', 'username', 'domain']
 
 admin.site.register(Login, LoginAdmin)
 
