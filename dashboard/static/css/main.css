@@ -1,0 +1,19 @@
+a, .service img,
+.service span {
+  display: inline-block;
+}
+
+a {
+  text-decoration: none;
+}
+
+.service {
+  cursor: pointer;
+  float: left;
+  margin: 10px 15px 0;
+}
+
+p {
+  text-align: center;
+}
+
