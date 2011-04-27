@@ -6,3 +6,6 @@ THUMBNAIL_DEBUG = DEBUG
 
 DEBUG_PROPAGATE_EXCEPTIONS = False
 
+DATABASE_ENGINE = 'django.db.backends.sqlite3'
+DATABASE_NAME = 'db.sqlite'
+
