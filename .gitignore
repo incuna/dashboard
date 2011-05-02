@@ -1,2 +1,3 @@
+local_settings.py
 db.sqlite
 static_media
