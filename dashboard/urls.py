@@ -7,6 +7,8 @@ admin.site.unregister(Site)
 
 urlpatterns = patterns('',
     url(r'^$', 'views.index', name='index'),
+    url(r'^movie-club/', include('imc.urls')),
 
     url(r'^admin/', include(admin.site.urls)),
 )
+

@@ -5,3 +5,6 @@ south
 
 # git
 -e git+http://github.com/ghickman/django-password.git#egg=password
+
+# hg
+hg+https://incuna@bitbucket.org/alberanid/imdbpy
