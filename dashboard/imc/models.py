@@ -17,7 +17,7 @@ class MovieManager(models.Manager):
         """Return the current movie"""
         current_movie = None
         try:
-            current_movie = self.get_query_set().filter(view_by__gt=datetime.now()).order_by('finish')[0]
+            current_movie = self.get_query_set().filter(finish__gt=datetime.now()).order_by('finish')[0]
         except IndexError:
             pass
         return current_movie

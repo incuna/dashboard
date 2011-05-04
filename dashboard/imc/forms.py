@@ -4,7 +4,7 @@ from django.forms.widgets import flatatt, RadioFieldRenderer, RadioInput
 from django.utils.encoding import force_unicode
 from django.utils.safestring import mark_safe
 
-from models import Movie, UserRating
+from models import FilmBuff, Movie, UserRating
 
 class MovieAdminForm(forms.ModelForm):
 
@@ -13,7 +13,8 @@ class MovieAdminForm(forms.ModelForm):
 
     def save(self, commit=False):
         instance = super(MovieAdminForm, self).save(commit=commit)
-        instance.added_by = self.current_user.filmbuff
+        user, created = FilmBuff.objects.get_or_create(user=self.current_user)
+        instance.added_by = user
         instance.save()
         return instance
 

@@ -26,8 +26,8 @@ def movie(request, extra_context = None):
             # add the rating value the user has chosen to the movie's overall rating
             instance = form.save(commit=False)
             instance.movie = movie
-            #instance.user = request.user
-            instance.user = FilmBuff.objects.get(username='george')
+            instance.user = request.user.filmbuff
+            #instance.user = FilmBuff.objects.get(username='george')
             instance.save()
             return redirect(reverse('movie'))
     else:
