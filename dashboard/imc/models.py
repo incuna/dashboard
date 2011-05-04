@@ -63,7 +63,7 @@ class Movie(models.Model):
                 pass
         return super(Movie, self).save(*args, **kwargs)
 
-class UserRating(models.Model):
+class Rating(models.Model):
     user = models.ForeignKey(FilmBuff)
     movie = models.ForeignKey(Movie)
     rating = models.IntegerField(max_length=2, blank=True, default=0)
