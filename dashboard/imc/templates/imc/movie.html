@@ -1,82 +1,39 @@
+{% extends 'imc/base.html' %}
+
 {% load movie_voting %}
 
-<!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-        <meta charset="utf-8">
+{% block extra_style %}
+<link rel="stylesheet" type="text/css" charset="utf-8" href="{{ STATIC_URL }}css/imc.css">
+{% endblock %}
 
-        <title>{{ movie.name }}{% block title %}{% endblock title %}</title>
-        {% block base_style %}
-            <!-- {# <link rel="stylesheet" type="text/css" charset="utf-8" href="{{ STATIC_URL }}styles/base.css"> #} -->
-        {% endblock base_style %}
-        {% block screen_style %}
-            <link rel="stylesheet" type="text/css" charset="utf-8" href="{{ STATIC_URL }}styles/screen.css">
-            <link rel="stylesheet" type="text/css" charset="utf-8" href="{{ STATIC_URL }}styles/rating.css" media="screen" title="no title">
-        {% endblock screen_style %}
-        {% block extra_style %}{% endblock extra_style %}
-
-        {% block jquery_js %}
-            <script type="text/javascript" charset="utf-8" src="//ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
-            <script type="text/javascript" charset="utf-8" src="//ajax.googleapis.com/ajax/libs/jqueryui/1.8.9/jquery-ui.min.js"></script>
-            <script type="text/javascript" charset="utf-8" src="http://cdn.jquerytools.org/1.2.5/jquery.tools.min.js"></script>
-            <script type="text/javascript" charset="utf-8" src="{{ STATIC_URL }}scripts/imc/movie.js"></script>
-            <script type="text/javascript" charset="utf-8" src="{{ STATIC_URL }}scripts/jquery-rating.js"></script>
-            <script type="text/javascript">
-                $(document).ready(function() {
-                    $('#rate1').rating('www.url.php', {maxvalue:5, increment:.5});
-                });
-            </script>
-
-        {% endblock jquery_js %}
-
-            <!--[if lt IE 7]>
-                <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}styles/ie6.css"  charset="utf-8" media="screen">
-                <script charset="utf-8" src="{{ STATIC_URL }}scripts/iepngfix/iepngfix_tilebg.js"></script>
-            <![endif]-->
-            <!--[if lt IE9]>
-                <style>body { behavior: url("{{ STATIC_URL }}scripts/csshover3.htc"); }</style>
-            <![endif]-->
-
-        {% block extra_script %}{% endblock extra_script %}
-
-        {% block extra_head %}{% endblock extra_head %}
-
-        {% if DEVELOPMENT_SITE %}
-            <meta name="robots" content="noindex, nofollow">
-        {% endif %}
-
-    </head>
-    <body id="page-{% block bodyid %}{% endblock bodyid %}" class="{% block bodyclass %}{% endblock bodyclass %}">
-        <div id="wrap">
-            <div id="page">
-                <div class="structure">
-                    <div id="movie">
-                        <h2 id="title">{{ movie.name }} ({{ movie.year }})</h2>
-                        <div id="movie-img"><img src="{{ movie.image }}" alt="{{ movie.name }}"/></div>
-                        <p>Picked by: {{ movie.added_by.first_name }}</p>
-                        <div id="plot">{{ movie.plot }}</div>
-                        <div id="writer">Writer(s): {{ movie.writer }}</div>
-                        <div id="director">Director(s): {{ movie.director }}</div>
-                    </div>
-                    <ul id="people">
-                    {% for employee in employees %}
-                        <li class="person">
-                            <img src="{{ STATIC_URL }}{{ employee.avatar }}" alt="{{ employee.first_name}}" {% if employee|has_voted_for:movie %}disabled{% endif %}>
-                        </li>
-                    {% endfor %}
-                    </ul>
-                    <div id="user-rating">
-                        <form id="rating" action="{% url movie %}" method="post">{% csrf_token %}
-                            Your Rating: <span id="caption"></span>
-                            {{ form.rating }}
-                            <div id="submit">
-                                <input type="submit" value="Submit Your Rating!">
-                            </div>
-                        </form>
-                    </div>
-                </div>
-            </div>
+{% block content %}
+<div id="movie">
+    <h2 id="title">{{ movie.name }} ({{ movie.year }})</h2>
+    <div class="left">
+        <p>Picked By: {{ movie.added_by.user.first_name }}</p>
+        <img src="{{ movie.image }}" alt="{{ movie.name }}">
+    </div>
+    <div class="right">
+        <div id="movie-info">
+            <div id="plot"><p>{{ movie.plot }}</p></div>
+            {% if movie.writer %}<div id="writer"><p>Writer(s): {{ movie.writer }}</div>{% endif %}
+            {% if movie.director %}<div id="director"><p>Director(s): {{ movie.director }}</p></div>{% endif %}
         </div>
-    </body>
-</html>
+        <div id="user-rating">
+        {% if rating %}
+            <div>
+                <p>Rating: {{ rating }}</p>
+            </div>
+        {% else %}
+            <form id="rating" action="{% url movie %}" method="post">{% csrf_token %}
+                Pick your rating: <span id="caption"></span>
+                {{ form.rating }}
+                <div id="submit">
+                    <input type="submit" value="Submit Your Rating!">
+                </div>
+            </form>
+        {% endif %}
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,22 @@
+#title {
+    font-family: Helvetica, Arial;
+    font-size: 30px;
+    margin: 20px 0;
+    text-align: center;
+}
+
+#movie .left {margin-left: 30px;}
+#movie .right {margin-right: 30px;}
+
+#movie .left p {
+    text-align: center;
+}
+
+#movie > div, #movie .left img { width:450px; }
+
+#movie-info {margin-top: 100px;}
+
+#movie-info > div {margin:20px 0;}
+
+#user-rating {margin-top: 60px;}
+
