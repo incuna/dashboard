@@ -6,23 +6,23 @@
     </head>
     <body>
         <div id="password" class="service" onclick="window.location = '{% url admin:password_password_changelist %}'">
-            <img src="#" alt="Incuna Password Icon" width="150" height="150">
+            <img src="{{ STATIC_URL }}images/icons/password.png" alt="Incuna Password Icon" width="150">
             <p class="name">Password</p>
         </div>
         <div id="status" class="service" onclick="window.location = 'http://status.incuna.com'">
-            <img src="#" alt="Incuna Status Board Icon" width="150" height="150">
+            <img src="{{ STATIC_URL }}images/icons/status.png" alt="Incuna Status Board Icon" width="150">
             <p class="name">Status</p>
         </div>
         <div id="expenses" class="service" onclick="window.location = 'http://expenses.incuna.com'">
-            <img src="#" alt="Incuna Expenses Icon" width="150" height="150">
+            <img src="{{ STATIC_URL }}images/icons/expenses.png" alt="Incuna Expenses Icon" width="150">
             <p class="name">Expenses</p>
         </div>
         <div id="holiday" class="service" onclick="window.location = 'http://holiday.incuna.com'">
-            <img src="#" alt="Incuna Holiday Icon" width="150" height="150">
+            <img src="{{ STATIC_URL }}images/icons/holiday.png" alt="Incuna Holiday Icon" width="150">
             <p class="name">Holiday</p>
         </div>
         <div id="contacts" class="service" onclick="window.location = '{% url admin:contacts_contact_changelist %}'">
-            <img src="{{ STATIC_URL }}images/icons/contacts.png" alt="Incuna Contacts Icon" width="150" height="150">
+            <img src="{{ STATIC_URL }}images/icons/contacts.png" alt="Incuna Contacts Icon" width="150">
             <p class="name">Contacts</p>
         </div>
         <div id="trac" class="service" onclick="window.location = 'http://trac.incuna.com'">
@@ -34,7 +34,7 @@
             <p class="name">Redmine</p>
         </div>
         <div id="email" class="service" onclick="window.location = 'http://mail.incuna.com'">
-            <img src="{{ STATIC_URL }}images/icons/gmail.png" alt="GMail Icon" width="150">
+            <img src="{{ STATIC_URL }}images/icons/mail.png" alt="GMail Icon" width="150">
             <p class="name">Email</p>
         </div>
         <div id="calendar" class="service" onclick="window.location = 'http://calendar.incuna.com'">
