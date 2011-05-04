@@ -3,8 +3,8 @@ from django.core.urlresolvers import reverse
 from django.shortcuts import redirect, render_to_response
 from django.template import RequestContext
 
-from imc.forms import MovieRatingForm
-from imc.models import FilmBuff, Movie
+from forms import MovieRatingForm
+from models import Movie, Rating
 
 def index(request, extra_context = None):
     context = RequestContext(request)
@@ -23,16 +23,16 @@ def movie(request, extra_context = None):
     if request.method == 'POST':
         form = MovieRatingForm(request.POST)
         if form.is_valid():
-            # add the rating value the user has chosen to the movie's overall rating
             instance = form.save(commit=False)
             instance.movie = movie
             instance.user = request.user.filmbuff
-            #instance.user = FilmBuff.objects.get(username='george')
             instance.save()
             return redirect(reverse('movie'))
     else:
         form = MovieRatingForm()
+        if Rating.objects.filter(user=request.user.filmbuff, movie=movie):
+            context.update({'rating': Rating.objects.get_rating(movie=movie)['rating']})
 
-    context.update({'form': form, 'movie': movie, 'users': FilmBuff.objects.all().order_by('username')})
+    context.update({'form': form, 'movie': movie, 'user': request.user.filmbuff})
     return render_to_response('imc/movie.html', context)
 
