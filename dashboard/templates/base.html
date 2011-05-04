@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <link rel="stylesheet" type="text/css" charset="utf-8" href="{{ STATIC_URL }}css/reset.css">
+        <link rel="stylesheet" type="text/css" charset="utf-8" href="{{ STATIC_URL }}css/base.css">
+        <link rel="stylesheet" type="text/css" charset="utf-8" href="{{ STATIC_URL }}css/main.css">
+        {% block extra_style %}{% endblock %}
+
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+        <meta charset="utf-8">
+
+        {% block extra_script %}{% endblock %}
+
+        <title>{% block title %}{% endblock %}</title>
+
+        {% if DEVELOPMENT_SITE %}
+            <meta name="robots" content="noindex, nofollow">
+        {% endif %}
+    </head>
+    <body>
+        <div id="page">
+            {% block content %}{% endblock %}
+        </div>
+    </body>
+</html>
