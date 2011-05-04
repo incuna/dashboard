@@ -1,4 +1,4 @@
-from datetime import date, datetime
+from datetime import datetime
 from re import compile
 
 from django.db import models
@@ -12,37 +12,25 @@ class FilmBuff(models.Model):
     def __unicode__(self):
         return self.user.get_fullname()
 
-MONTH_CHOICES = [(i, date(datetime.now().year, i, 1).strftime('%B')) for i in range(1, 13)]
-
-class Month(models.Model):
-    name = models.IntegerField(choices=MONTH_CHOICES)
-    year = models.IntegerField()
-
-    def __unicode__(self):
-        return '%s %d' % (date(datetime.now().year, self.name, 1), self.year)
-
 class MovieManager(models.Manager):
     def current_movie(self):
-        """
-        Return the current movie
-        """
+        """Return the current movie"""
         current_movie = None
         try:
-            current_movie = self.get_query_set().filter(view_by__gt=datetime.now()).order_by('view_by')[0]
+            current_movie = self.get_query_set().filter(view_by__gt=datetime.now()).order_by('finish')[0]
         except IndexError:
             pass
         return current_movie
 
 class Movie(models.Model):
     name = models.CharField(max_length=255)
-    view_by = models.DateField()
-    created = models.DateTimeField(auto_now_add=True)
-    updated = models.DateTimeField(auto_now=True)
+    start = models.DateField()
+    finish = models.DateField()
     added_by = models.ForeignKey(FilmBuff)
 
     # imdb data
     imdb_id = models.CharField(max_length=7, null=True, blank=True)
-    imdb_link = models.CharField(max_length=255, blank=False)
+    imdb_link = models.CharField('IMDb Link', max_length=255, blank=False)
     thumbnail = models.CharField(max_length=255, null=True)
     image = models.CharField(max_length=255, null=True)
     plot = models.TextField(null=True, blank=True)
@@ -53,11 +41,8 @@ class Movie(models.Model):
 
     objects = MovieManager()
 
-    class Meta:
-        db_table = u'movies'
-
     def __unicode__(self):
-        return 'Movie: %s' % self.name
+        return self.name
 
     def added_by_display(self):
         return self.added_by.user.first_name
@@ -92,11 +77,8 @@ class UserRating(models.Model):
     movie = models.ForeignKey(Movie)
     rating = models.IntegerField(max_length=2, blank=True, default=0)
 
-    class Meta:
-        db_table = u'user_rating'
-
     def __unicode__(self):
-        return '%s: %s' % (self.user, self.rating)
+        return '%s rated %s: %s' % (self.user, self.movie.name, self.rating)
 
 def join_person_list(persons):
     person_list = []

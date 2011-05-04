@@ -1,16 +1,21 @@
 from django.contrib import admin
 
-from imc.forms import MovieChangeForm
-from imc.models import Movie
+from forms import MovieAdminForm
+from models import Movie
 
 class MovieAdmin(admin.ModelAdmin):
-    date_hierarchy = 'view_by'
-    exclude = ('imdb_id', 'thumbnail', 'image', 'plot', 'imdb_rating', 'year', 'director', 'writer')
-    list_display = ('name', 'view_by', 'added_by_display')
-    list_filter = ('view_by',)
-    ordering = ('view_by',)
+    date_hierarchy = 'finish'
+    fields = ('name', 'imdb_link', 'start', 'finish')
+    list_display = ('name', 'finish', 'added_by_display')
+    list_filter = ('finish',)
+    ordering = ('finish',)
 
-    form = MovieChangeForm
+    form = MovieAdminForm
+
+    def get_form(self, request, obj=None, **kwargs):
+         form = super(MovieAdmin, self).get_form(request, obj, **kwargs)
+         form.current_user = request.user
+         return form
 
 admin.site.register(Movie, MovieAdmin)
 

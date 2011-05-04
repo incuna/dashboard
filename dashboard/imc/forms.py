@@ -4,17 +4,18 @@ from django.forms.widgets import flatatt, RadioFieldRenderer, RadioInput
 from django.utils.encoding import force_unicode
 from django.utils.safestring import mark_safe
 
-from imc.models import FilmBuff, Movie, UserRating
+from models import Movie, UserRating
 
-class MovieAddedByModelChoiceField(forms.ModelChoiceField):
-    def label_from_instance(self, obj):
-        return obj.first_name
-
-class MovieChangeForm(forms.ModelForm):
-    added_by = MovieAddedByModelChoiceField(FilmBuff.objects.order_by('user__first_name'))
+class MovieAdminForm(forms.ModelForm):
 
     class Meta:
         model = Movie
+
+    def save(self, commit=False):
+        instance = super(MovieAdminForm, self).save(commit=commit)
+        instance.added_by = self.current_user.filmbuff
+        instance.save()
+        return instance
 
 class InputOnlyRadioInput(RadioInput):
     """
