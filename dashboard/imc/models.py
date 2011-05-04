@@ -1,26 +1,17 @@
-from datetime import datetime
 from re import compile
 
 from django.db import models
 from django.contrib.auth.models import User
 from imdb import IMDb
 
+from managers import MovieManager, RatingManager
+
 class FilmBuff(models.Model):
     user = models.OneToOneField(User)
     is_film_buff = models.BooleanField()
 
     def __unicode__(self):
-        return self.user.get_fullname()
-
-class MovieManager(models.Manager):
-    def current_movie(self):
-        """Return the current movie"""
-        current_movie = None
-        try:
-            current_movie = self.get_query_set().filter(finish__gt=datetime.now()).order_by('finish')[0]
-        except IndexError:
-            pass
-        return current_movie
+        return self.user.get_full_name()
 
 class Movie(models.Model):
     name = models.CharField(max_length=255)
@@ -76,6 +67,11 @@ class UserRating(models.Model):
     user = models.ForeignKey(FilmBuff)
     movie = models.ForeignKey(Movie)
     rating = models.IntegerField(max_length=2, blank=True, default=0)
+
+    objects = RatingManager()
+
+    class Meta:
+        unique_together = ('user', 'movie')
 
     def __unicode__(self):
         return '%s rated %s: %s' % (self.user, self.movie.name, self.rating)
