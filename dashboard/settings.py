@@ -123,6 +123,7 @@ INSTALLED_APPS = (
     'south',
 
     'contacts',
+    'employee',
     'password',
 )
 
