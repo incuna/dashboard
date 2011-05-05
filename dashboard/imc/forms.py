@@ -31,12 +31,13 @@ class InputOnlyRadioInput(RadioInput):
         self.index = index
 
     def __unicode__(self):
-        return mark_safe(u'%s' % self.tag())
+        return mark_safe(self.tag())
 
     def tag(self):
         if 'id' in self.attrs:
-            self.attrs['id'] = '%s_%s' % (self.attrs['id'], self.index)
-        final_attrs = dict(self.attrs, type='radio', name=self.name, value=self.choice_value, title=self.choice_title)
+            self.attrs['id'] = 'rating_%s' % self.index
+            print self.attrs['id']
+        final_attrs = dict(self.attrs, type='radio', name=self.name, value=self.choice_value)
         if self.is_checked():
             final_attrs['checked'] = 'checked'
         return mark_safe(u'<input%s>' % flatatt(final_attrs))

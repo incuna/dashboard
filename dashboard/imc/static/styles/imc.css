@@ -20,6 +20,19 @@
 
 #user-rating { margin-top: 60px; }
 
+#user-rating p {
+    display: inline-block;
+    margin-bottom: 20px;
+}
+
+#user-rating .star-rating-control {
+    display: block;
+}
+
+#user-rating #submit {
+    margin-top: 30px;
+}
+
 #dvd-request a {
     display: block;
 }
