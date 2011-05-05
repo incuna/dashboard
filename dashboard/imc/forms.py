@@ -4,7 +4,7 @@ from django.forms.widgets import flatatt, RadioFieldRenderer, RadioInput
 from django.utils.encoding import force_unicode
 from django.utils.safestring import mark_safe
 
-from models import Movie, Rating
+from models import DvdRequest, Movie, Rating
 
 class MovieAdminForm(forms.ModelForm):
 
@@ -81,4 +81,9 @@ class MovieRatingForm(forms.ModelForm):
     class Meta:
         model = Rating
         fields = ('rating',)
+
+class DvdRequestForm(forms.ModelForm):
+
+    class Meta:
+        model = DvdRequest
 

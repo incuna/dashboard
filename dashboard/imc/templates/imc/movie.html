@@ -1,4 +1,4 @@
-{% extends 'imc/base.html' %}
+{% extends "base.html" %}
 
 {% block extra_style %}
 <link rel="stylesheet" type="text/css" charset="utf-8" href="{{ STATIC_URL }}css/imc.css">
@@ -31,6 +31,11 @@
                 </div>
             </form>
         {% endif %}
+        </div>
+        <div id="dvd-request">
+            <form id="request" action="{% url dvd-request movie %}" method="post">{% csrf_token %}
+                <input type="submit" value="I'm from 1990 and would like a DVD please">
+            </form>
         </div>
     </div>
 </div>

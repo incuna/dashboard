@@ -6,6 +6,13 @@ from imdb import IMDb
 
 from managers import MovieManager, RatingManager
 
+class DvdRequest(models.Model):
+    user = models.ForeignKey(User)
+    movie = models.ForeignKey('Movie')
+
+    class Meta:
+        unique_together = ('user', 'movie')
+
 class Movie(models.Model):
     name = models.CharField(max_length=255)
     start = models.DateField()

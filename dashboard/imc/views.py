@@ -3,7 +3,7 @@ from django.core.urlresolvers import reverse
 from django.shortcuts import redirect, render_to_response
 from django.template import RequestContext
 
-from forms import MovieRatingForm
+from forms import DvdRequestForm, MovieRatingForm
 from models import Movie, Rating
 
 def index(request, extra_context = None):
@@ -35,4 +35,24 @@ def movie(request, extra_context = None):
 
     context.update({'form': form, 'movie': movie, 'user': request.user})
     return render_to_response('imc/movie.html', context)
+
+@login_required
+def dvd_request(request, movie, extra_context = None,):
+    context = RequestContext(request)
+    if extra_context != None:
+        context.update(extra_context)
+
+    if request.method == 'POST':
+        form = DvdRequestForm(request.POST)
+        if form.is_valid():
+            instance = form.save(commit=False)
+            instance.user = request.user
+            instance.movie = movie
+            return redirect(reverse('movie'))
+    else:
+        form = DvdRequestForm()
+
+    context.update({'form': form})
+    return redirect(reverse('movie'))
+
 
