@@ -32,11 +32,13 @@
             </form>
         {% endif %}
         </div>
+        {% comment %}
         <div id="dvd-request">
             <form id="request" action="{% url dvd-request movie %}" method="post">{% csrf_token %}
                 <input type="submit" value="I'm from 1990 and would like a DVD please">
             </form>
         </div>
+        {% endcomment %}
     </div>
 </div>
 {% endblock %}
