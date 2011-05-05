@@ -6,18 +6,11 @@ from imdb import IMDb
 
 from managers import MovieManager, RatingManager
 
-class FilmBuff(models.Model):
-    user = models.OneToOneField(User)
-    is_film_buff = models.BooleanField()
-
-    def __unicode__(self):
-        return self.user.get_full_name()
-
 class Movie(models.Model):
     name = models.CharField(max_length=255)
     start = models.DateField()
     finish = models.DateField()
-    added_by = models.ForeignKey(FilmBuff)
+    added_by = models.ForeignKey(User)
 
     # imdb data
     imdb_id = models.CharField(max_length=7, null=True, blank=True)
@@ -64,7 +57,7 @@ class Movie(models.Model):
         return super(Movie, self).save(*args, **kwargs)
 
 class Rating(models.Model):
-    user = models.ForeignKey(FilmBuff)
+    user = models.ForeignKey(User)
     movie = models.ForeignKey(Movie)
     rating = models.IntegerField(max_length=2, blank=True, default=0)
 

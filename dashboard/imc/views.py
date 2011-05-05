@@ -25,14 +25,14 @@ def movie(request, extra_context = None):
         if form.is_valid():
             instance = form.save(commit=False)
             instance.movie = movie
-            instance.user = request.user.filmbuff
+            instance.user = request.user
             instance.save()
             return redirect(reverse('movie'))
     else:
         form = MovieRatingForm()
-        if Rating.objects.filter(user=request.user.filmbuff, movie=movie):
+        if Rating.objects.filter(user=request.user, movie=movie):
             context.update({'rating': Rating.objects.get_rating(movie=movie)['rating']})
 
-    context.update({'form': form, 'movie': movie, 'user': request.user.filmbuff})
+    context.update({'form': form, 'movie': movie, 'user': request.user})
     return render_to_response('imc/movie.html', context)
 
