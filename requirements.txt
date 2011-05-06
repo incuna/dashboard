@@ -10,3 +10,4 @@ vobject
 
 # hg
 hg+https://incuna@bitbucket.org/alberanid/imdbpy
+-e hg+ssh://hg@bitbucket.org/incuna/incuna-employee
