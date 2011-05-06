@@ -1,8 +1,18 @@
-{% extends 'imc/base.html' %}
+{% extends "base.html" %}
 
 {% block extra_style %}
-<link rel="stylesheet" type="text/css" charset="utf-8" href="{{ STATIC_URL }}css/imc.css">
+<link rel="stylesheet" type="text/css" charset="utf-8" href="{{ STATIC_URL }}styles/imc.css">
+<link rel="stylesheet" type="text/css" charset="utf-8" href="{{ STATIC_URL }}styles/jquery.rating/jquery.rating.css">
 {% endblock %}
+
+{% block extra_script %}
+<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.5.2/jquery.min.js"></script>
+<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jqueryui/1.8.12/jquery-ui.js"></script>
+<script type="text/javascript" src="{{ STATIC_URL }}scripts/jquery.rating/jquery.rating.pack.js"></script>
+<script type="text/javascript" src="{{ STATIC_URL }}scripts/rating.js"></script>
+{% endblock %}
+
+{% block title %}{{ movie.name }}{% endblock %}
 
 {% block content %}
 <div id="movie">
@@ -18,20 +28,27 @@
             {% if movie.director %}<div id="director"><p>Director(s): {{ movie.director }}</p></div>{% endif %}
         </div>
         <div id="user-rating">
-        {% if rating %}
-            <div>
-                <p>Rating: {{ rating }}</p>
-            </div>
-        {% else %}
             <form id="rating" action="{% url movie %}" method="post">{% csrf_token %}
-                Pick your rating: <span id="caption"></span>
+            {% if rating %}
+            <div id="current-rating"><p>Rating: <span id="movie-rating">{{ rating }}</span></p></div>
+            {% else %}
+                <p>Pick your rating:</p>
+            {% endif %}
                 {{ form.rating }}
+            {% if not rating %}
                 <div id="submit">
                     <input type="submit" value="Submit Your Rating!">
                 </div>
+            {% endif %}
             </form>
-        {% endif %}
         </div>
+        {% comment %}
+        <div id="dvd-request">
+            <form id="request" action="{% url dvd-request movie %}" method="post">{% csrf_token %}
+                <input type="submit" value="I'm from 1990 and would like a DVD please">
+            </form>
+        </div>
+        {% endcomment %}
     </div>
 </div>
 {% endblock %}
