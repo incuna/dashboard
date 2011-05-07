@@ -4,11 +4,11 @@ from forms import MovieAdminForm
 from models import Movie
 
 class MovieAdmin(admin.ModelAdmin):
-    date_hierarchy = 'finish'
-    fields = ('name', 'imdb_link', 'start', 'finish')
-    list_display = ('name', 'finish', 'added_by_display')
+    fields = ('name', 'slug', 'imdb_link', 'start', 'finish', 'added_by')
+    list_display = ('name', 'finish', 'added_by')
     list_filter = ('finish',)
-    ordering = ('finish',)
+    ordering = ('-finish',)
+    prepopulated_fields = {'slug': ('name',)}
 
     form = MovieAdminForm
 
