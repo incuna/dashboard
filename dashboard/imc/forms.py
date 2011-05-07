@@ -13,7 +13,9 @@ class MovieAdminForm(forms.ModelForm):
 
     def save(self, commit=False):
         instance = super(MovieAdminForm, self).save(commit=commit)
-        instance.added_by = self.current_user
+        if not instance.pk and not self.current_user.is_superuser:
+            if not self.current_user.profile.is_manager:
+                instance.added_by = self.current_user.profile
         instance.save()
         return instance
 

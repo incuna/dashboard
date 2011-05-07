@@ -1,8 +1,8 @@
 from re import compile
 
 from django.db import models
-from django.contrib.auth.models import User
 from imdb import IMDb
+from profiles.models import Profile
 
 from managers import MovieManager, RatingManager
 
@@ -18,7 +18,7 @@ class Movie(models.Model):
     slug = models.CharField(max_length=255)
     start = models.DateField()
     finish = models.DateField()
-    added_by = models.ForeignKey(User)
+    added_by = models.ForeignKey(Profile)
 
     # imdb data
     imdb_id = models.CharField(max_length=7, null=True, blank=True)
@@ -65,7 +65,7 @@ class Movie(models.Model):
         return super(Movie, self).save(*args, **kwargs)
 
 class Rating(models.Model):
-    user = models.ForeignKey(User)
+    user = models.ForeignKey(Profile)
     movie = models.ForeignKey(Movie)
     rating = models.IntegerField(max_length=2, blank=True, default=0)
 

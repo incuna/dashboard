@@ -120,11 +120,13 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'django.contrib.admin',
 
+    'profiles',
     'south',
 
     'contacts',
-    'employee',
+    #'employee',
     'imc',
+    'incunaemployee',
     'password',
 )
 
