@@ -1,54 +1,15 @@
-{% extends "base.html" %}
-
-{% block extra_style %}
-<link rel="stylesheet" type="text/css" charset="utf-8" href="{{ STATIC_URL }}styles/imc.css">
-<link rel="stylesheet" type="text/css" charset="utf-8" href="{{ STATIC_URL }}styles/jquery.rating/jquery.rating.css">
-{% endblock %}
-
-{% block extra_script %}
-<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.5.2/jquery.min.js"></script>
-<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jqueryui/1.8.12/jquery-ui.js"></script>
-<script type="text/javascript" src="{{ STATIC_URL }}scripts/jquery.rating/jquery.rating.pack.js"></script>
-<script type="text/javascript" src="{{ STATIC_URL }}scripts/rating.js"></script>
-{% endblock %}
-
-{% block title %}{{ movie.name }}{% endblock %}
-
-{% block content %}
-<div id="movie">
-    <h2 id="title">{{ movie.name }} ({{ movie.year }})</h2>
-    <div class="left">
-        <p>Picked By: {{ movie.added_by.user.first_name }}</p>
-        <img src="{{ movie.image }}" alt="{{ movie.name }}">
-    </div>
-    <div class="right">
-        <div id="movie-info">
-            <div id="plot"><p>{{ movie.plot }}</p></div>
-            {% if movie.writer %}<div id="writer"><p>Writer(s): {{ movie.writer }}</div>{% endif %}
-            {% if movie.director %}<div id="director"><p>Director(s): {{ movie.director }}</p></div>{% endif %}
-        </div>
-        <div id="user-rating">
-            <form id="rating" action="{% url movie %}" method="post">{% csrf_token %}
-            {% if rating %}
-            <div id="current-rating"><p>Rating: <span id="movie-rating">{{ rating }}</span></p></div>
-            {% else %}
-                <p>Pick your rating:</p>
-            {% endif %}
-                {{ form.rating }}
-            {% if not rating %}
-                <div id="submit">
-                    <input type="submit" value="Submit Your Rating!">
-                </div>
-            {% endif %}
-            </form>
-        </div>
-        {% comment %}
-        <div id="dvd-request">
-            <form id="request" action="{% url dvd-request movie %}" method="post">{% csrf_token %}
-                <input type="submit" value="I'm from 1990 and would like a DVD please">
-            </form>
-        </div>
-        {% endcomment %}
-    </div>
+{% extends "imc/base.html" %}
+{% block movie-extra %}
+{% if rating %}
+<div id="watch-by">
+    <p>Watch {{ movie }} by {{ movie.finish|date:"l jS F" }}</p>
 </div>
+
+<div id="user-rating">
+    <form id="rating" action="" method="post">
+        <div id="current-rating"><p>Rating: <span id="movie-rating">{{ rating }}</span></p></div>
+        {{ form.rating }}
+    </form>
+</div>
+{% endif %}
 {% endblock %}

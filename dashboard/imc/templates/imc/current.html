@@ -1,0 +1,25 @@
+{% extends "imc/base.html" %}
+{% block movie-extra %}
+<div id="user-rating">
+    <form id="rating" action="{% url current %}" method="post">{% csrf_token %}
+    {% if rating %}
+        <div id="current-rating"><p>Rating: <span id="movie-rating">{{ rating }}</span></p></div>
+    {% else %}
+        <p>Pick your rating:</p>
+    {% endif %}
+        {{ form.rating }}
+    {% if not rating %}
+        <div id="submit">
+            <input type="submit" value="Submit Your Rating!">
+        </div>
+    {% endif %}
+    </form>
+</div>
+{% comment %}
+<div id="dvd-request">
+    <form id="request" action="{% url dvd-request movie %}" method="post">{% csrf_token %}
+        <input type="submit" value="I'm from 1990 and would like a DVD please">
+    </form>
+</div>
+{% endcomment %}
+{% endblock %}
