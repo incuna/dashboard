@@ -16,8 +16,8 @@ class DvdRequest(models.Model):
 class Movie(models.Model):
     name = models.CharField(max_length=255)
     slug = models.CharField(max_length=255)
-    start = models.DateField()
-    finish = models.DateField()
+    start = models.DateField(null=True, blank=True)
+    finish = models.DateField(null=True, blank=True)
     added_by = models.ForeignKey(Profile)
 
     # imdb data
