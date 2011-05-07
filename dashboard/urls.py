@@ -9,6 +9,7 @@ admin.site.unregister(User)
 
 urlpatterns = patterns('',
     url(r'^$', 'views.index', name='index'),
+    url(r'^accounts/', include('django.contrib.auth.urls')),
     url(r'^movie-club/', include('imc.urls')),
 
     url(r'^admin/', include(admin.site.urls)),
