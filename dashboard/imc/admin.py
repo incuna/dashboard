@@ -17,5 +17,12 @@ class MovieAdmin(admin.ModelAdmin):
          form.current_user = request.user
          return form
 
+    def queryset(self, request):
+        user = getattr(request, 'user', None)
+        qs = super(MovieAdmin, self).queryset(request)
+        if user.is_superuser or user.profile.is_manager:
+            return qs
+        return qs.filter(added_by=user)
+
 admin.site.register(Movie, MovieAdmin)
 
