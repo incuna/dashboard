@@ -7,7 +7,7 @@ from profiles.models import Profile
 from managers import MovieManager, RatingManager
 
 class DvdRequest(models.Model):
-    user = models.ForeignKey(User)
+    user = models.ForeignKey(Profile)
     movie = models.ForeignKey('Movie')
 
     class Meta:

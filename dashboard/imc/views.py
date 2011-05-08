@@ -3,7 +3,7 @@ from django.core.urlresolvers import reverse
 from django.shortcuts import get_object_or_404, redirect, render_to_response
 from django.template import RequestContext
 
-from forms import MovieRatingForm
+from forms import DvdRequestForm, MovieRatingForm
 from models import Movie, Rating
 
 @login_required
@@ -52,22 +52,22 @@ def widget(request, extra_context = None):
     context.update({'movie': Movie.objects.current()})
     return render_to_response('imc/index.html', context)
 
-#@login_required
-#def dvd_request(request, movie, extra_context = None,):
-    #context = RequestContext(request)
-    #if extra_context != None:
-        #context.update(extra_context)
+@login_required
+def dvd_request(request, movie, extra_context = None,):
+    context = RequestContext(request)
+    if extra_context != None:
+        context.update(extra_context)
 
-    #if request.method == 'POST':
-        #form = DvdRequestForm(request.POST)
-        #if form.is_valid():
-            #instance = form.save(commit=False)
-            #instance.user = request.user
-            #instance.movie = movie
-            #return redirect(reverse('movie'))
-    #else:
-        #form = DvdRequestForm()
+    if request.method == 'POST':
+        form = DvdRequestForm(request.POST)
+        if form.is_valid():
+            instance = form.save(commit=False)
+            instance.user = request.user
+            instance.movie = movie
+            return redirect(reverse('movie'))
+    else:
+        form = DvdRequestForm()
 
-    #context.update({'form': form})
-    #return redirect(reverse('movie'))
+    context.update({'form': form})
+    return redirect(reverse('movie'))
 

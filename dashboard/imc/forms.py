@@ -38,7 +38,6 @@ class InputOnlyRadioInput(RadioInput):
     def tag(self):
         if 'id' in self.attrs:
             self.attrs['id'] = 'rating_%s' % self.index
-            print self.attrs['id']
         final_attrs = dict(self.attrs, type='radio', name=self.name, value=self.choice_value)
         if self.is_checked():
             final_attrs['checked'] = 'checked'
@@ -86,7 +85,6 @@ class MovieRatingForm(forms.ModelForm):
         fields = ('rating',)
 
 class DvdRequestForm(forms.ModelForm):
-
     class Meta:
         model = DvdRequest
 
