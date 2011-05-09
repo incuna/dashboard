@@ -123,6 +123,7 @@ INSTALLED_APPS = (
     'profiles',
     'south',
 
+    'dashboard',
     'contacts',
     #'employee',
     'imc',
