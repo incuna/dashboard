@@ -10,4 +10,7 @@ vobject
 
 # hg
 hg+https://incuna@bitbucket.org/alberanid/imdbpy
--e hg+ssh://hg@bitbucket.org/incuna/incuna-employee
+hg+ssh://hg@bitbucket.org/incuna/django-profiles
+
+# svn
+svn+https://svn.incuna.com/django/incuna/trunk
