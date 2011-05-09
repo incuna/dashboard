@@ -126,7 +126,7 @@ INSTALLED_APPS = (
     'contacts',
     #'employee',
     'imc',
-    'incunaemployee',
+    #'incunaemployee',
     'password',
 )
 
