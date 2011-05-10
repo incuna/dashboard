@@ -127,6 +127,7 @@ INSTALLED_APPS = (
     'contacts',
     'imc',
     'password',
+    'status',
 )
 
 SOUTH_MIGRATION_MODULES = {

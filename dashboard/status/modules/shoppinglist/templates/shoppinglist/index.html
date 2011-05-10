@@ -1,0 +1,12 @@
+{% if shoppinglist %}
+<div id="shoppingling">
+    <ul>
+    {% for item in shoppinglist %}
+        <li>
+            <span style="display:block;font-weight:bold;">{{item.name}}</span>
+            <!--<span>{{item.description}}</span>-->
+        </li>
+    {% endfor %}
+    </ul>
+</div>
+{% endif %}

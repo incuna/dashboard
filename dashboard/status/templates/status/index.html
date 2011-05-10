@@ -1,0 +1,78 @@
+{% extends "base.html" %}
+
+{% block extra_script %}
+
+    <script type="text/javascript" charset="utf-8" src="{{STATIC_URL}}scripts/index.js"></script>
+{% endblock %}
+
+{% block page_content %}
+<div id="graphs">{# Populated by AJAX #}</div>
+
+<div id="list">{# Populated by AJAX #}</div>
+
+<div id="alert">{# Populated by AJAX #}</div>
+
+<div id="widgets">
+
+    <div id="imc">{# Populated by AJAX #}</div>
+
+    <div id="spotify">
+
+        <div class="scrollable">
+            <div class="items">
+                <div class="child">
+                    <div class="album-frame">
+                        <img src="{{ STATIC_URL }}images/test-album-1.png" />
+                    </div>
+                </div>
+                <div class="child">
+                    <div class="album-frame">
+                        <img src="{{ STATIC_URL }}images/test-album-1.png" />
+                    </div>
+                </div>
+                <div class="child">
+                    <div class="album-frame">
+                        <img src="{{ STATIC_URL }}images/test-album-1.png" />
+                    </div>
+                </div>
+         </div>
+       </div>
+
+       <h3 id="song">Moby Dick</h3>
+       <h3 id="band">Led Zeppelin</h3>
+       <h3 id="album">Led Zeppelin 2</h3>
+
+       <div id="spotify-frame">
+       </div>
+
+    </div>
+
+    <div id="holidaycal">{# Populated by AJAX #}</div>
+
+    <div id="blank"></div>
+
+    <div id="weather">{# Populated by AJAX #}</div>
+</div>
+
+<div>
+    <a class="prev browse left">bla</a>
+    <a class="next browse right">asdf</a>
+</div>
+
+
+{% if today %}
+<div id="today">
+    Today's Cal
+</div>
+{% endif %}
+
+{% endblock %}
+
+{% block footer_content %}
+<div id="ticker1" class="ticker t1">
+    <ul>
+        {# Populated by AJAX #}
+    </ul>
+</div>
+
+{% endblock %}

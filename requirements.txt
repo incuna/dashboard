@@ -1,16 +1,18 @@
 Django==1.3
 
-psycopg2
+psycopg2==2.4
 python-dateutil==1.5
-south
+south==0.7.3
 vobject
 
 # git
 -e git+http://github.com/ghickman/django-password.git#egg=password
 
 # hg
+hg+https://python-twitter.googlecode.com/hg/@b105d49147#egg=python-twitter
 hg+https://incuna@bitbucket.org/alberanid/imdbpy
 hg+ssh://hg@bitbucket.org/incuna/django-profiles
+hg+ssh://hg@bitbucket.org/incuna/incuna-twitterstream
 
 # svn
 svn+https://svn.incuna.com/django/incuna/trunk
