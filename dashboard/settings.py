@@ -125,11 +125,13 @@ INSTALLED_APPS = (
 
     'dashboard',
     'contacts',
-    #'employee',
     'imc',
-    #'incunaemployee',
     'password',
 )
+
+SOUTH_MIGRATION_MODULES = {
+    'profiles': 'project_migrations.profiles',
+}
 
 # A sample logging configuration. The only tangible logging
 # performed by this configuration is to send an email to

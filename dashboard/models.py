@@ -1,6 +1,6 @@
 from profiles.models import Profile, ProfileAdmin, ProfileForm
 
-Profile.register_extensions('manager', 'avatars', 'ssh_key', 'permissions')
+Profile.register_extensions('dashboard.extensions.manager', 'dashboard.extensions.avatars', 'dashboard.extensions.ssh_key', 'permissions')
 
 ProfileAdmin.fieldsets[0][1]['fields'].insert(0, 'username')
 
