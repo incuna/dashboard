@@ -12,14 +12,24 @@ MANAGERS = ADMINS
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2', # Add 'postgresql_psycopg2', 'postgresql', 'mysql', 'sqlite3' or 'oracle'.
-        'NAME': 'dashboard',                      # Or path to database file if using sqlite3.
-        'USER': 'dashboard',                      # Not used with sqlite3.
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'dashboard',
+        'USER': 'dashboard',
         'PASSWORD': 'X#u_7F54+a6gh,tQ',
-        'HOST': '127.0.0.1',                      # Set to empty string for localhost. Not used with sqlite3.
-        'PORT': '',                      # Set to empty string for default. Not used with sqlite3.
+        'HOST': '127.0.0.1',
+        'PORT': '',
+    },
+    'redmine': {
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'redmine',
+        'USER': 'redmine',
+        'PASSWORD': 'moo',
+        'HOST': '192.168.0.2',
+        'PORT': '',
     }
 }
+
+DATABASE_ROUTERS = ['status.modules.redmine.routers.RedmineRouter']
 
 # Local time zone for this installation. Choices can be found here:
 # http://en.wikipedia.org/wiki/List_of_tz_zones_by_name
@@ -74,6 +84,7 @@ STATICFILES_DIRS = (
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
     ('', join(DIRNAME, 'static')),
+    ('', join(DIRNAME, 'static')),
 )
 
 # List of finder classes that know how to find static files in
@@ -127,12 +138,22 @@ INSTALLED_APPS = (
     'contacts',
     'imc',
     'password',
+
     'status',
+    'status.modules.redmine',
+    'status.modules.shoppinglist',
+    'status.modules.weather',
 )
 
 SOUTH_MIGRATION_MODULES = {
     'profiles': 'project_migrations.profiles',
 }
+
+BBC_HOURLY_WEATHER = 'http://newsrss.bbc.co.uk/weather/forecast/25/ObservationsRSS.xml'
+
+BBC_WEEKLY_WEATHER = 'http://newsrss.bbc.co.uk/weather/forecast/25/Next3DaysRSS.xml'
+
+HOLIDAYCAL_URL = 'http://holiday.incuna.com'
 
 # A sample logging configuration. The only tangible logging
 # performed by this configuration is to send an email to

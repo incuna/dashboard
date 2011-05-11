@@ -9,11 +9,13 @@ class Migration(SchemaMigration):
     def forwards(self, orm):
         
         # Adding model 'Item'
-        db.create_table(u'items', (
+        db.create_table('shoppinglist_item', (
             ('id', self.gf('django.db.models.fields.AutoField')(primary_key=True)),
             ('name', self.gf('django.db.models.fields.CharField')(max_length=100)),
-            ('description', self.gf('django.db.models.fields.TextField')()),
+            ('description', self.gf('django.db.models.fields.CharField')(max_length=255, null=True, blank=True)),
             ('bought', self.gf('django.db.models.fields.BooleanField')(default=False)),
+            ('created', self.gf('django.db.models.fields.DateTimeField')(auto_now_add=True, blank=True)),
+            ('modified', self.gf('django.db.models.fields.DateTimeField')(auto_now=True, blank=True)),
         ))
         db.send_create_signal('shoppinglist', ['Item'])
 
@@ -21,15 +23,17 @@ class Migration(SchemaMigration):
     def backwards(self, orm):
         
         # Deleting model 'Item'
-        db.delete_table(u'items')
+        db.delete_table('shoppinglist_item')
 
 
     models = {
         'shoppinglist.item': {
-            'Meta': {'object_name': 'Item', 'db_table': "u'items'"},
+            'Meta': {'object_name': 'Item'},
             'bought': ('django.db.models.fields.BooleanField', [], {'default': 'False'}),
-            'description': ('django.db.models.fields.TextField', [], {}),
+            'created': ('django.db.models.fields.DateTimeField', [], {'auto_now_add': 'True', 'blank': 'True'}),
+            'description': ('django.db.models.fields.CharField', [], {'max_length': '255', 'null': 'True', 'blank': 'True'}),
             'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
+            'modified': ('django.db.models.fields.DateTimeField', [], {'auto_now': 'True', 'blank': 'True'}),
             'name': ('django.db.models.fields.CharField', [], {'max_length': '100'})
         }
     }

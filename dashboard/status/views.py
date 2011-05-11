@@ -22,8 +22,8 @@ def todays_holidays(request, extra_context = None):
     url = '%s/api/employees-on-holiday' % settings.HOLIDAYCAL_URL
 
     request = Request(url)
-    # base64string = encodestring('%s:%s' % ('api', 'n5fz7}|eUD^4b2<j'))[:-1]
-    base64string = encodestring('%s:%s' % ('george', '%dqn3Ura3[;Z<88J'))[:-1]
+    base64string = encodestring('%s:%s' % ('api', 'n5fz7}|eUD^4b2<j'))[:-1]
+    #base64string = encodestring('%s:%s' % ('george', '%dqn3Ura3[;Z<88J'))[:-1]
     authheader = 'Basic %s' % base64string
     request.add_header('Authorization', authheader)
     try:

@@ -9,7 +9,7 @@
         <img src="{{ STATIC_URL }}images/icons/password.png" alt="Incuna Password Icon">
         <p class="name">Password</p>
     </div>
-    <div id="expenses" class="service" onclick="window.location = 'http://expenses.incuna.com'">
+    <div id="expenses" class="service" onclick="window.location = 'http://dashboard.incuna.com'">
         <img src="{{ STATIC_URL }}images/icons/expenses.png" alt="Incuna Expenses Icon">
         <p class="name">Expenses</p>
     </div>
@@ -17,7 +17,7 @@
         <img src="{{ STATIC_URL }}images/icons/holiday.png" alt="Incuna Holiday Icon">
         <p class="name">Holiday</p>
     </div>
-    <div id="status" class="service" onclick="window.location = 'http://status.incuna.com'">
+    <div id="status" class="service" onclick="window.location = '{% url statusboard %}'">
         <img src="{{ STATIC_URL }}images/icons/status.png" alt="Incuna Status Board Icon">
         <p class="name">Status</p>
     </div>
@@ -25,7 +25,7 @@
         <img src="{{ STATIC_URL }}images/icons/redmine.png" alt="Redmine Icon">
         <p class="name">Redmine</p>
     </div>
-    <div id="trac" class="service" onclick="window.location = 'http://trac.incuna.com'">
+    <div id="trac" class="service" onclick="window.location = 'http://trac.incuna.com/websites'">
         <img src="{{ STATIC_URL }}images/icons/trac.png" alt="Trac Icon" title="blah">
         <p class="name">Trac</p>
     </div>

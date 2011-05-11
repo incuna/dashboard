@@ -16,6 +16,7 @@ def graphs(request, extra_context = None):
 
     projects = []
     for project in Project.objects.recently_updated()[:5]:
+        print project
         children = Project.objects.filter(lft__gte=project.lft, rgt__lte=project.rgt)
         project_issues = Issue.objects.filter(project__in=children)
         total_issues = project_issues.count()

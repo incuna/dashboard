@@ -1,20 +1,27 @@
 {% if weather %}
 <div id="weather">
-    <img class="big-icon" src="{{weather.icon}}"></img>
+    <img class="big-icon" src="{{ weather.icon }}"></img>
     <div id="weather-main">
         <div class="temp">
         {% if weather.centigrade %}
-           <span id="degrees-c">{{weather.centigrade}}&deg;</span><span>C</span><span class="slash">/</span>
+           <span id="degrees-c">{{ weather.centigrade }}&deg;</span><span>C</span><span class="slash">/</span>
         {% endif %}
         {% if weather.farenheit %}
-           <span id="degrees-f">{{weather.farenheit}}&deg;F</span>
+           <span id="degrees-f">{{ weather.farenheit }}&deg;F</span>
         {% endif %}
         </div>
         <div id="wind-direction">
-            <div class="wind-{{weather.w_direction}}"></div>
+            <div class="wind-{{ weather.w_direction }}"></div>
         </div>
-        <div class="wind-speed"><span><span class="speed">{{weather.w_speed}}</span><span class="char">mph</span></span></div>
-        <div class="humidity"><div class="humid-drop"><span>{{weather.rel_humidity}}</span></div><span class="char">%</span></div>
+        <div class="wind-speed">
+            <span><span class="speed">{{ weather.w_speed }}</span><span class="char">mph</span></span>
+        </div>
+        <div class="humidity">
+            <div class="humid-drop">
+                <span>{{ weather.rel_humidity }}</span>
+            </div>
+            <span class="char">%</span>
+        </div>
     </div>
     <div id="weather-week">
         <ul>

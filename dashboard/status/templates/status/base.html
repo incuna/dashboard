@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+{% block title %}Incuna Status Board{% endblock title %}
+
+{% block extra_script %}
+<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.6/jquery.min.js"></script>
+<script type="text/javascript" src="http://cdn.jquerytools.org/1.2.5/jquery.tools.min.js"></script>
+
+{% block status_board_scripts %}{% endblock %}
+{% endblock extra_script %}
+
+{% block content %}
+    <header>{% block header %}</header>{% endblock header %}
+
+    {% block page_content %}{% endblock %}
+
+    <footer>{% block footer %}{% endblock footer %}</footer>
+{% endblock content %}
