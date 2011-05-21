@@ -1,11 +1,23 @@
-{% extends "status/base.html" %}
+{% extends "base.html" %}
 
-{% block status_board_scripts %}
-    <script type="text/javascript" src="{{ STATIC_URL }}scripts/ticker.js"></script>
-    <script type="text/javascript" src="{{ STATIC_URL }}scripts/index.js"></script>
+{% block title %}Incuna Status Board{% endblock title %}
+
+{% block extra_style %}
+<link rel="stylesheet" type="text/css" charset="utf-8" href="{{ STATIC_URL }}styles/jquery.rating/jquery.rating.css">
+<link rel="stylesheet" type="text/css" charset="utf-8" href="{{ STATIC_URL }}styles/status.css">
+<link rel="stylesheet" type="text/css" charset="utf-8" href="{{ STATIC_URL }}styles/status/imc.css">
+<link rel="stylesheet" type="text/css" charset="utf-8" href="{{ STATIC_URL }}styles/status/weather.css">
 {% endblock %}
 
-{% block page_content %}
+{% block extra_script %}
+<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.6/jquery.min.js"></script>
+<script type="text/javascript" src="http://cdn.jquerytools.org/1.2.5/jquery.tools.min.js"></script>
+<script type="text/javascript" src="{{ STATIC_URL }}scripts/jquery.rating/jquery.rating.pack.js"></script>
+<script type="text/javascript" src="{{ STATIC_URL }}scripts/ticker.js"></script>
+<script type="text/javascript" src="{{ STATIC_URL }}scripts/status.js"></script>
+{% endblock extra_script %}
+
+{% block content %}
 <div id="graphs">{# Populated by AJAX #}</div>
 
 <div id="list">{# Populated by AJAX #}</div>
@@ -27,8 +39,7 @@
     Today's Cal
 </div>
 {% endif %}
-
-{% endblock page_content %}
+{% endblock content %}
 
 {% block footer %}
 <div id="ticker1" class="ticker">

@@ -1,33 +1,18 @@
+{% load movie_tags %}
+
 {% if movie %}
 <div id="imc">
-    <div id="curent-movie">
-        <a id="download_now" href="#">{{ movie.name }}</a>
-            <!-- {% if movie.picture_link %}
-                <img src="{{ movie.picture_link }}" style="border:1px solid white;border-radius:5px;">
-            {% endif %} -->
-        <div class="tooltip">
-
-        <img src="{{ movie.picture_link }}" alt="Flying screens" style="float:left;margin:0 15px 20px 0">
-
-        </div>
+    <div id="movie">
+        {{ movie }}
+        <!--<a href="{{ movie.imdb_link }}"><img src="{{ movie.thumbnail }}"></a>-->
     </div>
-    <div id="due"><span class="char">DUE: </span><span>{{ movie.view_by }}</span></div>
-    <div id="previous-movies">
-        <div id="ticker2" class="ticker">
-            <ul>
-                <li><span class="rating-title">Test 0</span><span class="star-rating" class="rate-0"></span></li>
-                <li><span class="rating-title">Test 0 half</span><span class="star-rating" class="rate-0-half"></span></li>
-                <li><span class="rating-title">Test 1</span><span class="star-rating" class="rate-1"></span></li>
-                <li><span class="rating-title">Test 1 half</span><span class="star-rating" class="rate-1-half"></span></li>
-                <li><span class="rating-title">Test 2</span><span class="star-rating" class="rate-2"></span></li>
-                <li><span class="rating-title">Test 2 half</span><span class="star-rating" class="rate-2-half"></span></li>
-                <li><span class="rating-title">Test 3</span><span class="star-rating" class="rate-3"></span></li>
-                <li><span class="rating-title">Test 3 half</span><span class="star-rating" class="rate-3-half"></span></li>
-                <li><span class="rating-title">Test 4</span><span class="star-rating" class="rate-4"></span></li>
-                <li><span class="rating-title">Test 4 half</span><span class="star-rating" class="rate-4-half"></span></li>
-                <li><span class="rating-title">Test 5</span><span class="star-rating" class="rate-5"></span></li>
-            </ul>
-        </div>
+    <div id="due">
+        <span class="char">Due: </span><span>{{ movie.finish }}</span>
+    </div>
+    <div id="rating">
+        {% for i in 10|get_range %}
+        <input name="star" type="radio" class="star" disabled="disabled"{% if rating == i %}checked="checked"{% endif %}>
+        {% endfor %}
     </div>
 </div>
 {% else %}

@@ -1,5 +1,5 @@
 jQuery(document).ready(function($) {
-    var page = '#page .structure';
+    var page = '#page';
 
     function load_alert() {
         $.get('/twitterstream/alert/', null,
@@ -16,10 +16,9 @@ jQuery(document).ready(function($) {
     }
 
     function load_imc() {
-        $.get('/imc/', null,
+        $.get('/movie-club/widget/', null,
         function(data) {
             $(page + ' #imc').replaceWith(data);
-            $("#download_now").tooltip();
         });
     }
 
@@ -39,7 +38,7 @@ jQuery(document).ready(function($) {
     }
 
     function load_shoppinglist() {
-        $.get('/shoppinglist/', null,
+        $.get('/shopping-list/', null,
         function(data) {
             $(page + ' #shoppinglist').replaceWith(data);
         });
@@ -66,15 +65,15 @@ jQuery(document).ready(function($) {
     }
 
     function load_all() {
-        // load_alert();
-        load_holidaycal();
+        //load_alert();
+        //load_holidaycal();
         load_imc();
-        load_redmine_graphs();
-        load_redmine_list();
+        //load_redmine_graphs();
+        //load_redmine_list();
         load_shoppinglist();
-        load_tweetstream();
+        //load_tweetstream();
         load_weather();
-        load_scrollable();
+        //load_scrollable();
         $(page + ' #time').text(new Date().toString());
     }
 
@@ -102,5 +101,7 @@ jQuery(document).ready(function($) {
     window.setInterval(function() {
         load_holidaycal();
     }, 10800000);
+
+    $('#rating .star').rating();
 });
 

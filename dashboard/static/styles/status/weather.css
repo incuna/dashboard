@@ -1,0 +1,154 @@
+/* Styles for the weather widget */
+#weather p {
+    font-size: 14px;
+}
+
+#weather h3 {
+    display: block;
+    float: left;
+}
+
+img.big-icon {
+    height: 128px;
+    left: 27px;
+    position: absolute;
+    top: -72px;
+    width: 128px;
+}
+
+#weather .temp {
+    height: 54px;
+    font-family: 'ChaletParisNineteenEighty';
+    font-size: 40px;
+    text-align: center;
+}
+
+#weather .temp #degrees-c {
+    font-family: 'ChaletNewYorkNineteenEighty';
+}
+
+#weather .temp .slash {
+    color: #999999;
+}
+
+#weather .temp #degrees-f {
+    font-size: 26px;
+    color: #FFAE2C;
+    margin-top: 18px;
+}
+
+#weather-week {
+    height: 35px;
+    background-color: #1F1F1F;
+    border-bottom-left-radius: 14px 14px;
+    border-bottom-right-radius: 14px 14px;
+}
+
+#weather-main {
+    height: 121px;
+    margin-top: 44px;
+}
+
+#weather-week img {
+    margin-right: 10px;
+    margin-left: 10px;
+    margin-top: 6px;
+    margin-bottom: 0;
+    float: left;
+}
+
+#weather-week ul {
+    margin-left: 35px;
+    margin-right: 0;
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+#wind-direction,
+.wind-N, .wind-NE, .wind-NNE, .wind-NW, .wind-NNW,
+.wind-E, .wind-ENE, .wind-ESE,
+.wind-W, .wind-WNW, .wind-WSW,
+.wind-S, .wind-SE, .wind-SSE, .wind-SW, .wind-SSW {
+    width: 46px;
+    height: 46px;
+}
+
+.wind-N, .wind-NE, .wind-NNE, .wind-NW, .wind-NNW,
+.wind-E, .wind-ENE, .wind-ESE,
+.wind-W, .wind-WNW, .wind-WSW,
+.wind-S, .wind-SE, .wind-SSE, .wind-SW, .wind-SSW {
+    background: url(../images/status/wind/compas-arrow.png) top left no-repeat transparent;
+}
+
+#wind-direction {
+    background: url(../images/status/wind/compas-bg.png) top left no-repeat transparent;
+    margin-left: 24px;
+}
+
+.wind-ENE{-webkit-transform: rotate(22deg);}
+.wind-E  {-webkit-transform: rotate(45deg);}
+.wind-ESE{-webkit-transform: rotate(67deg);}
+.wind-SE {-webkit-transform: rotate(90deg);}
+.wind-SSE{-webkit-transform: rotate(112deg);}
+.wind-S  {-webkit-transform: rotate(135deg);}
+.wind-SSW{-webkit-transform: rotate(157deg);}
+.wind-SW {-webkit-transform: rotate(180deg);}
+.wind-WSW{-webkit-transform: rotate(202deg);}
+.wind-W  {-webkit-transform: rotate(225deg);}
+.wind-WNW{-webkit-transform: rotate(247deg);}
+.wind-NW {-webkit-transform: rotate(270deg);}
+.wind-NNW{-webkit-transform: rotate(292deg);}
+.wind-N  {-webkit-transform: rotate(315deg);}
+.wind-NNE{-webkit-transform: rotate(237deg);}
+.wind-NE {-webkit-transform: rotate(360deg);}
+
+#wind-direction, .humid-drop,
+.wind-speed, .humidity {
+    float: left;
+    text-transform: lowercase;
+}
+
+.humid-drop {
+    background: url(../images/status/humidity-drop.png) top left no-repeat transparent;
+    height: 46px;
+    width: 30px;
+}
+
+#weather .humid-drop span {
+    text-align: center;
+    width: 30px;
+    color: #00CCFF;
+    font-size: 17px;
+    margin-top: 20px;
+    display: block;
+}
+
+.temp, .char {
+    text-shadow: #333333 0px 0px 2px;
+}
+
+.char {
+    color: #999999;
+    margin-top: 22px;
+}
+
+#weather .wind-speed span.speed {
+    font-size: 17px;
+    margin-top: 20px;
+}
+
+.wind-speed {
+    width: 55px;
+    margin-top: 20px;
+    text-align: center;
+}
+
+.wind-speed span {
+    text-align: center;
+}
+
+.humidity .char {
+    display: block;
+    float: left;
+    margin: 22px 0px 0px 2px;
+}

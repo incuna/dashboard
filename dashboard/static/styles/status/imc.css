@@ -1,0 +1,18 @@
+/* Styles for the IMC Widget */
+#movie {
+    height: 60px;
+    margin-top: 60px;
+    padding-top: 20px;
+    text-align: center;
+}
+
+#due {
+    font-size: 14px;
+    height: 20px;
+    margin-top: 6px;
+    text-align: center;
+}
+
+#rating {
+    margin-top: 30px;
+}

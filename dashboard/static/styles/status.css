@@ -23,33 +23,32 @@
 }
 
 @font-face {
-	font-family: 'ArtBrushMedium';
-	src: url('../fonts/artbrush-webfont.eot');
-	src: local('☺'), url('../fonts/artbrush-webfont.woff') format('woff'), url('../fonts/artbrush-webfont.ttf') format('truetype'), url('../fonts/artbrush-webfont.svg#webfontIFIvTHHk') format('svg');
-	font-weight: normal;
-	font-style: normal;
+    font-family: 'ArtBrushMedium';
+    src: url('../fonts/artbrush-webfont.eot');
+    src: local('☺'), url('../fonts/artbrush-webfont.woff') format('woff'), url('../fonts/artbrush-webfont.ttf') format('truetype'), url('../fonts/artbrush-webfont.svg#webfontIFIvTHHk') format('svg');
+    font-weight: normal;
+    font-style: normal;
 }
 
 @font-face {
-	font-family: 'apple_-webfont';
-	src: url('../fonts/apple_-webfont');
-	src: local('☺'), url('../fonts/apple_-webfont') format('woff'), url('../fonts/apple_-webfont.ttf') format('truetype'), url('../fonts/apple_-webfont.svg') format('svg');
-	font-weight: normal;
-	font-style: normal;
+    font-family: 'apple_-webfont';
+    src: url('../fonts/apple_-webfont');
+    src: local('☺'), url('../fonts/apple_-webfont') format('woff'), url('../fonts/apple_-webfont.ttf') format('truetype'), url('../fonts/apple_-webfont.svg') format('svg');
+    font-weight: normal;
+    font-style: normal;
 }
 
 html {
-    background: url(../images/main-bg.png) top left repeat-x #000000;
+    background: url(../images/status/main-bg.png) top left repeat-x #000000;
     font-family: 'ChaletLondonNineteenEighty';
     font-weight: normal;
     color: #fff;
-  /*font-size: 18px;*/
 }
 
 body {
     width: 1080px;
     margin: 100px auto;
-    background: url(../images/logo.png) top right no-repeat transparent;
+    background: url(../images/status/logo.png) top right no-repeat transparent;
     text-transform: uppercase;
     min-height: 1000px;
 }
@@ -92,17 +91,14 @@ ul {
     margin: 6px 17px 0 0;
 }
 
-#page .structure{
+#page {
     min-height: 1442px;
     padding: 5px;
-    background: url(../images/bg-contain.png) top left repeat-x transparent;
+    background: url(../images/status/bg-contain.png) top left repeat-x transparent;
     margin-bottom: 10px;
 }
 
-/*
-widgets
-*/
-
+/* Widgets */
 #widgets {
     clear: both;
     height: 250px;
@@ -122,13 +118,13 @@ widgets
     height: 230px;
     margin: 0 5px;
     border-radius: 14px 14px;
-    background: url(../images/widget-bg-inactive.png) top left repeat-x #1A1A1A;
+    background: url(../images/status/widget-bg-inactive.png) top left repeat-x #1A1A1A;
     padding: 10px;
     width: 184px;
 }
 
 #widgets #shoppingling {
-    background: url(../images/shopping-list.png) top left repeat-x transparent;
+    background: url(../images/status/shopping-list.png) top left repeat-x transparent;
     padding-top: 30px;
     color: #333;
     line-height: 20px;
@@ -142,7 +138,7 @@ widgets
 }
 
 #widgets #imc {
-    background: url(../images/imc-bg.png) top left repeat-x transparent;
+    background: url(../images/status/imc-bg.png) top left repeat-x transparent;
 }
 
 #widgets #weather {
@@ -156,358 +152,23 @@ widgets
 }
 
     /*
-    weather
-    */
-    
-#weather p {
-    font-size: 14px;
-}
-
-#weather h3 {
-    display: block;
-    float: left;
-}
-
-img.big-icon {
-    height: 128px;
-    left: 27px;
-    position: absolute;
-    top: -72px;
-    width: 128px;
-}
-
-#weather .temp {
-    height: 54px;
-    font-family: 'ChaletParisNineteenEighty';
-    font-size: 40px;
-    text-align: center;
-}
-
-#weather .temp #degrees-c {
-    font-family: 'ChaletNewYorkNineteenEighty';
-}
-
-#weather .temp .slash {
-    color: #999999;
-}
-
-#weather .temp #degrees-f {
-    font-size: 26px;
-    color: #FFAE2C;
-    margin-top: 18px;
-}
-
-#weather-week {
-    height: 35px;
-    background-color: #1F1F1F;
-    border-bottom-left-radius: 14px 14px;
-    border-bottom-right-radius: 14px 14px;
-}
-
-#weather-main {
-    height: 121px;
-    margin-top: 44px;
-}
-
-#weather-week img {
-    margin-right: 10px;
-    margin-left: 10px;
-    margin-top: 6px;
-    margin-bottom: 0;
-    float: left;
-}
-
-#weather-week ul {
-    margin-left: 35px;
-    margin-right: 0;
-    margin-top: 0;
-    margin-bottom: 0;
-}
-
-#wind-direction,
-.wind-N,
-.wind-NE,
-.wind-NNE,
-.wind-NW,
-.wind-NNW,
-.wind-E,
-.wind-ENE,
-.wind-ESE,
-.wind-W,
-.wind-WNW,
-.wind-WSW,
-.wind-S,
-.wind-SE,
-.wind-SSE,
-.wind-SW,
-.wind-SSW {
-    width: 46px;
-    height: 46px;
-}
-
-.wind-N,
-.wind-NE,
-.wind-NNE,
-.wind-NW,
-.wind-NNW,
-.wind-E,
-.wind-ENE,
-.wind-ESE,
-.wind-W,
-.wind-WNW,
-.wind-WSW,
-.wind-S,
-.wind-SE,
-.wind-SSE,
-.wind-SW,
-.wind-SSW {
-    background: url(../images/wind/compas-arrow.png) top left no-repeat transparent;
-}
-
-#wind-direction {
-    background: url(../images/wind/compas-bg.png) top left no-repeat transparent;
-    margin-left: 24px;
-}
-.wind-ENE {
-    -webkit-transform: rotate(22deg);
-}
-
-.wind-E{
-    -webkit-transform: rotate(45deg);
-}
-
-.wind-ESE{
-    -webkit-transform: rotate(67deg);
-}
-
-.wind-SE{
-    -webkit-transform: rotate(90deg);
-}
-
-.wind-SSE{
-    -webkit-transform: rotate(112deg);
-}
-
-.wind-S{
-    -webkit-transform: rotate(135deg);
-}
-
-.wind-SSW{
-    -webkit-transform: rotate(157deg);
-}
-
-.wind-SW{
-    -webkit-transform: rotate(180deg);
-}
-
-.wind-WSW{
-    -webkit-transform: rotate(202deg);
-}
-
-.wind-W{
-    -webkit-transform: rotate(225deg);
-}
-
-.wind-WNW{
-    -webkit-transform: rotate(247deg);
-}
-
-.wind-NW{
-    -webkit-transform: rotate(270deg);
-}
-
-.wind-NNW{
-    -webkit-transform: rotate(292deg);
-}
-
-.wind-N{
-    -webkit-transform: rotate(315deg);
-}
-
-.wind-NNE{
-    -webkit-transform: rotate(237deg);
-}
-
-.wind-NE{
-    -webkit-transform: rotate(360deg);
-}
-
-.humid-drop,
-#wind-direction,
-.wind-speed,
-.humidity {
-    float: left;
-    text-transform: lowercase;
-}
-
-.humid-drop {
-    background: url(../images/humidity-drop.png) top left no-repeat transparent;
-    height: 46px;
-    width: 30px;
-}
-
-#weather .humid-drop span {
-    text-align: center;
-    width: 30px;
-    color: #00CCFF;
-    font-size: 17px;
-    margin-top: 20px;
-    display: block;
-}
-
-.temp,
-.char {
-    text-shadow: #333333 0px 0px 2px;    
-}
-
-.char {
-    color: #999999;
-    margin-top: 22px;
-}
-
-#weather .wind-speed span.speed {
-    font-size: 17px;
-    margin-top: 20px;
-}
-
-.wind-speed {
-    width: 55px;
-    margin-top: 20px;
-    text-align: center;
-}
-
-.wind-speed span {
-    text-align: center;
-}
-
-.humidity .char { 
-    display: block;
-    float: left;
-    margin: 22px 0px 0px 2px;
-}
-
-    /*
     imc
     */
 
-#curent-movie {
-    margin-top: 58px;
-    height: 82px;
-    text-align: center;
-    line-height: 82px;
-}
 
-.rating-title {
-    float: left;
-    height: 18px;
-    margin: 10px 5px;
-}
-
-.star-rating {
-    float: left;
-    width: 109px;
-    height: 18px;
-    margin: 10px 5px;
-}
-
-.rate-0,
-.rate-0-half,
-.rate-1,
-.rate-1-half,
-.rate-2,
-.rate-2-half,
-.rate-3,
-.rate-3-half,
-.rate-4,
-.rate-4-half,
-.rate-5 {
-    background: url(../images/stars/stars.png) top left no-repeat transparent;
-}
-
-.rate-0-half {
-    background-position: 0 -18px;
-}
-
-.rate-1 {
-    background-position: 0 -36px;
-}
-
-.rate-1-half {
-    background-position: 0 -54px;
-}
-
-.rate-2 {
-    background-position: 0 -72px;
-}
-
-.rate-2-half {
-    background-position: 0 -90px;
-}
-
-.rate-3 {
-    background-position: 0 -108px;
-}
-
-.rate-3-half {
-    background-position: 0 -126px;
-}
-
-.rate-4 {
-    background-position: 0 -144px;
-}
-
-.rate-4-half {
-    background-position: 0 -162px;
-}
-
-.rate-5 {
-    background-position: 0 -180px;
-}
-#due {
-    font-size: 14px;
-    margin-top: 6px;
-    text-align: center;
-}
-
-/*
-imc ratting
-*/
-
-#movie,
-#rating {
-    float: left;
-}
-
-#people,
-#user-rating {
-    float: left;
-}
-
-#movie-img {
-    padding: 10px;
-    background-color:rgba(51,51,51,0.25);
-    width: 450px;
-    height: 650px;
-    margin: auto;
-    border-radius: 15px;
-}
-
-li.person {
-    float: left;
-}
 
 /*
 spotify
 */
 
 #widgets #spotify {
-    background: url(../images/spotify-bg.png) 5px 5px no-repeat transparent;
+    background: url(../images/status/spotify-bg.png) 5px 5px no-repeat transparent;
     position: relative;
     font-family: 'apple_-webfont';
 }
 
 #widgets #spotify #spotify-frame {
-    background: url(../images/spotify-frame.png) top left no-repeat transparent;
+    background: url(../images/status/spotify-frame.png) top left no-repeat transparent;
     position: absolute;
     height: 250px;
     width: 204px;
@@ -532,16 +193,16 @@ spotify
 }
 
 .scrollable {
-	height: 137px;
+    height: 137px;
     overflow: hidden;
     padding-top: 11px;
     position: relative;
 }
 
 .scrollable .items {
-	width:20000em;
-	position:absolute;
-	margin-left: 24px;
+    width:20000em;
+    position:absolute;
+    margin-left: 24px;
 }
 
 
@@ -592,7 +253,7 @@ ticker
     width: 183px;
 }
 
-.ticker { 
+.ticker {
     margin: 10px 0;
     padding: 0;
     width: 1080px;
@@ -635,11 +296,11 @@ ticker
     line-height: 48px;
 }
 
-.up { 
-    color: #00FF00; 
+.up {
+    color: #00FF00;
 }
 
-.down { 
+.down {
     color: #FF0033;
 }
 
@@ -817,16 +478,16 @@ ticker
 #flip-box-contain-project .flip-box {
     height: 60px;
     float: left;
-    background: url(../images/flipper_bg.png) no-repeat;
+    background: url(../images/status/flipper_bg.png) no-repeat;
 }
 
 #flip-box-contain-company .flip-box-end {
     margin-right: 3px;
-} 
+}
 
 #flip-box-contain-company .flip-box-end,
 #flip-box-contain-project .flip-box-end {
-    background-position: bottom left;   
+    background-position: bottom left;
     width: 15px;
 }
 
@@ -868,22 +529,22 @@ ticker
 
 /* trigger button */
 #download_now {
-	display:block;
-	height:82px;
-	overflow:hidden;
-	cursor:pointer;
-	color: #fff;
+    display:block;
+    height:82px;
+    overflow:hidden;
+    cursor:pointer;
+    color: #fff;
 }
 
 /* tooltip styling */
 .tooltip {
-	display:none;
-	background:url(http://static.flowplayer.org/tools/img/tooltip/black_arrow_big.png);
-	height:163px;
-	padding:40px 30px 10px 30px;
-	width:310px;
-	font-size:11px;
-	color:#fff;
+    display:none;
+    background:url(http://static.flowplayer.org/tools/img/tooltip/black_arrow_big.png);
+    height:163px;
+    padding:40px 30px 10px 30px;
+    width:310px;
+    font-size:11px;
+    color:#fff;
 }
 
 #curent-movie a {
@@ -892,12 +553,12 @@ ticker
 
 /* a .label element inside tooltip */
 .tooltip .label {
-	color:yellow;
-	width:35px;
+    color:yellow;
+    width:35px;
 }
 
 .tooltip a {
-	color:#ad4;
-	font-size:11px;
-	font-weight:bold;
+    color:#ad4;
+    font-size:11px;
+    font-weight:bold;
 }
