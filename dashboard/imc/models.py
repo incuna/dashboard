@@ -1,6 +1,7 @@
 from re import compile
 
 from django.db import models
+from django.db.models import Sum
 from imdb import IMDb
 from profiles.models import Profile
 
@@ -63,6 +64,10 @@ class Movie(models.Model):
             except KeyError:
                 pass
         return super(Movie, self).save(*args, **kwargs)
+
+    @staticmethod
+    def get_rating_for(movie):
+        return Rating.objects.filter(movie=movie).aggregate(rating=Sum('rating'))['rating']
 
 class Rating(models.Model):
     user = models.ForeignKey(Profile)

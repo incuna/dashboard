@@ -49,8 +49,9 @@ def widget(request, extra_context = None):
     context = RequestContext(request)
     if extra_context != None:
         context.update(extra_context)
-    context.update({'movie': Movie.objects.current()})
-    return render_to_response('imc/index.html', context)
+    movie = Movie.objects.current()
+    context.update({'movie': movie, 'rating': Movie.get_rating_for(movie)})
+    return render_to_response('imc/widget.html', context)
 
 @login_required
 def dvd_request(request, movie, extra_context = None,):
