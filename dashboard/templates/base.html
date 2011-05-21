@@ -18,8 +18,10 @@
         {% endif %}
     </head>
     <body>
+        <header>{% block header %}{% endblock %}</header>
         <div id="page">
             {% block content %}{% endblock %}
         </div>
+        <footer>{% block footer %}{% endblock %}</footer>
     </body>
 </html>
