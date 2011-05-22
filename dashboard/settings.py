@@ -137,6 +137,7 @@ INSTALLED_APPS = (
     'contacts',
     'imc',
     'password',
+    'twitterstream',
 
     'status',
     'status.modules.redmine',
