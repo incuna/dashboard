@@ -11,15 +11,10 @@ body {
     width: 998px;
 }
 
-a, .service img,
-.service span {
-  display: inline-block;
-}
-
 a {
-  text-decoration: none;
+    text-decoration: none;
 }
 
-#email img {
-  padding: 36px 0 12px;
+ul {
+    list-style: none;
 }
