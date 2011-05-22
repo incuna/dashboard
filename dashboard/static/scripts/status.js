@@ -34,10 +34,6 @@ jQuery(document).ready(function($) {
     load_tweetstream();
     //$(page + ' #time').text(new Date().toString());
 
-    window.setInterval(function() {
-        load_widget(widgets.shoppinglist[0], widgets.shoppinglist[1]);
-    }, 10000);
-
     // Reload every 3 minutes
     window.setInterval(function() {
         load_tweetstream();
@@ -48,13 +44,12 @@ jQuery(document).ready(function($) {
     window.setInterval(function() {
         load_widget(widgets.redminegraphs[0], widgets.redminegraphs[1]);
         load_widget(widgets.redminelist[0], widgets.redminelist[1]);
+        load_widget(widgets.weather[0], widgets.weather[1]);
     }, 1800000);
 
     // Reload every hour
     window.setInterval(function() {
-        load_imc();
         load_widget(widgets.movieclub[0], widgets.movieclub[1]);
-        load_widget(widgets.weather[0], widgets.weather[1]);
     }, 3600000);
 
     // Reload every 3 hours
