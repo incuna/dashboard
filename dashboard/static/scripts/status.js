@@ -9,11 +9,11 @@ jQuery(document).ready(function($) {
     };
 
     function load_tweetstream() {
-        $.get('/twitterstream/teamincuna/', null,
+        $.get('/status/twitterstream/teamincuna/', null,
         function(data) {
             $('#ticker1 ul').append(data);
             $('#ticker1').ticker();
-            $('#ticker2').ticker();
+            //$('#ticker2').ticker();
         });
     }
 
@@ -31,6 +31,7 @@ jQuery(document).ready(function($) {
     for (widget in widgets) {
         load_widget(widgets[widget][0], widgets[widget][1]);
     }
+    load_tweetstream();
     //$(page + ' #time').text(new Date().toString());
 
     window.setInterval(function() {
