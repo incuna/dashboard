@@ -1,12 +1,14 @@
 {% if latest_tweets %}
-    {% for tweet in latest_tweets %}
-        <li>
-            {% if tweet.picture %}
-                <img src="{{tweet.picture}}" height="48" width="48">
-            {% endif %}
-            <span class="text">
-                <span class="username">@{{tweet.username.lower}}:</span> {{tweet.text}}
-            </span>
-        </li>
-    {% endfor %}
+{% for tweet in latest_tweets %}
+<li>
+    {% if tweet.picture %}
+    <img src="{{tweet.picture}}" height="48" width="48">
+    {% else %}
+    <span class="username">@{{tweet.username.lower}}:</span>
+    {% endif %}
+    <span class="text">
+        {{tweet.text}}
+    </span>
+</li>
+{% endfor %}
 {% endif %}
