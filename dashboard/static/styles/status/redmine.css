@@ -1,0 +1,174 @@
+/* Redmine Graphs */
+#graphs {
+    height: 370px;
+    margin-top: 140px;
+    margin-bottom: 20px;
+}
+
+.graph {
+    width: 204px;
+    float: left;
+    margin: 0 5px;
+}
+
+.graph .company, .graph .name {
+    text-align: center;
+    width: 204px;
+    display: block;
+}
+
+.graph .issues .closed-issues {
+    font-family: 'ChaletNewYorkNineteenEighty';
+}
+
+.graph .issues {
+    font-family: ChaletParisNineteenEighty;
+    font-size: 40px;
+    position: absolute;
+    text-align: center;
+    top: -49px;
+    width: 204px;
+}
+
+.graph1 .open-issues, .graph1 .name {color: #FFFE00;}
+.graph2 .open-issues, .graph2 .name {color: #00FE00;}
+.graph3 .open-issues, .graph3 .name {color: #FE0000;}
+.graph4 .open-issues, .graph4 .name {color: #00C6F8;}
+.graph5 .open-issues, .graph5 .name {color: #F0782B;}
+
+.graph-bar-contain {
+    height: 300px;
+    margin-bottom: 10px;
+    position: relative;
+    width: 204px;
+}
+
+.graph1 .graph-bar, .graph2 .graph-bar,
+.graph3 .graph-bar, .graph4 .graph-bar,
+.graph5 .graph-bar {
+    bottom: 0px;
+    position: absolute;
+    width: 204px;
+}
+
+.graph1 .graph-bar {
+    background-image: -webkit-gradient(
+        linear,
+        left bottom,
+        left top,
+        color-stop(0, rgb(255,204,51)),
+        color-stop(0, rgb(255,204,51)),
+        color-stop(1, rgb(255,255,0))
+    );
+}
+.graph2 .graph-bar {
+    background-image: -webkit-gradient(
+        linear,
+        left bottom,
+        left top,
+        color-stop(0, rgb(80,180,60)),
+        color-stop(0, rgb(80,180,60)),
+        color-stop(1, rgb(0,255,0))
+    );
+}
+.graph3 .graph-bar {
+    background-image: -webkit-gradient(
+        linear,
+        left bottom,
+        left top,
+        color-stop(0, rgb(182,33,50)),
+        color-stop(0, rgb(182,33,50)),
+        color-stop(1, rgb(255,0,0))
+    );
+}
+.graph4 .graph-bar {
+    background-image: -webkit-gradient(
+        linear,
+        left bottom,
+        left top,
+        color-stop(0, rgb(51,102,136)),
+        color-stop(0, rgb(51,102,136)),
+        color-stop(1, rgb(0,204,255))
+    );
+}
+.graph5 .graph-bar {
+    background-image: -webkit-gradient(
+        linear,
+        left bottom,
+        left top,
+        color-stop(0, rgb(255,136,51)),
+        color-stop(0, rgb(255,136,51)),
+        color-stop(1, rgb(255,204,51))
+    );
+}
+
+/* List */
+#list {
+    height: 568px;
+    margin: 0 5px;
+}
+
+#list ul {
+    margin: 0;
+}
+
+#list li {
+    height: 60px;
+    margin-bottom: 3px;
+}
+
+#flip-box-company {
+    margin-right: 2px;
+}
+
+#flip-box-company .flip-box, #flip-box-company .flip-box-end,
+#flip-box-project .flip-box, #flip-box-project .flip-box-end {
+    background: url(../images/status/flipper_bg.png) no-repeat;
+    float: left;
+    height: 60px;
+}
+
+#flip-box-company .flip-box-end {
+    margin-right: 3px;
+}
+
+#flip-box-company .flip-box-end,
+#flip-box-project .flip-box-end {
+    background-position: bottom left;
+    width: 15px;
+}
+
+#flip-box-company .flip-box {
+    line-height: 25px;
+}
+
+#flip-box-company .flip-box {
+    background-position: top left;
+    height: 54px;
+    padding: 0 0 0 15px;
+    width: 178px;
+}
+
+#flip-box-project .flip-box {
+    background-position: top left;
+    width: 411px;
+}
+
+.companyBoard {
+    height: 60px;
+    margin-left: 15px;
+    width: 170px;
+}
+
+.projectBoard {
+    height: 60px;
+    margin-left: 15px;
+    width: 396px;
+}
+
+#flip-box-project .flip-box h2 {
+    color: #FFD825;
+    height: 60px;
+    line-height: 60px;
+    margin: 0 0 0 15px;
+}

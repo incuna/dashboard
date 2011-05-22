@@ -1,28 +1,29 @@
 {% if projects %}
-    <div id="list">
-        <ul>
+<div id="list">
+    <ul>
         {% for project in projects %}
-            <li>
-                <div id="flip-box-contain-company">
-                    <div class="flip-box">
-                        <span>COMPANY NAME</span>
-                    </div>
-                    <div class="flip-box-end"></div>
+        <li>
+            <div id="flip-box-company">
+                <div class="flip-box">
+                    <span>COMPANY NAME</span>
                 </div>
-                <div id="flip-box-contain-project">
-                    <div class="flip-box">
-                        <h2>{{ project.name }}</h2>
-                    </div>
-                    <div class="flip-box-end"></div>
+                <div class="flip-box-end"></div>
+            </div>
+            <div id="flip-box-project">
+                <div class="flip-box">
+                    <h2>{{ project.name }}</h2>
                 </div>
-                <div class="users">
+                <div class="flip-box-end"></div>
+            </div>
+            <div class="users">
                 {% for employee in project.employees %}
-                    <div class="tweet-pic" style="background: url('{{ employee.avatar.url }}') no-repeat;">
-                       <img src="{{ MEDIA_URL }}img/tweet-frame.png" height="60px" width="50px">
-                    </div>
+                <div class="tweet-pic" style="background: url('{{ employee.avatar.url }}') no-repeat;">
+                   <img src="{{ MEDIA_URL }}img/tweet-frame.png" height="60px" width="50px">
+                </div>
                 {% endfor %}
-            </li>
+            </div>
+        </li>
         {% endfor %}
-        </ul>
-    </div>
+    </ul>
+</div>
 {% endif %}
