@@ -42,16 +42,16 @@ img.big-icon {
 }
 
 #weather .temp #degrees-f {
-    font-size: 26px;
     color: #FFAE2C;
+    font-size: 26px;
     margin-top: 18px;
 }
 
 #weather-week {
-    height: 35px;
     background-color: #1F1F1F;
     border-bottom-left-radius: 14px 14px;
     border-bottom-right-radius: 14px 14px;
+    height: 35px;
 }
 
 #weather-main {
@@ -60,18 +60,13 @@ img.big-icon {
 }
 
 #weather-week img {
-    margin-right: 10px;
-    margin-left: 10px;
-    margin-top: 6px;
-    margin-bottom: 0;
     float: left;
+    margin: 6px 8px 0;
 }
 
 #weather-week ul {
-    margin-left: 35px;
-    margin-right: 0;
-    margin-top: 0;
-    margin-bottom: 0;
+    margin: 0 auto;
+    width: 110px;
 }
 
 #wind-direction,
@@ -79,8 +74,8 @@ img.big-icon {
 .wind-E, .wind-ENE, .wind-ESE,
 .wind-W, .wind-WNW, .wind-WSW,
 .wind-S, .wind-SE, .wind-SSE, .wind-SW, .wind-SSW {
-    width: 46px;
     height: 46px;
+    width: 46px;
 }
 
 .wind-N, .wind-NE, .wind-NNE, .wind-NW, .wind-NNW,
@@ -125,12 +120,12 @@ img.big-icon {
 }
 
 #weather .humid-drop span {
-    text-align: center;
-    width: 30px;
     color: #00CCFF;
+    display: block;
     font-size: 17px;
     margin-top: 20px;
-    display: block;
+    text-align: center;
+    width: 30px;
 }
 
 .temp, .char {
