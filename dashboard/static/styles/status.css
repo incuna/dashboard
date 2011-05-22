@@ -67,15 +67,6 @@ body {
     margin-bottom: 10px;
 }
 
-ul {
-    list-style: none;
-    -webkit-padding-start: 0px;
-}
-
-#tweets {
-    clear: left;
-}
-
 /* Widgets */
 #widgets {
     clear: both;
@@ -118,28 +109,11 @@ ul {
     font-weight: bold;
 }
 
-#time {
-    width: 288px;
-}
-
-/*
-ticker
-*/
-
+/* Twitter Stream Ticker */
 #ticker1 {
     margin: 0;
     overflow: hidden;
 }
-
-#ticker2 {
-    margin-top: 13px;
-    overflow: hidden;
-    height: 38px;
-    margin-top: 14px;
-    padding: 5px 0px;
-    width: 183px;
-}
-
 .ticker {
     margin: 10px 0;
     padding: 0;
@@ -148,49 +122,23 @@ ticker
     font-size: 18px;
     position: absolute;
 }
-
-.ticker ul,
-.ticker2 ul,
-.ticker li,
-.ticker2 li,
-.ticker img,
-.ticker2 img,
-.ticker span,
-.ticker2 span {
+.ticker ul, .ticker li,
+.ticker img, .ticker span {
     float: left;
 }
-
 .ticker img {
     padding: 0 10px 0 20px;
 }
-
-#ticker2 ul {
-    margin: 0;
-    width: 2000px;
-    height: 38px;
-    line-height: 40px;
-}
-
-#ticker2 li {
-    height: 38px;
-}
-
-#ticker2 span {
-    line-height: 23px
-}
-
 .ticker span {
     line-height: 48px;
 }
 
 .up {
-    color: #00FF00;
+    color: #00ff00;
 }
-
 .down {
-    color: #FF0033;
+    color: #ff0033;
 }
-
 .tweet-pic {
     width: 50px;
     height: 60px;
