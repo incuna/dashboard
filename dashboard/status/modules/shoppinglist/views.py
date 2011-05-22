@@ -8,6 +8,12 @@ def index(request, extra_context = None):
     if extra_context != None:
         context.update(extra_context)
 
-    context.update({'shoppinglist': Item.objects.filter(bought=False).order_by('-created')})
+    items = Item.objects.filter(bought=False).order_by('created')
+    more = None
+    if items.count() > 9:
+        more = items.count() - 8
+        items = items[:8]
+
+    context.update({'items': items, 'more': more})
     return render_to_response('shoppinglist/index.html', context)
 

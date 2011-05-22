@@ -1,12 +1,14 @@
-{% if shoppinglist %}
-<div id="shoppinglist">
+{% if items %}
+<div id="shopping-list" class="widget">
     <ul>
-    {% for item in shoppinglist %}
+        {% for item in items %}
         <li>
-            <span style="display:block;font-weight:bold;">{{item.name}}</span>
-            <!--<span>{{item.description}}</span>-->
+            <span>{{ item.name }}</span>
         </li>
-    {% endfor %}
+        {% endfor %}
+        {% if more %}
+        <li>{{ more }} more...</li>
+        {% endif %}
     </ul>
 </div>
 {% endif %}

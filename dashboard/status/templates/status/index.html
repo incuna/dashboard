@@ -6,6 +6,7 @@
 <link rel="stylesheet" type="text/css" charset="utf-8" href="{{ STATIC_URL }}styles/jquery.rating/jquery.rating.css">
 <link rel="stylesheet" type="text/css" charset="utf-8" href="{{ STATIC_URL }}styles/status.css">
 <link rel="stylesheet" type="text/css" charset="utf-8" href="{{ STATIC_URL }}styles/status/imc.css">
+<link rel="stylesheet" type="text/css" charset="utf-8" href="{{ STATIC_URL }}styles/status/music.css">
 <link rel="stylesheet" type="text/css" charset="utf-8" href="{{ STATIC_URL }}styles/status/weather.css">
 {% endblock %}
 
@@ -27,12 +28,6 @@
 <div id="widgets">
     {% include "status/widgets.html" %}
 </div>
-
-<div>
-    <a class="prev browse left">bla</a>
-    <a class="next browse right">asdf</a>
-</div>
-
 
 {% if today %}
 <div id="today">

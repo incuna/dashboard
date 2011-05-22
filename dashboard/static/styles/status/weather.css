@@ -1,4 +1,14 @@
 /* Styles for the weather widget */
+#weather {
+    background-image: none;
+    background-color: #333333;
+    height: 200px;
+    margin-top: 50px;
+    padding: 0;
+    position: relative;
+    width: 204px;
+}
+
 #weather p {
     font-size: 14px;
 }
@@ -77,11 +87,11 @@ img.big-icon {
 .wind-E, .wind-ENE, .wind-ESE,
 .wind-W, .wind-WNW, .wind-WSW,
 .wind-S, .wind-SE, .wind-SSE, .wind-SW, .wind-SSW {
-    background: url(../images/status/wind/compas-arrow.png) top left no-repeat transparent;
+    background: url(../../images/status/weather/wind/compas-arrow.png) top left no-repeat transparent;
 }
 
 #wind-direction {
-    background: url(../images/status/wind/compas-bg.png) top left no-repeat transparent;
+    background: url(../../images/status/weather/wind/compas-bg.png) top left no-repeat transparent;
     margin-left: 24px;
 }
 
@@ -109,7 +119,7 @@ img.big-icon {
 }
 
 .humid-drop {
-    background: url(../images/status/humidity-drop.png) top left no-repeat transparent;
+    background: url(../../images/status/weather/humidity-drop.png) top left no-repeat transparent;
     height: 46px;
     width: 30px;
 }

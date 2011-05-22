@@ -1,10 +1,10 @@
-<div id="holidaycal">
-    <h3>{% now "l d/n" %}</h3>
-    {% if employees %}
-        <ul>
-        {% for employee in employees %}
-            <li>{{ employee.first_name }}<img src="{{ MEDIA_URL }}{{ employee.avatar }}" height="50" width="50" style="float:right"></li>
-        {% endfor %}
-        </ul>
-    {% endif %}
+<div id="holiday-cal" class="widget">
+<h3>{% now "l d/n" %}</h3>
+{% if employees %}
+    <ul>
+    {% for employee in employees %}
+        <li>{{ employee.first_name }}<img src="{{ MEDIA_URL }}{{ employee.avatar }}" height="50" width="50"></li>
+    {% endfor %}
+    </ul>
+{% endif %}
 </div>

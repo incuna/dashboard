@@ -1,11 +1,15 @@
 # coding=utf8
-import os.path
-import re
+from os.path import exists, join
+from re import compile
 
 from django.core.mail import mail_managers
 from django.conf import settings
 
 def get_image_called(name, minimal=False):
+    """
+    Get the image based on the weather type from the BBC feed.
+    The images list is a mapping to the numbered images.
+    """
     images = [
         'Clear Sky',
         'Sunny',
@@ -43,12 +47,12 @@ def get_image_called(name, minimal=False):
     ]
     try:
         image = '%s%s' % (images.index(name), '.png')
-        path = 'images'
+        path = 'images/status/weather/'
         if minimal:
-            path = os.path.join(path, 'minimal')
-        file_path = os.path.join(settings.STATIC_ROOT, path)
-        if os.path.exists(os.path.join(file_path, image)):
-            return os.path.join(settings.STATIC_URL, path, image)
+            path = join(path, 'minimal')
+        file_path = join(settings.STATIC_ROOT, path)
+        if exists(join(file_path, image)):
+            return join(settings.STATIC_URL, path, image)
         else:
             # mail_managers('Missing image file for: %s' % name, 'The file for weather image %s is needed today and isn\'t in the list, go grab it quick!' % name)
             print 'Missing image file for: %s' % name
@@ -67,11 +71,11 @@ class Weather(object):
     def __init__(self, *args):
         """args comes from the feed summary - a split string 6°C (43°F)"""
         pattern = r'^Temperature:\s(?P<centigrade>\d{1,2}).{1}C.+\((?P<farenheit>\d{1,2}).{1}F\)$'
-        matched = re.compile(pattern).match(unicode(args[0]))
+        matched = compile(pattern).match(unicode(args[0]))
         if matched:
             self.centigrade = matched.group('centigrade')
             self.farenheit = matched.group('farenheit')
-        self.w_direction = re.compile(r'Wind Direction: ([NESW]{1,3})').match(args[1]).group(1)
+        self.w_direction = compile(r'Wind Direction: ([NESW]{1,3})').match(args[1]).group(1)
         self.w_speed = args[2][-5:-3]
         self.rel_humidity = args[3][-3:-1]
         self.visibility = args[4].replace('Visibility: ', '')

@@ -2,87 +2,56 @@
     font-family: 'ChaletNewYorkNineteenEighty';
     src: url('../fonts/chalet-newyorkeighty-webfont.eot');
     src: local('☺'), url('../fonts/chalet-newyorkeighty-webfont.woff') format('woff'), url('../fonts/chalet-newyorkeighty-webfont.ttf') format('truetype'), url('../fonts/chalet-newyorkeighty-webfont.svg#webfontTQpwVp2F') format('svg');
-    font-weight: normal;
     font-style: normal;
+    font-weight: normal;
 }
 
 @font-face {
     font-family: 'ChaletParisNineteenEighty';
     src: url('../fonts/chalet-pariseighty-webfont.eot');
     src: local('☺'), url('../fonts/chalet-pariseighty-webfont.woff') format('woff'), url('../fonts/chalet-pariseighty-webfont.ttf') format('truetype'), url('../fonts/chalet-pariseighty-webfont.svg#webfont9zlDiQUr') format('svg');
-    font-weight: normal;
     font-style: normal;
+    font-weight: normal;
 }
 
 @font-face {
     font-family: 'ChaletLondonNineteenEighty';
     src: url('../fonts/chalet-londoneighty-webfont.eot');
     src: local('☺'), url('../fonts/chalet-londoneighty-webfont.woff') format('woff'), url('../fonts/chalet-londoneighty-webfont.ttf') format('truetype'), url('../fonts/chalet-londoneighty-webfont.svg#webfontX7UJmsTO') format('svg');
-    font-weight: normal;
     font-style: normal;
+    font-weight: normal;
 }
 
 @font-face {
     font-family: 'ArtBrushMedium';
     src: url('../fonts/artbrush-webfont.eot');
     src: local('☺'), url('../fonts/artbrush-webfont.woff') format('woff'), url('../fonts/artbrush-webfont.ttf') format('truetype'), url('../fonts/artbrush-webfont.svg#webfontIFIvTHHk') format('svg');
-    font-weight: normal;
     font-style: normal;
+    font-weight: normal;
 }
 
 @font-face {
     font-family: 'apple_-webfont';
-    src: url('../fonts/apple_-webfont');
-    src: local('☺'), url('../fonts/apple_-webfont') format('woff'), url('../fonts/apple_-webfont.ttf') format('truetype'), url('../fonts/apple_-webfont.svg') format('svg');
-    font-weight: normal;
+    src: url('../fonts/apple_-webfont.eot');
+    src: local('☺'), url('../fonts/apple_-webfont.woff') format('woff'), url('../fonts/apple_-webfont.ttf') format('truetype'), url('../fonts/apple_-webfont.svg') format('svg');
     font-style: normal;
+    font-weight: normal;
 }
 
 html {
     background: url(../images/status/main-bg.png) top left repeat-x #000000;
+    color: #fff;
     font-family: 'ChaletLondonNineteenEighty';
     font-weight: normal;
-    color: #fff;
 }
 
 body {
-    width: 1080px;
-    margin: 100px auto;
     background: url(../images/status/logo.png) top right no-repeat transparent;
-    text-transform: uppercase;
+    margin: 100px auto;
     min-height: 1000px;
+    text-transform: uppercase;
+    width: 1080px;
 }
-
-ul {
-    list-style: none;
-    -webkit-padding-start: 0px;
-}
-
-#widgets {
-    margin: 0 auto;
-    min-width: 800px;
-}
-
-#tweets {
-    clear: left;
-}
-
-/** Employee Form*/
-#employee_update .input label {
-    display: inline-block;
-    width: 100px;
-}
-
-#employee_update .input input,
-#employee_update .input textarea {
-    border: 2px solid grey;
-}
-
-#employee_update .input input[type="file"] {
-    border: none;
-}
-
-/*============================================**/
 
 #logo {
     width: 173px;
@@ -98,141 +67,59 @@ ul {
     margin-bottom: 10px;
 }
 
+ul {
+    list-style: none;
+    -webkit-padding-start: 0px;
+}
+
+#tweets {
+    clear: left;
+}
+
 /* Widgets */
 #widgets {
     clear: both;
     height: 250px;
-    margin-top: 10px;
+    margin: 10px auto 0;
+    min-width: 800px;
 }
 
-#time {
-    width: 288px;
-}
-
-#widgets #shoppingling,
-#widgets #imc,
-#widgets #holidaycal,
-#widgets #spotify,
-#widgets #weather {
+.widget {
+    background: url(../images/status/widget-bg-inactive.png) top left repeat-x #1A1A1A;
+    border-radius: 14px 14px;
     float: left;
     height: 230px;
     margin: 0 5px;
-    border-radius: 14px 14px;
-    background: url(../images/status/widget-bg-inactive.png) top left repeat-x #1A1A1A;
     padding: 10px;
     width: 184px;
 }
 
-#widgets #shoppingling {
+#holiday-cal h3 {
+    text-align: center;
+}
+
+#holiday-cal img {
+    float: right;
+}
+
+#shopping-list {
     background: url(../images/status/shopping-list.png) top left repeat-x transparent;
-    padding-top: 30px;
     color: #333;
-    line-height: 20px;
     font-family: 'ArtBrushMedium';
+    line-height: 20px;
+    padding-top: 45px;
     text-transform: none;
     text-shadow: #DACF7D 0px 0px 2px;
 }
-
-#widgets #shoppingling ul {
+#shopping-list ul {
     padding-left: 10px;
 }
-
-#widgets #imc {
-    background: url(../images/status/imc-bg.png) top left repeat-x transparent;
+#shopping-list li span {
+    font-weight: bold;
 }
 
-#widgets #weather {
-    height: 200px;
-    margin-top: 50px;
-    background-image: none;
-    background-color: #333333;
-    width: 204;
-    padding: 0;
-    position: relative;
-}
-
-    /*
-    imc
-    */
-
-
-
-/*
-spotify
-*/
-
-#widgets #spotify {
-    background: url(../images/status/spotify-bg.png) 5px 5px no-repeat transparent;
-    position: relative;
-    font-family: 'apple_-webfont';
-}
-
-#widgets #spotify #spotify-frame {
-    background: url(../images/status/spotify-frame.png) top left no-repeat transparent;
-    position: absolute;
-    height: 250px;
-    width: 204px;
-    top: 0px;
-    left: 0px;
-}
-
-#widgets #spotify .album-frame {
-    border: 3px #fff solid;
-    width: 120px;
-    height: 120px;
-    -webkit-box-shadow: 0px 0px 15px #000;
-    margin: 0 10px;
-    float: left;
-    background-image: -webkit-gradient(
-        linear,
-        left bottom,
-        left top,
-        color-stop(0, rgba(108,107,107,1.0)),
-        color-stop(0.62, rgba(27,27,27,0.5))
-    );
-}
-
-.scrollable {
-    height: 137px;
-    overflow: hidden;
-    padding-top: 11px;
-    position: relative;
-}
-
-.scrollable .items {
-    width:20000em;
-    position:absolute;
-    margin-left: 24px;
-}
-
-
-#widgets #spotify .items div{
-    float: left;
-}
-
-#widgets #spotify {
-    padding: 5px;
-    width: 194px;
-    height: 240px;
-}
-
-#widgets #spotify h3 {
-    color: #E6A9CB;
-    text-shadow: 0px 0px 8px #fff;
-    text-align: center;
-    margin: 7px 0px;
-}
-
-#widgets #spotify #song {
-    font-size: 8px;
-}
-
-#widgets #spotify #band {
-    font-size: 11px;
-}
-
-#widgets #spotify #album {
-    font-size: 7px;
+#time {
+    width: 288px;
 }
 
 /*
@@ -525,40 +412,4 @@ ticker
     margin: 0 0 0 15px;
     height: 60px;
     line-height: 60px;
-}
-
-/* trigger button */
-#download_now {
-    display:block;
-    height:82px;
-    overflow:hidden;
-    cursor:pointer;
-    color: #fff;
-}
-
-/* tooltip styling */
-.tooltip {
-    display:none;
-    background:url(http://static.flowplayer.org/tools/img/tooltip/black_arrow_big.png);
-    height:163px;
-    padding:40px 30px 10px 30px;
-    width:310px;
-    font-size:11px;
-    color:#fff;
-}
-
-#curent-movie a {
-    text-decoration: none;
-}
-
-/* a .label element inside tooltip */
-.tooltip .label {
-    color:yellow;
-    width:35px;
-}
-
-.tooltip a {
-    color:#ad4;
-    font-size:11px;
-    font-weight:bold;
 }

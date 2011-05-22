@@ -1,4 +1,8 @@
-/* Styles for the IMC Widget */
+/* Styles for the Movie Club Widget */
+#movie-club {
+    background: url(../../images/status/imc-bg.png) top left repeat-x transparent;
+}
+
 #movie {
     height: 60px;
     margin-top: 60px;

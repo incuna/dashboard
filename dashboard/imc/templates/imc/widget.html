@@ -1,7 +1,7 @@
 {% load movie_tags %}
 
 {% if movie %}
-<div id="imc">
+<div id="movie-club" class="widget">
     <div id="movie">
         {{ movie }}
         <!--<a href="{{ movie.imdb_link }}"><img src="{{ movie.thumbnail }}"></a>-->
@@ -14,9 +14,5 @@
         <input name="star" type="radio" class="star" disabled="disabled"{% if rating == i %}checked="checked"{% endif %}>
         {% endfor %}
     </div>
-</div>
-{% else %}
-<div id="error">
-    <p>Oh noes. No current movie!</p>
 </div>
 {% endif %}

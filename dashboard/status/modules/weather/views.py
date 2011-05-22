@@ -20,7 +20,7 @@ def index(request, extra_context = None):
     weather = Weather(*summary)
     weather.title = feed.title
 
-    regex = compile(r'^.+GMT:\s+(?P<type>.*\.).+$').match(feed.title)
+    regex = compile(r'^.+(GMT|BST):\s+(?P<type>.*\.).+$').match(feed.title)
     if regex:
         weather_type = regex.group('type')
         for word in weather_type.split(' '):
