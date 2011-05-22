@@ -14,17 +14,22 @@
     width: 125px;
 }
 
+.service img, .service span {
+    display: inline-block;
+}
+
+
 p.name {
     margin-top: 15px;
     text-align: center;
 }
 
-#calendar img {margin-top:27px;}
-#contacts img {margin-top:0px;}
-#expenses img {margin-top:53px;}
-#email img {margin-top:35px;}
-#holiday img {margin-top:26px;}
-#password img {margin-top:11px;}
-#redmine img {margin-top:75px;}
-#status img {margin-top:36px;}
-#trac img {margin-top:24px;}
+#calendar img {margin-top: 23px;}
+#contacts img {margin-top: 0px;}
+#expenses img {margin-top: 45px;}
+#email img {margin-top: 70px;}
+#holiday img {margin-top: 22px;}
+#password img {margin-top: 10px;}
+#redmine img {margin-top: 63px;}
+#status img {margin-top: 31px;}
+#trac img {margin-top: 21px;}
