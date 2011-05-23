@@ -21,11 +21,11 @@
         <img src="{{ STATIC_URL }}images/icons/status.png" alt="Incuna Status Board Icon">
         <p class="name">Status</p>
     </div>
-    <div id="shoppinglist" class="service" onclick="window.location = '{% url shoppinglist %}'">
-        <img src="{{ STATIC_URL }}images/icons/movie_club.png" alt="Incuna Movie Club Icon">
-        <p class="name">Shopping List</p>
-    </div>
     <div id="movieclub" class="service" onclick="window.location = '{% url current %}'">
+        <img src="{{ STATIC_URL }}images/icons/movie_club.png" alt="Incuna Movie Club Icon">
+        <p class="name">Movie Club</p>
+    </div>
+    <div id="shoppinglist" class="service" onclick="window.location = '{% url shoppinglist %}'">
         <img src="{{ STATIC_URL }}images/icons/shopping_list.png" alt="Incuna Shopping List Icon">
         <p class="name">Shopping List</p>
     </div>
