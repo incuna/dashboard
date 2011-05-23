@@ -1,5 +1,5 @@
-{% if projects %}
 <div id="graphs">
+{% if projects %}
 {% for project in projects %}
     <div class="graph{{ forloop.counter }} graph">
         <div class="graph-bar-contain">
@@ -11,5 +11,5 @@
         <span class="name">{{ project.name }}</span>
     </div>
 {% endfor %}
-</div>
 {% endif %}
+</div>

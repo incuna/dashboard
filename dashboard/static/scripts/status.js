@@ -2,8 +2,8 @@ jQuery(document).ready(function($) {
     var widgets = {
         'holidaycal': ['/status/holiday-cal/', '#holiday-cal'],
         'movieclub': ['/movie-club/widget/', '#movie-club'],
-        'redminegraphs': ['/redmine/graphs/', '#graphs'],
-        'redminelist': ['/redmine/list/', '#list'],
+        'redminegraphs': ['/status/redmine/graphs/', '#graphs'],
+        'redminelist': ['/status/redmine/list/', '#list'],
         'shoppinglist': ['/shopping-list/', '#shopping-list'],
         'weather': ['/status/weather/', '#weather']
     };
