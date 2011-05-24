@@ -1,4 +1,4 @@
-from django.db.models import Count
+from django.db.models import Count, Q
 from django.shortcuts import render_to_response
 from django.template import RequestContext
 from profiles.models import Profile
@@ -19,7 +19,7 @@ def graphs(request, extra_context = None):
         children = Project.objects.filter(lft__gte=project.lft, rgt__lte=project.rgt)
         project_issues = Issue.objects.filter(project__in=children)
         total_issues = project_issues.count()
-        closed_issues = project_issues.filter(status=IssueStatus.objects.filter(name='Closed')).count()
+        closed_issues = project_issues.filter(Q(status__name='Closed') | Q(status__name='Rejected')).count()
         percentage = strip_decimal(float(float(closed_issues)/float(total_issues) * 100))
         if not percentage:
             percentage = 0

@@ -18,7 +18,7 @@
             <div class="users">
                 {% for employee in project.employees %}
                 <div class="tweet-pic" style="background: url('{{ employee.avatar.url }}') no-repeat;">
-                   <img src="{{ MEDIA_URL }}img/tweet-frame.png" height="60px" width="50px">
+                   <img src="{{ STATIC_URL }}images/status/tweet-frame.png" height="60px" width="50px">
                 </div>
                 {% endfor %}
             </div>

@@ -1,20 +1,19 @@
 /* Redmine Graphs */
 #graphs {
     height: 370px;
-    margin-top: 140px;
-    margin-bottom: 20px;
+    margin: 140px 0 20px;
 }
 
 .graph {
-    width: 204px;
     float: left;
     margin: 0 5px;
+    width: 204px;
 }
 
 .graph .company, .graph .name {
+    display: block;
     text-align: center;
     width: 204px;
-    display: block;
 }
 
 .graph .issues .closed-issues {
@@ -107,68 +106,51 @@
     height: 568px;
     margin: 0 5px;
 }
-
 #list ul {
     margin: 0;
 }
-
 #list li {
     height: 60px;
     margin-bottom: 3px;
 }
-
 #flip-box-company {
     margin-right: 2px;
 }
-
 #flip-box-company .flip-box, #flip-box-company .flip-box-end,
 #flip-box-project .flip-box, #flip-box-project .flip-box-end {
     background: url(../../images/status/flipper_bg.png) no-repeat;
     float: left;
     height: 60px;
 }
-
 #flip-box-company .flip-box-end {
     margin-right: 3px;
 }
-
 #flip-box-company .flip-box-end,
 #flip-box-project .flip-box-end {
     background-position: bottom left;
     width: 15px;
 }
-
-#flip-box-company .flip-box {
-    line-height: 25px;
-}
-
 #flip-box-company .flip-box {
     background-position: top left;
     height: 54px;
-    padding: 0 0 0 15px;
+    line-height: 50px;
+    padding: 6px 0 0 15px;
     width: 178px;
 }
-
 #flip-box-project .flip-box {
     background-position: top left;
     width: 411px;
 }
-
-.companyBoard {
-    height: 60px;
-    margin-left: 15px;
-    width: 170px;
-}
-
-.projectBoard {
-    height: 60px;
-    margin-left: 15px;
-    width: 396px;
-}
-
 #flip-box-project .flip-box h2 {
-    color: #FFD825;
+    color: #ffd825;
     height: 60px;
     line-height: 60px;
-    margin: 0 0 0 15px;
+    margin-left: 15px;
 }
+
+.company-board, .project-board {
+    height: 60px;
+    margin-left: 15px;
+}
+.company-board {width: 170px;}
+.project-board {width: 396px;}
