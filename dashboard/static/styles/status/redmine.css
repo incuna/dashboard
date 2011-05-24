@@ -123,7 +123,7 @@
 
 #flip-box-company .flip-box, #flip-box-company .flip-box-end,
 #flip-box-project .flip-box, #flip-box-project .flip-box-end {
-    background: url(../images/status/flipper_bg.png) no-repeat;
+    background: url(../../images/status/flipper_bg.png) no-repeat;
     float: left;
     height: 60px;
 }

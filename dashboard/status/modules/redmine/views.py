@@ -14,14 +14,8 @@ def graphs(request, extra_context = None):
     if extra_context != None:
         context.update(extra_context)
 
-
-    #print 'CHILDREN', '='*80
-    #print Project.objects.filter(parent_isnull=True)
-    #project_list = list(self.get_query_set().filter(parent__isnull=True).annotate(max_updated=Max('issue__updated_on')).order_by('-max_updated'))
-
     projects = []
     for project in Project.objects.recently_updated()[:5]:
-        print project
         children = Project.objects.filter(lft__gte=project.lft, rgt__lte=project.rgt)
         project_issues = Issue.objects.filter(project__in=children)
         total_issues = project_issues.count()

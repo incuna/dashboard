@@ -1,3 +1,5 @@
+from datetime import datetime
+
 from django.db import models
 from django.db.models import Max
 
@@ -16,17 +18,16 @@ class ProjectManager(models.Manager):
         Returns a list, instead of a query set, since the query set needs to be sorted.
         """
         from models import Issue
-        project_list = list(self.get_query_set().filter(parent__isnull=True).annotate(max_updated=Max('issue__updated_on')).order_by('-max_updated'))
+        project_list = list(self.get_query_set().filter(parent__isnull=True)
+                .annotate(max_updated=Max('issue__updated_on')).order_by('-max_updated'))
         for project in project_list:
-            print project_list
-            #print project.max_updated
+            if not project.max_updated:
+                project.max_updated = datetime(1970, 1, 1)
             child_max_updated = Issue.objects.filter(project__parent=project).aggregate(max_updated_on=Max('updated_on'))['max_updated_on']
-            #print child_max_updated
-            #if child_max_updated and child_max_updated > project.max_updated:
-                #project.max_updated = child_max_updated
+            if child_max_updated and child_max_updated > project.max_updated:
+                project.max_updated = child_max_updated
         project_list = sorted(project_list, key=lambda p: p.max_updated)
         project_list.reverse()
 
-        print project_list
         return project_list
 
