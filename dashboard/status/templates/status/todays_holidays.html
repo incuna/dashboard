@@ -3,7 +3,7 @@
 {% if employees %}
     <ul>
     {% for employee in employees %}
-        <li>{{ employee.first_name }}<img src="{{ MEDIA_URL }}{{ employee.avatar }}" height="50" width="50"></li>
+        <li>{{ employee.first_name }}<img src="{{ MEDIA_URL }}{{ employee.avatar }}" width="100"></li>
     {% endfor %}
     </ul>
 {% endif %}
