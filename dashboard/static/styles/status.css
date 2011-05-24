@@ -61,10 +61,11 @@ body {
 }
 
 #page {
-    min-height: 1442px;
-    padding: 5px;
     background: url(../images/status/bg-contain.png) top left repeat-x transparent;
     margin-bottom: 10px;
+    min-height: 1442px;
+    padding: 5px;
+    width: 1080px;
 }
 
 /* Widgets */
