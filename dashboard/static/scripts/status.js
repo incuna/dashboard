@@ -8,15 +8,6 @@ jQuery(document).ready(function($) {
         'weather': ['/status/weather/', '#weather']
     };
 
-    function load_tweetstream() {
-        $.get('/status/twitterstream/teamincuna/', null,
-        function(data) {
-            $('#ticker1 ul').append(data);
-            $('#ticker1').ticker();
-            //$('#ticker2').ticker();
-        });
-    }
-
     function load_widget(url, div) {
         $.get(url, null,
         function(data) {
@@ -24,19 +15,37 @@ jQuery(document).ready(function($) {
         });
     }
 
-    function load_scrollable() {
-        $(".scrollable").scrollable();
+    /* https://api.twitter.com/1/incuna/lists/teamincuna/statuses.atom
+     * Might be possible to use the atom feed instead?
+     * Would be good to speed this up, it's a bit slow currently.
+     * Is append enough? Should we be replacing instead?
+     */
+    function load_tweetstream() {
+        $.get('/status/twitterstream/teamincuna/', null,
+        function(data) {
+            $('#ticker ul').append(data);
+        });
     }
+
+    //function load_scrollable() {
+        //$(".scrollable").scrollable();
+    //}
 
     for (widget in widgets) {
         load_widget(widgets[widget][0], widgets[widget][1]);
     }
     load_tweetstream();
+    var ticker = $('#ticker').ticker(pxpersec=500);
     //$(page + ' #time').text(new Date().toString());
+
+    //window.setInterval(function() {
+        //first = $('.first');
+        //ticker.removeMsg($('.first'));
+    //}, 1000);
 
     // Reload every 3 minutes
     window.setInterval(function() {
-        load_tweetstream();
+        //load_tweetstream();
         load_widget(widgets.shoppinglist[0], widgets.shoppinglist[1]);
     }, 180000);
 
