@@ -65,8 +65,5 @@ jQuery(document).ready(function($) {
     window.setInterval(function() {
         load_widget(widgets.holidaycal[0], widgets.holidaycal[1]);
     }, 10800000);
-
-    // Need to reload the DOM here.
-    $('#rating .star').rating();
 });
 
