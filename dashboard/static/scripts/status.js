@@ -12,6 +12,9 @@ jQuery(document).ready(function($) {
         $.get(url, null,
         function(data) {
             $('#page ' + div).replaceWith(data);
+            if (div == '#movie-club') {
+                $(div + ' .star').rating();
+            }
         });
     }
 
