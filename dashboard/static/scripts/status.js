@@ -32,10 +32,6 @@ jQuery(document).ready(function($) {
         });
     }
 
-    //function load_scrollable() {
-        //$(".scrollable").scrollable();
-    //}
-
     for (widget in widgets) {
         load_widget(widgets[widget][0], widgets[widget][1]);
     }
