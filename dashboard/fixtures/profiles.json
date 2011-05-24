@@ -1,1 +1,477 @@
-[{"pk": 2, "model": "profiles.profile", "fields": {"ssh_key": "", "is_manager": false, "posh_avatar": "images/profiles/george-posh.jpeg", "avatar": "images/profiles/george_2.jpg", "groups": [1], "user_permissions": []}}, {"pk": 3, "model": "profiles.profile", "fields": {"ssh_key": "", "is_manager": false, "posh_avatar": "", "avatar": "images/profiles/att-security-guard-070607.jpeg", "groups": [1], "user_permissions": []}}]
+[{
+    "pk": 2,
+    "model": "auth.user",
+    "fields": {
+        "username": "george",
+        "first_name": "George",
+        "last_name": "Hickman",
+        "is_active": true,
+        "is_staff": true,
+        "groups": [2],
+        "user_permissions": [],
+        "password": "sha1$95749$c1cc8b74130fad18cf8755f4aef3623c175eaef6",
+        "date_joined": "2011-05-07 12:53:56",
+        "is_superuser": false,
+        "last_login": "2011-05-21 18:25:55",
+        "email": "george@incuna.com"
+    }
+},{
+    "pk": 2,
+    "model": "profiles.profile",
+    "fields": {
+        "ssh_key": "",
+        "is_manager": false,
+        "posh_avatar": "",
+        "avatar": "images/avatars/george.jpg",
+        "groups": [2],
+        "user_permissions": []
+    }
+}, {
+    "pk": 3,
+    "model": "auth.user",
+    "fields": {
+        "username": "james",
+        "first_name": "James",
+        "last_name": "Turnbull",
+        "is_active": true,
+        "is_staff": true,
+        "groups": [1],
+        "user_permissions": [],
+        "password": "sha1$95749$c1cc8b74130fad18cf8755f4aef3623c175eaef6",
+        "date_joined": "2011-05-07 12:53:56",
+        "is_superuser": false,
+        "last_login": "2011-05-21 18:25:55",
+        "email": "james@incuna.com"
+    }
+}, {
+    "pk": 3,
+    "model": "profiles.profile",
+    "fields": {
+        "ssh_key": "",
+        "is_manager": true,
+        "posh_avatar": "",
+        "avatar": "images/avatars/james.jpg",
+        "groups": [1],
+        "user_permissions": []
+    }
+}, {
+    "pk": 4,
+    "model": "auth.user",
+    "fields": {
+        "username": "max",
+        "first_name": "Max",
+        "last_name": "Peterson",
+        "is_active": true,
+        "is_staff": true,
+        "groups": [1],
+        "user_permissions": [],
+        "password": "sha1$95749$c1cc8b74130fad18cf8755f4aef3623c175eaef6",
+        "date_joined": "2011-05-07 12:53:56",
+        "is_superuser": false,
+        "last_login": "2011-05-21 18:25:55",
+        "email": "max@incuna.com"
+    }
+}, {
+    "pk": 4,
+    "model": "profiles.profile",
+    "fields": {
+        "ssh_key": "",
+        "is_manager": true,
+        "posh_avatar": "",
+        "avatar": "images/avatars/max.jpg",
+        "groups": [1],
+        "user_permissions": []
+    }
+}, {
+    "pk": 5,
+    "model": "auth.user",
+    "fields": {
+        "username": "jim",
+        "first_name": "Jim",
+        "last_name": "Morris",
+        "is_active": true,
+        "is_staff": true,
+        "groups": [2],
+        "user_permissions": [],
+        "password": "sha1$95749$c1cc8b74130fad18cf8755f4aef3623c175eaef6",
+        "date_joined": "2011-05-07 12:53:56",
+        "is_superuser": false,
+        "last_login": "2011-05-21 18:25:55",
+        "email": "jim@incuna.com"
+    }
+}, {
+    "pk": 5,
+    "model": "profiles.profile",
+    "fields": {
+        "ssh_key": "",
+        "is_manager": false,
+        "posh_avatar": "",
+        "avatar": "images/avatars/jim.jpg",
+        "groups": [2],
+        "user_permissions": []
+    }
+}, {
+    "pk": 6,
+    "model": "auth.user",
+    "fields": {
+        "username": "cyan",
+        "first_name": "Cyan",
+        "last_name": "Collier",
+        "is_active": true,
+        "is_staff": true,
+        "groups": [1],
+        "user_permissions": [],
+        "password": "sha1$95749$c1cc8b74130fad18cf8755f4aef3623c175eaef6",
+        "date_joined": "2011-05-07 12:53:56",
+        "is_superuser": false,
+        "last_login": "2011-05-21 18:25:55",
+        "email": "cyan@incuna.com"
+    }
+}, {
+    "pk": 6,
+    "model": "profiles.profile",
+    "fields": {
+        "ssh_key": "",
+        "is_manager": true,
+        "posh_avatar": "",
+        "avatar": "images/avatars/cyan.jpg",
+        "groups": [1],
+        "user_permissions": []
+    }
+}, {
+    "pk": 7,
+    "model": "auth.user",
+    "fields": {
+        "username": "katia",
+        "first_name": "Katia",
+        "last_name": "Malkyh",
+        "is_active": true,
+        "is_staff": true,
+        "groups": [2],
+        "user_permissions": [],
+        "password": "sha1$95749$c1cc8b74130fad18cf8755f4aef3623c175eaef6",
+        "date_joined": "2011-05-07 12:53:56",
+        "is_superuser": false,
+        "last_login": "2011-05-21 18:25:55",
+        "email": "katia@incuna.com"
+    }
+}, {
+    "pk": 7,
+    "model": "profiles.profile",
+    "fields": {
+        "ssh_key": "",
+        "is_manager": false,
+        "posh_avatar": "",
+        "avatar": "images/avatars/katia.jpg",
+        "groups": [2],
+        "user_permissions": []
+    }
+}, {
+    "pk": 8,
+    "model": "auth.user",
+    "fields": {
+        "username": "charlie",
+        "first_name": "Charlie",
+        "last_name": "Denton",
+        "is_active": true,
+        "is_staff": true,
+        "groups": [2],
+        "user_permissions": [],
+        "password": "sha1$95749$c1cc8b74130fad18cf8755f4aef3623c175eaef6",
+        "date_joined": "2011-05-07 12:53:56",
+        "is_superuser": false,
+        "last_login": "2011-05-21 18:25:55",
+        "email": "charlie@incuna.com"
+    }
+}, {
+    "pk": 8,
+    "model": "profiles.profile",
+    "fields": {
+        "ssh_key": "",
+        "is_manager": false,
+        "posh_avatar": "",
+        "avatar": "images/avatars/charlie.jpg",
+        "groups": [2],
+        "user_permissions": []
+    }
+}, {
+    "pk": 9,
+    "model": "auth.user",
+    "fields": {
+        "username": "matt",
+        "first_name": "Matt",
+        "last_name": "Newman",
+        "is_active": true,
+        "is_staff": true,
+        "groups": [1],
+        "user_permissions": [],
+        "password": "sha1$95749$c1cc8b74130fad18cf8755f4aef3623c175eaef6",
+        "date_joined": "2011-05-07 12:53:56",
+        "is_superuser": false,
+        "last_login": "2011-05-21 18:25:55",
+        "email": "matt@incuna.com"
+    }
+}, {
+    "pk": 9,
+    "model": "profiles.profile",
+    "fields": {
+        "ssh_key": "",
+        "is_manager": true,
+        "posh_avatar": "",
+        "avatar": "images/avatars/matt.jpg",
+        "groups": [1],
+        "user_permissions": []
+    }
+}, {
+    "pk": 10,
+    "model": "auth.user",
+    "fields": {
+        "username": "jamie",
+        "first_name": "Jamie",
+        "last_name": "Cooper",
+        "is_active": true,
+        "is_staff": true,
+        "groups": [2],
+        "user_permissions": [],
+        "password": "sha1$95749$c1cc8b74130fad18cf8755f4aef3623c175eaef6",
+        "date_joined": "2011-05-07 12:53:56",
+        "is_superuser": false,
+        "last_login": "2011-05-21 18:25:55",
+        "email": "jamie@incuna.com"
+    }
+}, {
+    "pk": 10,
+    "model": "profiles.profile",
+    "fields": {
+        "ssh_key": "",
+        "is_manager": false,
+        "posh_avatar": "",
+        "avatar": "images/avatars/jamie.jpg",
+        "groups": [2],
+        "user_permissions": []
+    }
+}, {
+    "pk": 11,
+    "model": "auth.user",
+    "fields": {
+        "username": "carla",
+        "first_name": "Carla",
+        "last_name": "Ponte Juliano",
+        "is_active": true,
+        "is_staff": true,
+        "groups": [2],
+        "user_permissions": [],
+        "password": "sha1$95749$c1cc8b74130fad18cf8755f4aef3623c175eaef6",
+        "date_joined": "2011-05-07 12:53:56",
+        "is_superuser": false,
+        "last_login": "2011-05-21 18:25:55",
+        "email": "carla@incuna.com"
+    }
+}, {
+    "pk": 11,
+    "model": "profiles.profile",
+    "fields": {
+        "ssh_key": "",
+        "is_manager": false,
+        "posh_avatar": "",
+        "avatar": "images/avatars/carla.jpg",
+        "groups": [2],
+        "user_permissions": []
+    }
+}, {
+    "pk": 12,
+    "model": "auth.user",
+    "fields": {
+        "username": "will",
+        "first_name": "Will",
+        "last_name": "Elsom",
+        "is_active": true,
+        "is_staff": true,
+        "groups": [2],
+        "user_permissions": [],
+        "password": "sha1$95749$c1cc8b74130fad18cf8755f4aef3623c175eaef6",
+        "date_joined": "2011-05-07 12:53:56",
+        "is_superuser": false,
+        "last_login": "2011-05-21 18:25:55",
+        "email": "will@incuna.com"
+    }
+},{
+    "pk": 12,
+    "model": "profiles.profile",
+    "fields": {
+        "ssh_key": "",
+        "is_manager": false,
+        "posh_avatar": "",
+        "avatar": "images/avatars/will.jpg",
+        "groups": [2],
+        "user_permissions": []
+    }
+}, {
+    "pk": 13,
+    "model": "auth.user",
+    "fields": {
+        "username": "annika",
+        "first_name": "Annika",
+        "last_name": "Voss",
+        "is_active": true,
+        "is_staff": true,
+        "groups": [2],
+        "user_permissions": [],
+        "password": "sha1$95749$c1cc8b74130fad18cf8755f4aef3623c175eaef6",
+        "date_joined": "2011-05-07 12:53:56",
+        "is_superuser": false,
+        "last_login": "2011-05-21 18:25:55",
+        "email": "annika@incuna.com"
+    }
+}, {
+    "pk": 13,
+    "model": "profiles.profile",
+    "fields": {
+        "ssh_key": "",
+        "is_manager": true,
+        "posh_avatar": "",
+        "avatar": "images/avatars/annika.jpg",
+        "groups": [2],
+        "user_permissions": []
+    }
+}, {
+    "pk": 14,
+    "model": "auth.user",
+    "fields": {
+        "username": "pauline",
+        "first_name": "Pauline",
+        "last_name": "Healy",
+        "is_active": true,
+        "is_staff": true,
+        "groups": [2],
+        "user_permissions": [],
+        "password": "sha1$95749$c1cc8b74130fad18cf8755f4aef3623c175eaef6",
+        "date_joined": "2011-05-07 12:53:56",
+        "is_superuser": false,
+        "last_login": "2011-05-21 18:25:55",
+        "email": "pauline@incuna.com"
+    }
+}, {
+    "pk": 14,
+    "model": "profiles.profile",
+    "fields": {
+        "ssh_key": "",
+        "is_manager": false,
+        "posh_avatar": "",
+        "avatar": "images/avatars/pauline.jpg",
+        "groups": [2],
+        "user_permissions": []
+    }
+}, {
+    "pk": 15,
+    "model": "auth.user",
+    "fields": {
+        "username": "miranda",
+        "first_name": "Miranda",
+        "last_name": "Ward",
+        "is_active": true,
+        "is_staff": true,
+        "groups": [2],
+        "user_permissions": [],
+        "password": "sha1$95749$c1cc8b74130fad18cf8755f4aef3623c175eaef6",
+        "date_joined": "2011-05-07 12:53:56",
+        "is_superuser": false,
+        "last_login": "2011-05-21 18:25:55",
+        "email": "miranda@incuna.com"
+    }
+}, {
+    "pk": 15,
+    "model": "profiles.profile",
+    "fields": {
+        "ssh_key": "",
+        "is_manager": false,
+        "posh_avatar": "",
+        "avatar": "images/avatars/miranda.jpg",
+        "groups": [2],
+        "user_permissions": []
+    }
+}, {
+    "pk": 16,
+    "model": "auth.user",
+    "fields": {
+        "username": "megan",
+        "first_name": "Megan",
+        "last_name": "Kennedy",
+        "is_active": true,
+        "is_staff": true,
+        "groups": [2],
+        "user_permissions": [],
+        "password": "sha1$95749$c1cc8b74130fad18cf8755f4aef3623c175eaef6",
+        "date_joined": "2011-05-07 12:53:56",
+        "is_superuser": false,
+        "last_login": "2011-05-21 18:25:55",
+        "email": "megan@incuna.com"
+    }
+}, {
+    "pk": 16,
+    "model": "profiles.profile",
+    "fields": {
+        "ssh_key": "",
+        "is_manager": false,
+        "posh_avatar": "",
+        "avatar": "images/avatars/megan.jpg",
+        "groups": [2],
+        "user_permissions": []
+    }
+}, {
+    "pk": 17,
+    "model": "auth.user",
+    "fields": {
+        "username": "peter",
+        "first_name": "Peter",
+        "last_name": "Ward",
+        "is_active": true,
+        "is_staff": true,
+        "groups": [2],
+        "user_permissions": [],
+        "password": "sha1$95749$c1cc8b74130fad18cf8755f4aef3623c175eaef6",
+        "date_joined": "2011-05-07 12:53:56",
+        "is_superuser": false,
+        "last_login": "2011-05-21 18:25:55",
+        "email": "peter@incuna.com"
+    }
+}, {
+    "pk": 17,
+    "model": "profiles.profile",
+    "fields": {
+        "ssh_key": "",
+        "is_manager": true,
+        "posh_avatar": "",
+        "avatar": "images/avatars/peter.jpg",
+        "groups": [2],
+        "user_permissions": []
+    }
+}, {
+    "pk": 18,
+    "model": "auth.user",
+    "fields": {
+        "username": "rupert",
+        "first_name": "Rupert",
+        "last_name": "Potter",
+        "is_active": true,
+        "is_staff": true,
+        "groups": [1],
+        "user_permissions": [],
+        "password": "sha1$95749$c1cc8b74130fad18cf8755f4aef3623c175eaef6",
+        "date_joined": "2011-05-07 12:53:56",
+        "is_superuser": false,
+        "last_login": "2011-05-21 18:25:55",
+        "email": "rupert@incuna.com"
+    }
+}, {
+    "pk": 18,
+    "model": "profiles.profile",
+    "fields": {
+        "ssh_key": "",
+        "is_manager": true,
+        "posh_avatar": "",
+        "avatar": "images/avatars/rupert.jpg",
+        "groups": [1],
+        "user_permissions": []
+    }
+}]
