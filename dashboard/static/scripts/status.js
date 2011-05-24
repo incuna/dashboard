@@ -23,10 +23,12 @@ jQuery(document).ready(function($) {
      * Would be good to speed this up, it's a bit slow currently.
      * Is append enough? Should we be replacing instead?
      */
+    var ticker;
     function load_tweetstream() {
         $.get('/status/twitterstream/teamincuna/', null,
         function(data) {
             $('#ticker ul').append(data);
+            ticker = $('#ticker').ticker(pxpersec=500);
         });
     }
 
@@ -38,7 +40,6 @@ jQuery(document).ready(function($) {
         load_widget(widgets[widget][0], widgets[widget][1]);
     }
     load_tweetstream();
-    var ticker = $('#ticker').ticker(pxpersec=500);
     //$(page + ' #time').text(new Date().toString());
 
     //window.setInterval(function() {
@@ -48,7 +49,7 @@ jQuery(document).ready(function($) {
 
     // Reload every 3 minutes
     window.setInterval(function() {
-        //load_tweetstream();
+        load_tweetstream();
         load_widget(widgets.shoppinglist[0], widgets.shoppinglist[1]);
     }, 180000);
 
