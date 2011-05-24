@@ -10,6 +10,13 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': 'db.sqlite',
+    },
+    'redmine': {
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'redmine',
+        'USER': 'redmine',
+        'PASSWORD': 'moo',
+        'HOST': '192.168.0.2',
     }
 }
 
