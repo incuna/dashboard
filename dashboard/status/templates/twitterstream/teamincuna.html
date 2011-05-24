@@ -1,6 +1,6 @@
 {% if latest_tweets %}
 {% for tweet in latest_tweets %}
-<li>
+<li{% if tweet == latest_tweets|first %} class="first"{% endif %}>
     {% if tweet.picture %}
     <img src="{{tweet.picture}}" height="48" width="48">
     {% else %}

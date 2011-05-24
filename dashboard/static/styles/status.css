@@ -110,11 +110,11 @@ body {
 }
 
 /* Twitter Stream Ticker */
-#ticker1 {
+#ticker {
     margin: 0;
     overflow: hidden;
 }
-.ticker {
+#ticker {
     margin: 10px 0;
     padding: 0;
     width: 1080px;
@@ -122,14 +122,14 @@ body {
     font-size: 18px;
     position: absolute;
 }
-.ticker ul, .ticker li,
-.ticker img, .ticker span {
+#ticker ul, #ticker li,
+#ticker img, #ticker span {
     float: left;
 }
-.ticker img {
+#ticker img {
     padding: 0 10px 0 20px;
 }
-.ticker span {
+#ticker span {
     line-height: 48px;
 }
 
