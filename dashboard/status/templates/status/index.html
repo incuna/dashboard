@@ -17,14 +17,13 @@
 <script type="text/javascript" src="{{ STATIC_URL }}scripts/jquery.rating/jquery.rating.pack.js"></script>
 <script type="text/javascript" src="{{ STATIC_URL }}scripts/ticker.js"></script>
 <script type="text/javascript" src="{{ STATIC_URL }}scripts/status.js"></script>
+<script type="text/javascript" src="{{ STATIC_URL }}scripts/tweets.js"></script>
 {% endblock extra_script %}
 
 {% block content %}
 <div id="graphs">{# Populated by AJAX #}</div>
 
 <div id="list">{# Populated by AJAX #}</div>
-
-<div id="alert">{# Populated by AJAX #}</div>
 
 <div id="widgets">
     {% include "status/widgets.html" %}
@@ -38,6 +37,7 @@
 {% endblock content %}
 
 {% block footer %}
+<a id="tweet" href="#">Tweet!</a>
 <div id="ticker">
     <ul>{# Populated by AJAX #}</ul>
 </div>

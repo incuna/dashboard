@@ -18,34 +18,8 @@ jQuery(document).ready(function($) {
         });
     }
 
-    /* https://api.twitter.com/1/incuna/lists/teamincuna/statuses.atom
-     * Might be possible to use the atom feed instead?
-     * Would be good to speed this up, it's a bit slow currently.
-     * Is append enough? Should we be replacing instead?
-     */
-    var ticker;
-    function load_tweetstream() {
-        $.get('/status/twitterstream/teamincuna/', null,
-        function(data) {
-            $('#ticker ul').append(data);
-            ticker = $('#ticker').ticker(pxpersec=500);
-        });
-    }
-
-    for (widget in widgets) {
-        load_widget(widgets[widget][0], widgets[widget][1]);
-    }
-    load_tweetstream();
-    //$(page + ' #time').text(new Date().toString());
-
-    //window.setInterval(function() {
-        //first = $('.first');
-        //ticker.removeMsg($('.first'));
-    //}, 1000);
-
     // Reload every 3 minutes
     window.setInterval(function() {
-        load_tweetstream();
         load_widget(widgets.shoppinglist[0], widgets.shoppinglist[1]);
     }, 180000);
 
@@ -65,5 +39,10 @@ jQuery(document).ready(function($) {
     window.setInterval(function() {
         load_widget(widgets.holidaycal[0], widgets.holidaycal[1]);
     }, 10800000);
+
+    // Initial Load
+    //for (widget in widgets) {
+        //load_widget(widgets[widget][0], widgets[widget][1]);
+    //}
 });
 
