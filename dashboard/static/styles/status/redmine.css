@@ -1,7 +1,7 @@
 /* Redmine Graphs */
 #graphs {
     height: 370px;
-    margin: 140px 0 20px;
+    margin-top: 140px;
 }
 
 .graph {
@@ -29,11 +29,16 @@
     width: 204px;
 }
 
-.graph1 .open-issues, .graph1 .name {color: #FFFE00;}
-.graph2 .open-issues, .graph2 .name {color: #00FE00;}
-.graph3 .open-issues, .graph3 .name {color: #FE0000;}
-.graph4 .open-issues, .graph4 .name {color: #00C6F8;}
-.graph5 .open-issues, .graph5 .name {color: #F0782B;}
+.graph .name {
+    color: white;
+    margin-top: 20px;
+}
+
+.graph1 .open-issues {color: #FFFE00;}
+.graph2 .open-issues {color: #00FE00;}
+.graph3 .open-issues {color: #FE0000;}
+.graph4 .open-issues {color: #00C6F8;}
+.graph5 .open-issues {color: #F0782B;}
 
 .graph-bar-contain {
     height: 300px;

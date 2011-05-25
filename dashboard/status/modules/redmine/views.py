@@ -3,7 +3,7 @@ from django.shortcuts import render_to_response
 from django.template import RequestContext
 from profiles.models import Profile
 
-from models import Issue, IssueStatus, Project, User
+from models import Issue, Project, User
 
 def graphs(request, extra_context = None):
     """
