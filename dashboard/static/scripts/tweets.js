@@ -15,14 +15,16 @@ jQuery(document).ready(function($){
             });
         }
 
-        $.getJSON('https://api.twitter.com/1/incuna/lists/teamincuna/statuses.json?callback=?',
-            function(data) {
+        $.ajax('https://api.twitter.com/1/incuna/lists/teamincuna/statuses.json?callback=?', {
+            crossDomain: true,
+            dataType: 'jsonp',
+            success: function(data) {
                 tweets = data.slice(0, 3);
                 if (!$(tweet_div + ' li').length) {
                     load_initial_tweets(tweets);
                     ticker = $(tweet_div).ticker(pxpersec=500);
                 } else {
-                    //if (tweets[0].id != $(tweet_div + ' li:first .text')[0].id) {
+                    if (tweets[0].id != $(tweet_div + ' li:first .text')[0].id) {
                         old_tweets = $(tweet_div + ' li');
                         console.log(old_tweets);
                         $.each(tweets, function(index, tweet) {
@@ -30,22 +32,17 @@ jQuery(document).ready(function($){
                         });
                         old_tweets.each(function() {
                             ticker.removeMsg($(this));
-                            //$(this).remove();
                         });
                         console.log('update');
-                    //}
+                    }
                 }
             }
-        );
+        });
     }
 
-    $('a#tweet').click(function(){
-        $('#page').remove();
-        load_tweetstream();
-    });
-
     window.setInterval(function() {
-        //load_tweetstream();
-    }, 10000);
+        load_tweetstream();
+    }, 180000);
     load_tweetstream();
 });
+
