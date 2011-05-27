@@ -18,7 +18,7 @@ def current(request, extra_context=None):
         if form.is_valid():
             instance = form.save(commit=False)
             instance.movie = movie
-            instance.user = request.user
+            instance.user = request.user.profile
             instance.save()
             return redirect(reverse('movie'))
     else:
