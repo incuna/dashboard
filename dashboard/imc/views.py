@@ -20,7 +20,7 @@ def current(request, extra_context=None):
             instance.movie = movie
             instance.user = request.user.profile
             instance.save()
-            return redirect(reverse('movie'))
+            return redirect(reverse('current-movie'))
     else:
         form = MovieRatingForm()
         if Rating.objects.filter(user=request.user, movie=movie):

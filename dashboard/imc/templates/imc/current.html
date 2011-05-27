@@ -2,7 +2,7 @@
 
 {% block movie-extra %}
 <div id="user-rating">
-    <form id="rating" action="{% url current %}" method="post">{% csrf_token %}
+    <form id="rating" action="{% url current-movie %}" method="post">{% csrf_token %}
     {% if rating %}
         <div id="current-rating"><p>Rating: <span id="movie-rating">{{ rating }}</span></p></div>
     {% else %}
