@@ -13,7 +13,6 @@ vobject
 hg+https://python-twitter.googlecode.com/hg/@b105d49147#egg=python-twitter
 hg+https://incuna@bitbucket.org/alberanid/imdbpy
 hg+ssh://hg@bitbucket.org/incuna/django-profiles
-hg+ssh://hg@bitbucket.org/incuna/incuna-twitterstream
 
 # svn
 svn+https://svn.incuna.com/django/incuna/trunk
