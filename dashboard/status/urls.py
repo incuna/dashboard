@@ -5,7 +5,5 @@ urlpatterns = patterns('status.views',
     url(r'^holiday-cal/', 'todays_holidays', name='todays-holidays'),
     url(r'^redmine/', include('status.modules.redmine.urls')),
     url(r'^weather/', include('status.modules.weather.urls')),
-
-    url(r'^twitterstream/', include('twitterstream.urls')),
 )
 
