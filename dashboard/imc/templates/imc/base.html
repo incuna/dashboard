@@ -18,7 +18,7 @@
 <div id="movie">
     <h2 id="title">{{ movie.name }} ({{ movie.year }})</h2>
     <div id="movie-main">
-        <p>Picked By: {{ movie.added_by.user.first_name }}</p>
+        <p>Picked By: {{ movie.added_by.first_name }}</p>
         <img src="{{ movie.image }}" alt="{{ movie.name }}">
     </div>
     <div id="movie-info">
