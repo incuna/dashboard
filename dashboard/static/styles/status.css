@@ -1,39 +1,34 @@
 @font-face {
     font-family: 'ChaletNewYorkNineteenEighty';
-    src: url('../fonts/chalet-newyorkeighty-webfont.eot');
-    src: local('☺'), url('../fonts/chalet-newyorkeighty-webfont.woff') format('woff'), url('../fonts/chalet-newyorkeighty-webfont.ttf') format('truetype'), url('../fonts/chalet-newyorkeighty-webfont.svg#webfontTQpwVp2F') format('svg');
+    src: url('../fonts/chalet-newyorkeighty-webfont.woff');
     font-style: normal;
     font-weight: normal;
 }
 
 @font-face {
     font-family: 'ChaletParisNineteenEighty';
-    src: url('../fonts/chalet-pariseighty-webfont.eot');
-    src: local('☺'), url('../fonts/chalet-pariseighty-webfont.woff') format('woff'), url('../fonts/chalet-pariseighty-webfont.ttf') format('truetype'), url('../fonts/chalet-pariseighty-webfont.svg#webfont9zlDiQUr') format('svg');
+    src: url('../fonts/chalet-pariseighty-webfont.woff');
     font-style: normal;
     font-weight: normal;
 }
 
 @font-face {
     font-family: 'ChaletLondonNineteenEighty';
-    src: url('../fonts/chalet-londoneighty-webfont.eot');
-    src: local('☺'), url('../fonts/chalet-londoneighty-webfont.woff') format('woff'), url('../fonts/chalet-londoneighty-webfont.ttf') format('truetype'), url('../fonts/chalet-londoneighty-webfont.svg#webfontX7UJmsTO') format('svg');
+    src: url('../fonts/chalet-londoneighty-webfont.woff');
     font-style: normal;
     font-weight: normal;
 }
 
 @font-face {
     font-family: 'ArtBrushMedium';
-    src: url('../fonts/artbrush-webfont.eot');
-    src: local('☺'), url('../fonts/artbrush-webfont.woff') format('woff'), url('../fonts/artbrush-webfont.ttf') format('truetype'), url('../fonts/artbrush-webfont.svg#webfontIFIvTHHk') format('svg');
+    src: url('../fonts/artbrush-webfont.woff');
     font-style: normal;
     font-weight: normal;
 }
 
 @font-face {
     font-family: 'apple_-webfont';
-    src: url('../fonts/apple_-webfont.eot');
-    src: local('☺'), url('../fonts/apple_-webfont.woff') format('woff'), url('../fonts/apple_-webfont.ttf') format('truetype'), url('../fonts/apple_-webfont.svg') format('svg');
+    src: url('../fonts/apple_-webfont.woff');
     font-style: normal;
     font-weight: normal;
 }
