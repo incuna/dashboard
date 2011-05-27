@@ -6,7 +6,7 @@ class MovieManager(Manager):
     def current(self):
         """Return the current movie"""
         try:
-            return self.get_query_set().filter(finish__gt=datetime.now()).order_by('finish')[0]
+            return self.get_query_set().filter(finish__gte=datetime.now()).order_by('finish')[0]
         except IndexError:
             raise self.model.DoesNotExist
 
