@@ -41,8 +41,8 @@ jQuery(document).ready(function($) {
     }, 10800000);
 
     // Initial Load
-    //for (widget in widgets) {
-        //load_widget(widgets[widget][0], widgets[widget][1]);
-    //}
+    for (widget in widgets) {
+        load_widget(widgets[widget][0], widgets[widget][1]);
+    }
 });
 
