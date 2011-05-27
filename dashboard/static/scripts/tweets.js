@@ -33,7 +33,6 @@ jQuery(document).ready(function($){
                         old_tweets.each(function() {
                             ticker.removeMsg($(this));
                         });
-                        console.log('update');
                     }
                 }
             }
