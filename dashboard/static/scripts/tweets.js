@@ -26,7 +26,6 @@ jQuery(document).ready(function($){
                 } else {
                     if (tweets[0].id != $(tweet_div + ' li:first .text')[0].id) {
                         old_tweets = $(tweet_div + ' li');
-                        console.log(old_tweets);
                         $.each(tweets, function(index, tweet) {
                             ticker.addMsg(build_tweet(tweet.id, tweet.user.profile_image_url, tweet.text));
                         });
