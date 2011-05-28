@@ -35,7 +35,7 @@
         "last_name": "Turnbull",
         "is_active": true,
         "is_staff": true,
-        "groups": [1],
+        "groups": [1, 2],
         "user_permissions": [],
         "password": "sha1$95749$c1cc8b74130fad18cf8755f4aef3623c175eaef6",
         "date_joined": "2011-05-07 12:53:56",
@@ -51,7 +51,7 @@
         "is_manager": true,
         "posh_avatar": "",
         "avatar": "images/avatars/james.jpg",
-        "groups": [1],
+        "groups": [1, 2],
         "user_permissions": []
     }
 }, {
@@ -63,7 +63,7 @@
         "last_name": "Peterson",
         "is_active": true,
         "is_staff": true,
-        "groups": [1],
+        "groups": [1, 2],
         "user_permissions": [],
         "password": "sha1$95749$c1cc8b74130fad18cf8755f4aef3623c175eaef6",
         "date_joined": "2011-05-07 12:53:56",
@@ -79,7 +79,7 @@
         "is_manager": true,
         "posh_avatar": "",
         "avatar": "images/avatars/max.jpg",
-        "groups": [1],
+        "groups": [1, 2],
         "user_permissions": []
     }
 }, {
@@ -119,7 +119,7 @@
         "last_name": "Collier",
         "is_active": true,
         "is_staff": true,
-        "groups": [1],
+        "groups": [1, 2],
         "user_permissions": [],
         "password": "sha1$95749$c1cc8b74130fad18cf8755f4aef3623c175eaef6",
         "date_joined": "2011-05-07 12:53:56",
@@ -135,7 +135,7 @@
         "is_manager": true,
         "posh_avatar": "",
         "avatar": "images/avatars/cyan.jpg",
-        "groups": [1],
+        "groups": [1, 2],
         "user_permissions": []
     }
 }, {
@@ -203,7 +203,7 @@
         "last_name": "Newman",
         "is_active": true,
         "is_staff": true,
-        "groups": [1],
+        "groups": [1, 2],
         "user_permissions": [],
         "password": "sha1$95749$c1cc8b74130fad18cf8755f4aef3623c175eaef6",
         "date_joined": "2011-05-07 12:53:56",
@@ -219,7 +219,7 @@
         "is_manager": true,
         "posh_avatar": "",
         "avatar": "images/avatars/matt.jpg",
-        "groups": [1],
+        "groups": [1, 2],
         "user_permissions": []
     }
 }, {
@@ -455,7 +455,7 @@
         "last_name": "Potter",
         "is_active": true,
         "is_staff": true,
-        "groups": [1],
+        "groups": [1, 2],
         "user_permissions": [],
         "password": "sha1$95749$c1cc8b74130fad18cf8755f4aef3623c175eaef6",
         "date_joined": "2011-05-07 12:53:56",
@@ -471,7 +471,7 @@
         "is_manager": true,
         "posh_avatar": "",
         "avatar": "images/avatars/rupert.jpg",
-        "groups": [1],
+        "groups": [1, 2],
         "user_permissions": []
     }
 }]
