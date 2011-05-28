@@ -23,6 +23,8 @@ export.short_description = 'Download'
 class ContactAdmin(admin.ModelAdmin):
     actions = [export]
     form = ContactForm
+    list_display = ('name', 'extension')
+    list_filter = ('user__groups',)
 
 admin.site.register(Contact, ContactAdmin)
 
