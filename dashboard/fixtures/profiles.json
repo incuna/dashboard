@@ -474,4 +474,32 @@
         "groups": [1, 2],
         "user_permissions": []
     }
+}, {
+    "pk": 18,
+    "model": "auth.user",
+    "fields": {
+        "username": "cassie",
+        "first_name": "Cassie",
+        "last_name": "Humphreys",
+        "is_active": true,
+        "is_staff": true,
+        "groups": [2],
+        "user_permissions": [],
+        "password": "sha1$95749$c1cc8b74130fad18cf8755f4aef3623c175eaef6",
+        "date_joined": "2011-05-07 12:53:56",
+        "is_superuser": false,
+        "last_login": "2011-05-21 18:25:55",
+        "email": "cassie@incuna.com"
+    }
+}, {
+    "pk": 18,
+    "model": "profiles.profile",
+    "fields": {
+        "ssh_key": "",
+        "is_manager": true,
+        "posh_avatar": "",
+        "avatar": "images/avatars/cassie.jpg",
+        "groups": [2],
+        "user_permissions": []
+    }
 }]
