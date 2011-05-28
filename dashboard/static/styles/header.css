@@ -1,0 +1,58 @@
+header, #header {
+    background-color: black;
+    background-image: url(../images/header_background.png);
+    height: 40px;
+}
+
+#branding {
+    float: left;
+    width: 300px;
+}
+#branding h1 {
+    color: #ffa239;
+    font-family: "Lucida Grande", "DejaVu Sans", "Bitstream Vera Sans", Verdana, Arial, sans-serif;
+    font-size: 18px;
+    font-weight: normal;
+    line-height: 18px;
+    margin: 10px 0;
+    padding: 0 10px;
+}
+
+#user-tools {
+    height: 40px;
+    margin-right: 10px;
+    padding: 0;
+}
+#user-tools li {
+    display: inline-block;
+    height: 40px;
+    list-style: none;
+    margin: 0;
+    padding: 0 10px;
+}
+#user-tools a {
+    display: inline-block;
+    font-family: Helvetica, Arial, sans-serif;
+    font-size: 12px;
+    line-height: 40px;
+    text-align: center;
+    text-decoration: none;
+}
+#user-tools a:hover {
+    color: #ffa239;
+    text-decoration: none;
+    text-shadow: white 0px 0px 1px;
+}
+
+/* Specific styles for the admin section */
+#header #user-tools li {
+    margin-top: -2px;
+}
+
+/* Specific styles for the non-admin sections */
+header #user-tools {
+    float: right;
+}
+header #user-tools a {
+    color: white;
+}

@@ -3,6 +3,7 @@
     <head>
         <link rel="stylesheet" type="text/css" charset="utf-8" href="{{ STATIC_URL }}styles/reset.css">
         <link rel="stylesheet" type="text/css" charset="utf-8" href="{{ STATIC_URL }}styles/main.css">
+        <link rel="stylesheet" type="text/css" charset="utf-8" href="{{ STATIC_URL }}styles/header.css">
         {% block extra_style %}{% endblock %}
 
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
@@ -17,7 +18,26 @@
         {% endif %}
     </head>
     <body>
-        <header>{% block header %}{% endblock %}</header>
+        <header>
+        {% block header %}
+            <div id="branding">
+                {% block branding %}
+                <h1 id="site-name">Incuna Dashboard</h1>
+                {% endblock %}
+            </div>
+            {% if user.is_active and user.is_staff %}
+            <div id="user-tools">
+                {% block userlinks %}
+                <ul>
+                    <li><a href="{% url index %}">Home</a></li>
+                    <li><a href="{% url admin:password_change %}">Change password</a></li>
+                    <li><a href="{% url admin:logout %}">Log out</a></li>
+                </ul>
+                {% endblock %}
+            </div>
+            {% endif %}
+        {% endblock %}
+        </header>
         <div id="page">
             {% block content %}{% endblock %}
         </div>
