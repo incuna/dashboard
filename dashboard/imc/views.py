@@ -1,3 +1,4 @@
+from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.core.urlresolvers import reverse
 from django.shortcuts import get_object_or_404, redirect, render_to_response
@@ -16,6 +17,9 @@ def current(request, extra_context=None):
     if request.method == 'POST':
         form = MovieRatingForm(request.POST)
         if form.is_valid():
+            if not hasattr(request.user, 'profile'):
+                messages.error(request, 'The admin cannot rate movies.')
+                return redirect(reverse('index'))
             instance = form.save(commit=False)
             instance.movie = movie
             instance.user = request.user.profile
