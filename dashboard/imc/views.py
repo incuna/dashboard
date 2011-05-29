@@ -24,7 +24,7 @@ def current(request, extra_context=None):
     else:
         form = MovieRatingForm()
         if Rating.objects.filter(user=request.user, movie=movie):
-            context.update({'rating': str(round(Rating.objects.get_rating(movie=movie)['rating'], 0))[:-2]})
+            context.update({'rating': Rating.objects.get_rating(movie=movie)})
 
     context.update({'form': form, 'movie': movie, 'user': request.user})
     return render_to_response('imc/current.html', context)
