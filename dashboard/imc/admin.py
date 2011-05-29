@@ -13,9 +13,12 @@ class MovieAdmin(admin.ModelAdmin):
     form = MovieAdminForm
 
     def get_form(self, request, obj=None, **kwargs):
-         form = super(MovieAdmin, self).get_form(request, obj, **kwargs)
-         form.current_user = request.user
-         return form
+        form = super(MovieAdmin, self).get_form(request, obj, **kwargs)
+        if not request.user.is_superuser:
+            if not request.user.profile.is_manager:
+                self.exclude = ('added_by',)
+        form.current_user = request.user
+        return form
 
     def queryset(self, request):
         user = getattr(request, 'user', None)
