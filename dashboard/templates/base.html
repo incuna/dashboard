@@ -23,14 +23,13 @@
         {% block header %}
             <div id="branding">
                 {% block branding %}
-                <h1 id="site-name">Incuna Dashboard</h1>
+                <h1 id="site-name"><a href="{% url index %}">Incuna Dashboard</a></h1>
                 {% endblock %}
             </div>
             {% if user.is_active and user.is_staff %}
             <div id="user-tools">
                 {% block userlinks %}
                 <ul>
-                    <li><a href="{% url index %}">Home</a></li>
                     <li><a href="{% url admin:password_change %}">Change password</a></li>
                     <li><a href="{% url admin:logout %}">Log out</a></li>
                 </ul>

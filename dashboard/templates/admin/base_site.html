@@ -7,12 +7,11 @@
 {% block title %}Incuna Dashboard{% endblock %}
 
 {% block branding %}
-<h1 id="site-name">Incuna Dashboard</h1>
+<h1 id="site-name"><a href="{% url index %}">Incuna Dashboard</a></h1>
 {% endblock %}
 
 {% block userlinks %}
 <ul>
-    <li><a href="{% url index %}">Home</a></li>
     <li><a href="{% url admin:password_change %}">Change password</a></li>
     <li><a href="{% url admin:logout %}">Log out</a></li>
 </ul>

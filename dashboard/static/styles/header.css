@@ -9,14 +9,15 @@ header, #header {
     width: 300px;
 }
 #branding h1 {
-    color: #ffa239;
     font-family: "Lucida Grande", "DejaVu Sans", "Bitstream Vera Sans", Verdana, Arial, sans-serif;
     font-size: 18px;
     font-weight: normal;
     line-height: 18px;
     margin: 10px 0;
-    padding: 0 10px;
+    padding: 0 10px 0;
 }
+#branding h1 a {color: #ffa239 !important;}
+#branding h1 a:hover {text-decoration: none;}
 
 #user-tools {
     height: 40px;
