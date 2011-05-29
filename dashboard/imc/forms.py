@@ -5,7 +5,7 @@ from django.utils.encoding import force_unicode
 from django.utils.safestring import mark_safe
 from profiles.models import Profile
 
-from models import DvdRequest, Movie, Rating
+from models import Movie, Rating
 
 class MovieAdminForm(forms.ModelForm):
 
@@ -84,10 +84,6 @@ class MovieRatingForm(forms.ModelForm):
     class Meta:
         model = Rating
         fields = ('rating',)
-
-class MovieGroupRatingForm(forms.ModelForm):
-    class Meta:
-        model = DvdRequest
 
 not_yet_rated = Profile.objects.exclude(id__in=Rating.objects.filter(movie=Movie.objects.current()).values('user'))
 class MovieRatingInlineForm(forms.ModelForm):
