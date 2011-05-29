@@ -1,13 +1,13 @@
 #dashboard {
-    margin: 0 auto;
+    margin: 20px auto 0;
     width: 925px;
 }
 
 .service {
     cursor: pointer;
     float: left;
-    height: 230px;
-    margin: 10px 30px 0;
+    height: 185px;
+    margin: 10px 30px 20px;
 }
 
 .service img {
