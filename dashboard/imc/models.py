@@ -7,13 +7,6 @@ from profiles.models import Profile
 
 from managers import MovieManager, RatingManager
 
-class DvdRequest(models.Model):
-    user = models.ForeignKey(Profile)
-    movie = models.ForeignKey('Movie')
-
-    class Meta:
-        unique_together = ('user', 'movie')
-
 class Movie(models.Model):
     name = models.CharField(max_length=255)
     slug = models.CharField(max_length=255)
