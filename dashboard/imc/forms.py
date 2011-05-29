@@ -3,6 +3,7 @@ from django.forms import RadioSelect
 from django.forms.widgets import flatatt, RadioFieldRenderer, RadioInput
 from django.utils.encoding import force_unicode
 from django.utils.safestring import mark_safe
+from profiles.models import Profile
 
 from models import DvdRequest, Movie, Rating
 
@@ -64,19 +65,19 @@ class InputOnlyRadioRenderer(RadioFieldRenderer):
         """Outputs radios"""
         return mark_safe(u'%s' % u'\n'.join([u'%s\n' % force_unicode(w) for w in self]))
 
+RATING_CHOICES = (
+    (1, 'Very Poor'),
+    (2, 'Poor'),
+    (3, 'Not That Bad'),
+    (4, 'Fair'),
+    (5, 'Average'),
+    (6, 'Almost Good'),
+    (7, 'Good'),
+    (8, 'Very Good'),
+    (9, 'Excellent'),
+    (10, 'Perfect'),
+)
 class MovieRatingForm(forms.ModelForm):
-    RATING_CHOICES = (
-        (1, 'Very Poor'),
-        (2, 'Poor'),
-        (3, 'Not That Bad'),
-        (4, 'Fair'),
-        (5, 'Average'),
-        (6, 'Almost Good'),
-        (7, 'Good'),
-        (8, 'Very Good'),
-        (9, 'Excellent'),
-        (10, 'Perfect'),
-    )
     rating = forms.ChoiceField(choices=RATING_CHOICES, required=True,
             widget=RadioSelect(renderer=InputOnlyRadioRenderer))
 
@@ -84,7 +85,16 @@ class MovieRatingForm(forms.ModelForm):
         model = Rating
         fields = ('rating',)
 
-class DvdRequestForm(forms.ModelForm):
+class MovieGroupRatingForm(forms.ModelForm):
     class Meta:
         model = DvdRequest
+
+not_yet_rated = Profile.objects.exclude(id__in=Rating.objects.filter(movie=Movie.objects.current()).values('user'))
+class MovieRatingInlineForm(forms.ModelForm):
+    rating = forms.ChoiceField(choices=RATING_CHOICES, required=True,
+            widget=RadioSelect(renderer=InputOnlyRadioRenderer))
+    user = forms.ModelChoiceField(queryset=not_yet_rated)
+
+    class Meta:
+        model = Rating
 

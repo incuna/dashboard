@@ -1,0 +1,64 @@
+{% extends "base.html" %}
+
+{% block extrameta %}
+<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1">
+{% endblock %}
+
+{% block extrastyle %}
+<link rel="stylesheet" type="text/css" charset="utf-8" href="{{ STATIC_URL }}styles/jquery.rating/jquery.rating.css">
+<link rel="stylesheet" type="text/css" charset="utf-8" href="{{ STATIC_URL }}styles/mobile.css">
+{% endblock %}
+
+{% block extra_script %}
+<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jqueryui/1.8.12/jquery-ui.js"></script>
+<script type="text/javascript" src="{{ STATIC_URL }}scripts/jquery.rating/jquery.rating.pack.js"></script>
+<script type="text/javascript" src="{{ STATIC_URL }}scripts/group.js"></script>
+{% endblock %}
+
+{% block title %}{{ movie.name }}{% endblock %}
+
+{% block content %}
+<div id="movie">
+    <h2 id="title">{{ movie.name }} ({{ movie.year }})</h2>
+
+    <form method="post" action="">{% csrf_token %}
+        {{ formset.management_form }}
+        <ul>
+            {% for form in formset %}
+            <li class="inline-form">
+                <div class="form-container">
+                    <div id="user" class="field">
+                        {{ form.user }}
+                    </div>
+                    <div id="rating" class="field">
+                        {{ form.rating }}
+                    </div>
+                    <div class="clr"></div>
+                </div>
+            </li>
+            {% endfor %}
+        </ul>
+        <div id="submit">
+            <input type="submit" value="Save">
+        </div>
+    </form>
+</div>
+{% endblock %}
+
+{% block movie-extra %}
+<div id="user-rating">
+    <form id="rating" action="{% url current-movie %}" method="post">{% csrf_token %}
+    {% if rating %}
+        <div id="current-rating"><p>Rating: <span id="movie-rating">{{ rating }}</span></p></div>
+    {% else %}
+        <p>Pick your rating:</p>
+    {% endif %}
+        {{ form.rating }}
+    {% if not rating %}
+        <div id="submit">
+            <input type="submit" value="Submit Your Rating!">
+        </div>
+    {% endif %}
+    </form>
+</div>
+{% endblock %}
