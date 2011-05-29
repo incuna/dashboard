@@ -1,0 +1,60 @@
+#login {
+    background-color: white;
+    border: 1px solid #ccc;
+    margin: 100px auto 0;
+    min-width: 300px;
+    width: 336px;
+}
+
+#page {
+    margin: 20px 15px 20px;
+    width: auto;
+}
+
+form {
+    font-family: "Lucida Grande", "DejaVu Sans", "Bitstream Vera Sans", Verdana, Arial, sans-serif;
+    font-size: 12px;
+}
+
+input {
+    font-family: "Lucida Grande", Verdana, Arial, sans-serif;
+    font-size: 11px;
+    font-weight: normal;
+    margin: 2px 0;
+    padding: 2px 3px;
+    vertical-align: middle;
+}
+
+.form-row {
+    padding: 4px 0;
+    float: left;
+    width: 100%;
+}
+.form-row label {
+    color: #333;
+    float: left;
+    line-height: 24px;
+    padding-right: 7px;
+    text-align: right;
+    width: 114px;
+}
+.form-row input {
+    border: 1px solid #ccc;
+    width: 14em;
+}
+
+input[type=submit] {
+    background: white url(../admin/img/admin/nav-bg.gif) bottom repeat-x;
+    border: 1px solid #bbb;
+    border-color: #ddd #aaa #aaa #ddd;
+    color: black;
+    padding: 3px 5px !important;
+}
+input[type=submit]:active {
+    background-image: url(../img/admin/nav-bg-reverse.gif);
+    background-position: top;
+}
+#submit {
+    clear: both;
+    padding: 15px 0 0 123px;
+}

@@ -17,7 +17,7 @@
             <meta name="robots" content="noindex, nofollow">
         {% endif %}
     </head>
-    <body>
+    <body id="{% block bodyid %}{% endblock %}">
         <header>
         {% block header %}
             <div id="branding">

@@ -2,33 +2,34 @@
 
 {% block bodyid %}login{% endblock %}
 
-{% block content %}
-    <h2>Login</h2>
+{% block extrastyle %}
+<link rel="stylesheet" type="text/css" charset="utf-8" href="{{ STATIC_URL }}styles/login.css">
+{% endblock %}
 
+
+{% block content %}
+<div id="content-main">
     {% if form.has_errors %}
     <p class="error">Your username and password didn't match. Please try again.</p>
     {% endif %}
 
-    <p>Please login using your email and password</p>
-    <form class="hform" method="post" action="{% url django.contrib.auth.views.login %}">
+    <form method="post" action="{% url django.contrib.auth.views.login %}">
         {% csrf_token %}
         {{ form.non_field_errors }}
-        <div id="username">
-            <label for="{{ form.username.auto_id }}">Username</label>
+        <div id="username" class="form-row">
+            <label for="{{ form.username.auto_id }}">Username:</label>
             {{ form.username }}
             {{ form.username.errors }}
         </div>
-        <div id="password">
-            <label for="{{ form.password.auto_id }}">Password</label>
+        <div id="password" class="form-row">
+            <label for="{{ form.password.auto_id }}">Password:</label>
             {{ form.password }}
             {{ form.password.errors }}
         </div>
-        <div id="auth_password_reset">
-            <a href="{% url django.contrib.auth.views.password_reset %}">Forgotten password?</a>
-        </div>
         <div id="submit">
-            <input type="submit" value="Login">
+            <input type="submit" value="Log in">
             <input type="hidden" name="next" value="{{ next }}">
         </div>
     </form>
+</div>
 {% endblock %}
