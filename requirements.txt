@@ -10,7 +10,7 @@ south==0.7.3
 vobject==0.8.1c
 
 # git
--e git+http://github.com/ghickman/django-password.git#egg=password
+-e git+ssh://git@github.com:ghickman/django-password.git#egg=password
 
 # hg
 hg+https://incuna@bitbucket.org/alberanid/imdbpy
