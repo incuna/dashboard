@@ -9,7 +9,7 @@ from forms import MovieRatingForm, MovieRatingInlineForm
 from models import Movie, Rating
 
 @login_required
-def current(request, extra_context=None):
+def current(request, extra_context=None, template_name='imc/current.html'):
     context = RequestContext(request)
     if extra_context != None:
         context.update(extra_context)
@@ -25,17 +25,17 @@ def current(request, extra_context=None):
             instance.movie = movie
             instance.user = request.user.profile
             instance.save()
-            return redirect(reverse('current-movie'))
+            return redirect(reverse('movie-current'))
     else:
         form = MovieRatingForm()
         if Rating.objects.filter(user=request.user, movie=movie):
             context.update({'rating': Rating.objects.get_rating(movie=movie)})
 
     context.update({'form': form, 'movie': movie, 'user': request.user})
-    return render_to_response('imc/current.html', context)
+    return render_to_response(template_name, context)
 
 @login_required
-def group(request, slug=None, extra_context=None):
+def group_rating(request, slug=None, extra_context=None, template_name='imc/group_rating.html'):
     context = RequestContext(request)
     if extra_context != None:
         context.update(extra_context)
@@ -51,10 +51,10 @@ def group(request, slug=None, extra_context=None):
         formset = MovieFormSet()
 
     context.update({'formset': formset, 'movie': movie, 'rating': Rating.objects.get_rating(movie=movie)})
-    return render_to_response('imc/group.html', context)
+    return render_to_response(template_name, context)
 
 @login_required
-def movie(request, slug, extra_context=None):
+def movie(request, slug, extra_context=None, template_name='imc/movie.html'):
     context = RequestContext(request)
     if extra_context != None:
         context.update(extra_context)
@@ -67,13 +67,12 @@ def movie(request, slug, extra_context=None):
         })
 
     context.update({'movie': movie})
-    return render_to_response('imc/movie.html', context)
+    return render_to_response(template_name, context)
 
-def widget(request, extra_context = None):
+def widget(request, extra_context = None, template_name='imc/widget.html'):
     context = RequestContext(request)
     if extra_context != None:
         context.update(extra_context)
-    movie = Movie.objects.current()
-    context.update({'movie': movie, 'rating': Movie.get_rating_for(movie)})
-    return render_to_response('imc/widget.html', context)
+    context.update({'movie': Movie.objects.current(), 'rating': Movie.get_rating_for(movie)})
+    return render_to_response(template_name, context)
 
