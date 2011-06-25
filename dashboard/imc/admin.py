@@ -4,8 +4,8 @@ from forms import MovieAdminForm
 from models import Movie
 
 class MovieAdmin(admin.ModelAdmin):
-    fields = ('name', 'slug', 'imdb_link', 'start', 'finish', 'added_by')
-    list_display = ('name', 'finish', 'added_by')
+    fields = ['name', 'slug', 'imdb_link', 'start', 'finish', 'added_by']
+    list_display = ['name', 'finish', 'added_by']
     list_filter = ('finish',)
     ordering = ('-finish',)
     prepopulated_fields = {'slug': ('name',)}
@@ -13,11 +13,12 @@ class MovieAdmin(admin.ModelAdmin):
     form = MovieAdminForm
 
     def get_form(self, request, obj=None, **kwargs):
+        current_user = request.user
+        if not current_user.is_superuser and not current_user.profile.is_manager:
+            self.fields.remove('added_by')
+            self.list_display.remove('added_by')
         form = super(MovieAdmin, self).get_form(request, obj, **kwargs)
-        if not request.user.is_superuser:
-            if not request.user.profile.is_manager:
-                self.exclude = ('added_by',)
-        form.current_user = request.user
+        form.current_user = current_user
         return form
 
     def queryset(self, request):
