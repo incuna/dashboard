@@ -5,10 +5,14 @@ from django.db.models import Avg, Manager
 class MovieManager(Manager):
     def current(self):
         """Return the current movie"""
-        try:
-            return self.get_query_set().filter(finish__gte=datetime.now()).order_by('finish')[0]
-        except IndexError:
-            raise self.model.DoesNotExist
+        return self.get_query_set().filter(showing__period__finish__gte=datetime.now()).order_by('finish')
+        #try:
+        #except IndexError:
+            #raise self.model.DoesNotExist
+
+    def previous(self):
+        """Return previously selected movies"""
+        return self.get_query_set().filter(finish__lt=datetime.now())
 
 class RatingManager(Manager):
     def get_rating(self, movie):

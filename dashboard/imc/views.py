@@ -54,19 +54,35 @@ def group_rating(request, slug=None, extra_context=None, template_name='imc/grou
     return render_to_response(template_name, context)
 
 @login_required
+def index(request, extra_context=None, template_name='imc/index.html'):
+    context = RequestContext(request)
+    if extra_context != None:
+        context.update(extra_context)
+    context.update({'movie': Movie.objects.current()})
+    return render_to_response(template_name, context)
+
+@login_required
 def movie(request, slug, extra_context=None, template_name='imc/movie.html'):
     context = RequestContext(request)
     if extra_context != None:
         context.update(extra_context)
-
     movie = get_object_or_404(Movie, slug=slug)
-    if Rating.objects.filter(user=request.user, movie=movie):
-        context.update({
-            'form': MovieRatingForm,
-            'rating': str(round(Rating.objects.get_rating(movie=movie)['rating'], 0))[:-2]
-        })
+    context.update({'movie': movie, 'rating': Rating.objects.get_rating(movie=movie)})
+    return render_to_response(template_name, context)
 
-    context.update({'movie': movie})
+@login_required
+def previous(request, extra_context=None, template_name='imc/previous.html'):
+    context = RequestContext(request)
+    if extra_context != None:
+        context.update(extra_context)
+    context.update({'movies': Movie.objects.previous()})
+    return render_to_response(template_name, context)
+
+@login_required
+def submit(request, extra_context=None, template_name='imc/submit.html'):
+    context = RequestContext(request)
+    if extra_context != None:
+        context.update(extra_context)
     return render_to_response(template_name, context)
 
 def widget(request, extra_context = None, template_name='imc/widget.html'):

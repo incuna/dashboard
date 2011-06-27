@@ -1,13 +1,13 @@
 from django.contrib import admin
 
 from forms import MovieAdminForm
-from models import Movie
+from models import Movie, Period
 
 class MovieAdmin(admin.ModelAdmin):
-    fields = ('name', 'slug', 'imdb_link', 'start', 'finish', 'added_by')
-    list_display = ('name', 'finish', 'added_by')
-    list_filter = ('finish',)
-    ordering = ('-finish',)
+    fields = ('name', 'slug', 'imdb_link', 'added_by')
+    list_display = ('name', 'added_by')
+    #list_filter = ('period__finish',)
+    #ordering = ('-period__finish',)
     prepopulated_fields = {'slug': ('name',)}
 
     form = MovieAdminForm
@@ -28,4 +28,5 @@ class MovieAdmin(admin.ModelAdmin):
         return qs.filter(added_by=user)
 
 admin.site.register(Movie, MovieAdmin)
+admin.site.register(Period)
 

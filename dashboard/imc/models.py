@@ -1,5 +1,7 @@
+from datetime import timedelta
 from re import compile
 
+from django.conf import settings
 from django.db import models
 from django.db.models import Sum
 from imdb import IMDb
@@ -10,8 +12,6 @@ from managers import MovieManager, RatingManager
 class Movie(models.Model):
     name = models.CharField(max_length=255)
     slug = models.CharField(max_length=255)
-    start = models.DateField(null=True, blank=True)
-    finish = models.DateField(null=True, blank=True)
     added_by = models.ForeignKey(Profile)
 
     # imdb data
@@ -62,6 +62,21 @@ class Movie(models.Model):
     def get_rating_for(movie):
         return Rating.objects.filter(movie=movie).aggregate(rating=Sum('rating'))['rating']
 
+class Period(models.Model):
+    start = models.DateField()
+    finish = models.DateField(blank=True, help_text='Defaults to %s days after start' % settings.IMC_DEFAULT_PERIOD)
+
+    class Meta:
+        unique_together = ('start', 'finish')
+
+    def __unicode__(self):
+        return '%s to %s' % (self.start, self.finish)
+
+    def save(self, *args, **kwargs):
+        if not self.finish:
+            self.finish = self.start + timedelta(days=settings.IMC_DEFAULT_PERIOD)
+        super(Period, self).save(*args, **kwargs)
+
 class Rating(models.Model):
     user = models.ForeignKey(Profile)
     movie = models.ForeignKey(Movie)
@@ -74,6 +89,14 @@ class Rating(models.Model):
 
     def __unicode__(self):
         return '%s rated %s: %s' % (self.user, self.movie.name, self.rating)
+
+class Showing(models.Model):
+    movie = models.OneToOneField(Movie)
+    period = models.OneToOneField(Period)
+    watched = models.BooleanField(blank=True)
+
+    class Meta:
+        unique_together = ('movie', 'period')
 
 def join_person_list(persons):
     person_list = []

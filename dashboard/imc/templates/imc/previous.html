@@ -1,0 +1,13 @@
+{% extends "imc/base.html" %}
+
+{% block content %}
+<table>
+    {% for movie in movies %}
+    <tr class="movie">
+        <td><a href="{% url movie movie.slug %}">{{ movie.name }}</a></td>
+        <td>{{ movie.start|date:"jS F" }} to {{ movie.finish|date:"jS F" }}</td>
+    </tr>
+    {% endfor %}
+</table>
+{% endblock %}
+

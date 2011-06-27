@@ -156,6 +156,8 @@ BBC_WEEKLY_WEATHER = 'http://newsrss.bbc.co.uk/weather/forecast/25/Next3DaysRSS.
 
 HOLIDAYCAL_URL = 'http://holiday.incuna.com'
 
+IMC_DEFAULT_PERIOD = 14
+
 # A sample logging configuration. The only tangible logging
 # performed by this configuration is to send an email to
 # the site admins on every HTTP 500 error.
