@@ -134,6 +134,7 @@ INSTALLED_APPS = (
     'gunicorn',
     'profiles',
     'south',
+    'uni_form',
 
     'dashboard',
     'contacts',

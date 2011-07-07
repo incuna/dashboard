@@ -2,10 +2,11 @@ from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.core.urlresolvers import reverse
 from django.forms.models import inlineformset_factory
+from django.http import HttpResponseRedirect
 from django.shortcuts import get_object_or_404, redirect, render_to_response
 from django.template import RequestContext
 
-from forms import MovieRatingForm, MovieRatingInlineForm
+from forms import MovieRatingForm, MovieRatingInlineForm, MovieSubmissionForm
 from models import Movie, Rating
 
 @login_required
@@ -83,6 +84,17 @@ def submit(request, extra_context=None, template_name='imc/submit.html'):
     context = RequestContext(request)
     if extra_context != None:
         context.update(extra_context)
+    if request.method == 'POST':
+        form = MovieSubmissionForm(request.POST)
+        if form.is_valid():
+            new_film = form.save(commit=False)
+            new_film.added_by = request.user.profile
+            new_film.save()
+            return HttpResponseRedirect(reverse('movie-index'))
+    else:
+        form = MovieSubmissionForm()
+
+    context.update({'form': form})
     return render_to_response(template_name, context)
 
 def widget(request, extra_context = None, template_name='imc/widget.html'):

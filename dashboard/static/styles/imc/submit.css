@@ -1,0 +1,37 @@
+form {
+    margin: 50px auto 0;
+    width: 454px;
+}
+
+label {
+    color: #333;
+    display: block;
+    font-size: 20px;
+    margin-bottom: 15px;
+    text-align: center;
+    width: 100%;
+}
+
+#id_imdb_link {
+    border: 2px solid #333;
+    color: #777;
+    display: block;
+    font-size: 20px;
+    line-height: 25px;
+    padding: 2px;
+    width: 450px;
+}
+
+body form input[type="submit"] {
+    color: white;
+    background-image: -webkit-gradient(linear, left top, left bottom, from(#4D90FE), to(#4787ED));
+    border: 0 none;
+    border-radius: 2px;
+    display: block;
+    font-size: 17px;
+    margin: 30px auto 0 !important;
+    padding: 7px 12px;
+    text-transform: uppercase;
+    width: 150px;
+}
+
