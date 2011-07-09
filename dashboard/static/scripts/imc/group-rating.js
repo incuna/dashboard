@@ -22,7 +22,7 @@ jQuery(document).ready(function ($) {
     }
 
     // Remove a selected user from all the other select boxes
-    $('.field select').change(function () {
+    $('.field select').live('change', function () {
         selected = $(this).val();
         $('.field select').not($(this)).each(function () {
             $(this).children('option[value="' + selected + '"]').remove();
