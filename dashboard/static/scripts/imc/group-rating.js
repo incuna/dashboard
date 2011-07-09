@@ -14,6 +14,17 @@ jQuery(document).ready(function ($) {
         var new_form = last_form.clone(false).html(last_form.html().replace(
                 new RegExp(prefix + '-\\d-', 'g'), prefix + '-' + count + '-'));
         bind_delete_button(new_form);
+
+        // remove the selected option of the last form from the available options
+        option = last_form.find(':selected').val();
+        if (option.length) {
+            new_form.find('option[value="' + option + '"]').remove();
+        }
+
+        // remove and re-initialise the stars
+        new_form.find('.star-rating, .star-rating-control').remove();
+        new_form.find('.rating input').removeAttr('class').removeAttr('style').removeAttr('checked').rating();
+
         new_form.hide().insertAfter(last_form).slideDown(300);
 
         // Update the total form count
