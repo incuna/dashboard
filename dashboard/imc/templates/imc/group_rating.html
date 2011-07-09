@@ -1,29 +1,42 @@
 {% extends "imc/base.html" %}
 
+{% load uni_form_tags %}
+
 {% block extrameta %}
 <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1">
 {% endblock %}
 
+{% block imc_extrascript %}
+<script type="text/javascript" src="{{ STATIC_URL }}scripts/imc/group-rating.js"></script>
+{% endblock imc_extrascript %}
+
 {% block imc_extrastyle %}
+<link rel="stylesheet" type="text/css" charset="utf-8" href="{{ STATIC_URL }}styles/imc/group-rating.css">
 <link rel="stylesheet" type="text/css" charset="utf-8" href="{{ STATIC_URL }}styles/mobile.css">
 {% endblock %}
 
-{% block title %}{{ movie.name }}{% endblock %}
+{% block title %}Rate: {{ movie.name }}{% endblock %}
 
 {% block content %}
 <div id="movie">
     <h2 id="title">{{ movie.name }} ({{ movie.year }})</h2>
 
-    <form method="post" action="">{% csrf_token %}
+    <form method="post" action="">
+        {% csrf_token %}
         {{ formset.management_form }}
+        {{ formset.non_form_errors }}
         <ul>
             {% for form in formset %}
-            <li class="inline-form">
+            <li class="inline-form rating_set">
                 <div class="form-container">
-                    <div id="user" class="field">
+                    <div class="delete">
+                        <label for="id_rating-{{ forloop.counter0 }}-DELETE">Delete?</label>
+                        <input type="checkbox" id="id_rating-{{ forloop.counter0 }}-DELETE">
+                    </div>
+                    <div class="field user">
                         {{ form.user }}
                     </div>
-                    <div id="rating" class="field">
+                    <div class="field rating">
                         {{ form.rating }}
                     </div>
                     <div class="clr"></div>
@@ -31,8 +44,13 @@
             </li>
             {% endfor %}
         </ul>
-        <div id="submit">
-            <input type="submit" value="Save">
+        <div id="buttons">
+            <div id="add" class="button">
+                <input type="button" class="add-inline" value="Add user">
+            </div>
+            <div id="submit" class="button">
+                <input type="submit" value="Save">
+            </div>
         </div>
     </form>
 </div>
@@ -55,3 +73,4 @@
     </form>
 </div>
 {% endblock %}
+

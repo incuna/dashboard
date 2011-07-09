@@ -22,16 +22,3 @@ label {
     width: 450px;
 }
 
-body form input[type="submit"] {
-    color: white;
-    background-image: -webkit-gradient(linear, left top, left bottom, from(#4D90FE), to(#4787ED));
-    border: 0 none;
-    border-radius: 2px;
-    display: block;
-    font-size: 17px;
-    margin: 30px auto 0 !important;
-    padding: 7px 12px;
-    text-transform: uppercase;
-    width: 150px;
-}
-

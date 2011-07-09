@@ -1,0 +1,12 @@
+.button input {
+    color: white;
+    background-image: -webkit-gradient(linear, left top, left bottom, from(#4d90fe), to(#4787ed));
+    border: 0 none;
+    border-radius: 2px;
+    display: block;
+    font-size: 17px;
+    padding: 7px 12px;
+    text-transform: uppercase;
+    width: 150px;
+}
+
