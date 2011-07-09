@@ -47,7 +47,7 @@ def group_rating(request, slug=None, extra_context=None, template_name='imc/grou
         formset = MovieFormSet(request.POST, instance=movie)
         if formset.is_valid():
             formset.save()
-            return redirect(reverse('movie-group-rating'))
+            return redirect(reverse('movie-index'))
     else:
         formset = MovieFormSet()
 
