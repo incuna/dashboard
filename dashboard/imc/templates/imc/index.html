@@ -1,5 +1,9 @@
 {% extends "imc/base.html" %}
 
+{% block imc_extrastyle %}
+<link rel="stylesheet" type="text/css" charset="utf-8" href="{{ STATIC_URL }}styles/imc/index.css">
+{% endblock imc_extrastyle %}
+
 {% block title %}Incuna Movie Club{% endblock %}
 
 {% block content %}

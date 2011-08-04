@@ -1,0 +1,19 @@
+#imc-index {
+    margin: 20px auto;
+    width: 880px;
+}
+
+#imc-index a {
+    display: block;
+    float: left;
+    margin: 0 10px;
+}
+
+#imc-index a img {
+    width: 200px;
+}
+
+#imc-index a p {
+    text-align: center;
+}
+
