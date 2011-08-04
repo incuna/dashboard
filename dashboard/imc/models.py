@@ -54,10 +54,12 @@ class Movie(models.Model):
         return self.name
 
     def added_by_display(self):
+        # TODO: WTF does this do?!
         return self.added_by.user.first_name
 
     added_by_display.short_description = 'Added By'
 
+    # TODO: Fix this right up - looks horrid
     def get_imdb_image_url(self, movie_id):
         api = IMDb()
         movie = api.get_movie(movie_id)

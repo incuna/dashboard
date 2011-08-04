@@ -13,6 +13,11 @@
     width: 200px;
 }
 
+a#submit img {
+    display: block;
+    margin: 40px 0 50px;
+}
+
 #imc-index a p {
     text-align: center;
 }
