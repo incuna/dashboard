@@ -1,0 +1,54 @@
+.inline-form {
+    border-bottom: 1px solid grey;
+    margin: 0 auto;
+    padding: 10px 0;
+    min-width: 200px;
+}
+.inline-form:last-child {border-bottom: 0 none;}
+
+.form-container {
+    margin: 0 auto;
+    width: 260px;
+}
+
+.user select {
+    font-size: 16px;
+    width: 190px;
+}
+
+.field.rating {
+    height: 20px;
+    margin-top: 5px;
+}
+
+.star-rating-control {
+    clear: right;
+}
+
+.delete {
+    float: right;
+    margin-top: 5px;
+}
+
+.delete label {
+    background: url(../../images/button_delete.png) no-repeat 16px 20px;
+    color: red;
+    cursor: pointer;
+    padding-bottom: 18px;
+    text-decoration: underline;
+}
+
+#buttons {
+    margin: 10px auto;
+    width: 305px;
+}
+
+.button {
+    display: inline-block;
+}
+
+#add input {
+    background-color: #777;
+    background-image: none;
+}
+

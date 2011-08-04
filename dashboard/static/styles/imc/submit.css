@@ -1,0 +1,24 @@
+form {
+    margin: 50px auto 0;
+    width: 454px;
+}
+
+label {
+    color: #333;
+    display: block;
+    font-size: 20px;
+    margin-bottom: 15px;
+    text-align: center;
+    width: 100%;
+}
+
+#id_imdb_link {
+    border: 2px solid #333;
+    color: #777;
+    display: block;
+    font-size: 20px;
+    line-height: 25px;
+    padding: 2px;
+    width: 450px;
+}
+

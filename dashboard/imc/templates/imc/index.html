@@ -1,0 +1,29 @@
+{% extends "imc/base.html" %}
+
+{% block imc_extrastyle %}
+<link rel="stylesheet" type="text/css" charset="utf-8" href="{{ STATIC_URL }}styles/imc/index.css">
+{% endblock imc_extrastyle %}
+
+{% block title %}Incuna Movie Club{% endblock %}
+
+{% block content %}
+<div id="imc-index">
+    <a id="current" href="{% url movie-current %}">
+        <img src="{{ movie.image }}" alt="Current Movie">
+        <p class="name">Current Movie</p>
+    </a>
+    <a id="submit" href="{% url movie-submit %}">
+        <img src="{{ STATIC_URL }}images/imc/icons/new-movie.jpeg" alt="Submit a Movie">
+        <p class="name">Submit a Movie</p>
+    </a>
+    <a id="group-rating" href="{% url movie-group-rating %}">
+        <img src="{{ STATIC_URL }}images/imc/icons/holiday.png" alt="Current Movie">
+        <p class="name">Group Rate a Movie</p>
+    </a>
+    <a id="group-rating" href="{% url movie-previous %}">
+        <img src="{{ STATIC_URL }}images/imc/icons/holiday.png" alt="Current Movie">
+        <p class="name">Previous Movies</p>
+    </a>
+</div>
+{% endblock content %}
+

@@ -94,3 +94,9 @@ class MovieRatingInlineForm(forms.ModelForm):
     class Meta:
         model = Rating
 
+class MovieSubmissionForm(forms.ModelForm):
+
+    class Meta:
+        fields = ('imdb_link',)
+        model = Movie
+

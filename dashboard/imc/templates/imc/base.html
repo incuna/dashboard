@@ -3,28 +3,18 @@
 {% block extrastyle %}
 <link rel="stylesheet" type="text/css" charset="utf-8" href="{{ STATIC_URL }}styles/imc.css">
 <link rel="stylesheet" type="text/css" charset="utf-8" href="{{ STATIC_URL }}styles/jquery.rating/jquery.rating.css">
-{% endblock %}
+<link rel="stylesheet" type="text/css" charset="utf-8" href="{{ STATIC_URL }}styles/imc/base.css">
+{% block imc_extrastyle %}{% endblock %}
+{% endblock extrastyle %}
 
-{% block extra_script %}
+{% block extrascript %}
 <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jqueryui/1.8.12/jquery-ui.js"></script>
 <script type="text/javascript" src="{{ STATIC_URL }}scripts/jquery.rating/jquery.rating.pack.js"></script>
-<script type="text/javascript" src="{{ STATIC_URL }}scripts/rating.js"></script>
-{% endblock %}
+<script type="text/javascript" src="{{ STATIC_URL }}scripts/imc/rating.js"></script>
+{% block imc_extrascript %}{% endblock %}
+{% endblock extrascript %}
 
 {% block title %}{{ movie.name }}{% endblock %}
 
-{% block content %}
-<div id="movie">
-    <h2 id="title">{{ movie.name }} ({{ movie.year }})</h2>
-    <div id="movie-main">
-        <p>Picked By: {{ movie.added_by.first_name }}</p>
-        <img src="{{ movie.image }}" alt="{{ movie.name }}">
-    </div>
-    <div id="movie-info">
-        <div id="plot"><p>{{ movie.plot }}</p></div>
-        {% if movie.writer %}<div id="writer"><p>Writer(s): {{ movie.writer }}</div>{% endif %}
-        {% if movie.director %}<div id="director"><p>Director(s): {{ movie.director }}</p></div>{% endif %}
-    </div>
-    {% block movie-extra %}{% endblock %}
-</div>
-{% endblock %}
+{% block content %}{% endblock %}
+

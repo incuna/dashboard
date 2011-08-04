@@ -1,15 +1,20 @@
 {% extends "imc/base.html" %}
-{% block movie-extra %}
-{% if rating %}
-<div id="watch-by">
-    <p>Watch {{ movie }} by {{ movie.finish|date:"l jS F" }}</p>
-</div>
 
-<div id="user-rating">
-    <form id="rating" action="" method="post">
+{% block content %}
+<div id="movie">
+    <h2 id="title">{{ movie.name }} ({{ movie.year }})</h2>
+    <div id="movie-main">
+        <p>Picked By: {{ movie.added_by.first_name }}</p>
+        <img src="{{ movie.image }}" alt="{{ movie.name }}">
+    </div>
+    <div id="movie-info">
+        <div id="plot"><p>{{ movie.plot }}</p></div>
+        {% if movie.writer %}<div id="writer"><p>Writer(s): {{ movie.writer }}</div>{% endif %}
+        {% if movie.director %}<div id="director"><p>Director(s): {{ movie.director }}</p></div>{% endif %}
+    </div>
+    <div id="user-rating">
         <div id="current-rating"><p>Rating: <span id="movie-rating">{{ rating }}</span></p></div>
-        {{ form.rating }}
-    </form>
+    </div>
 </div>
-{% endif %}
 {% endblock %}
+

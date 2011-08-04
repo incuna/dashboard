@@ -1,0 +1,20 @@
+{% extends "imc/base.html" %}
+
+{% load uni_form_tags %}
+
+{% block imc_extrastyle %}
+<link rel="stylesheet" type="text/css" charset="utf-8" href="{{ STATIC_URL }}styles/imc/submit.css">
+{% endblock %}
+
+{% block title %}Submit your Movie{% endblock %}
+
+{% block content %}
+<form action="" method="post">
+    {% csrf_token %}
+    {{ form|as_uni_form }}
+    <div id="submit">
+        <input type="submit" value="Submit">
+    </div>
+</form>
+{% endblock content %}
+

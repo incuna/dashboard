@@ -23,37 +23,3 @@ header #user-tools {
     text-align: center;
 }
 
-.inline-form {
-    border-bottom: 1px solid grey;
-    margin: 0 auto;
-    padding: 10px 0;
-    min-width: 200px;
-}
-
-.inline-form:last-child {
-    border-bottom: 0 none;
-}
-
-.form-container {
-    margin: 0 auto;
-    width: 200px;
-}
-
-#user select {
-    font-size: 16px;
-    width: 190px;
-}
-
-#rating {
-    height: 20px;
-    margin-top: 5px;
-}
-
-.star-rating-control {
-    clear: right;
-}
-
-#submit {
-    margin: 10px auto 20px;
-    width: 40px;
-}

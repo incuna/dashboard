@@ -134,6 +134,7 @@ INSTALLED_APPS = (
     'gunicorn',
     'profiles',
     'south',
+    'uni_form',
 
     'dashboard',
     'contacts',
@@ -155,6 +156,8 @@ BBC_HOURLY_WEATHER = 'http://newsrss.bbc.co.uk/weather/forecast/25/ObservationsR
 BBC_WEEKLY_WEATHER = 'http://newsrss.bbc.co.uk/weather/forecast/25/Next3DaysRSS.xml'
 
 HOLIDAYCAL_URL = 'http://holiday.incuna.com'
+
+IMC_DEFAULT_PERIOD = 14
 
 # A sample logging configuration. The only tangible logging
 # performed by this configuration is to send an email to

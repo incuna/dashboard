@@ -1,4 +1,4 @@
-jQuery(document).ready(function($) {
+jQuery(document).ready(function ($) {
     var star = $('input[type="radio"]');
     star.rating();
     if ($('#current-rating').length) {
@@ -8,3 +8,4 @@ jQuery(document).ready(function($) {
         star.rating('disable');
     }
 });
+
