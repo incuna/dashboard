@@ -1,15 +1,16 @@
-from datetime import timedelta, datetime
+from datetime import date, datetime, timedelta
 from random import choice
 from re import compile
 
 from django.conf import settings
+from django.core.mail import mail_admins
 from django.db import models
 from django.db.models import Sum
 from django.template.defaultfilters import slugify
 from imdb import IMDb
 from profiles.models import Profile
 
-from managers import PeriodManager, RatingManager
+from managers import RatingManager
 
 class MovieManager(models.Manager):
     def current(self):
@@ -89,6 +90,18 @@ class Movie(models.Model):
     @staticmethod
     def get_rating_for(movie):
         return Rating.objects.filter(movie=movie).aggregate(rating=Sum('rating'))['rating']
+
+class PeriodManager(models.Manager):
+    def last_finish(self):
+        """Returns the latest Period by finish date"""
+        periods = self.get_query_set().all().order_by('-finish')
+        if periods:
+            return periods[0]
+        else:
+            mail_admins('No IMC Periods of Time',
+                    'The IMC app needs some attention, I\'ve created a blank one for'
+                    ' now until the default time away (imc/managers.py L11)')
+            return Period.objects.create(start=date.today())
 
 class Period(models.Model):
     start = models.DateField()

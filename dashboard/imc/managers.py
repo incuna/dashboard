@@ -1,17 +1,17 @@
 from django.core.mail import mail_admins
 from django.db.models import Avg, Manager
-from django.http import HttpResponseRedirect
 
 class PeriodManager(Manager):
     def last_finish(self):
         """Returns the latest Period by finish date"""
-        try:
-            self.get_query_set().all().order_by('-finish')[0]
-        except IndexError:
+        periods = self.get_query_set().all().order_by('-finish')
+        if periods:
+            return periods[0]
+        else:
             mail_admins('No IMC Periods of Time',
-                    'The IMC app needs you to create some Periods of Time! (imc/managers.py L11)')
-            return HttpResponseRedirect('/')
-
+                    'The IMC app needs some attention, I\'ve created a blank one for'
+                    ' now until the default time away (imc/managers.py L11)')
+            return periods
 
 class RatingManager(Manager):
     def get_rating(self, movie):
