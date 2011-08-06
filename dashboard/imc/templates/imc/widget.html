@@ -7,7 +7,7 @@
         <!--<a href="{{ movie.imdb_link }}"><img src="{{ movie.thumbnail }}"></a>-->
     </div>
     <div id="due">
-        <span class="char">Due: </span><span>{{ movie.finish }}</span>
+        <span class="char">Due: </span><span>{{ movie.period.finish }}</span>
     </div>
     <div id="rating">
         {% for i in 10|get_range %}

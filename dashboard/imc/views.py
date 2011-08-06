@@ -101,6 +101,7 @@ def widget(request, extra_context = None, template_name='imc/widget.html'):
     context = RequestContext(request)
     if extra_context != None:
         context.update(extra_context)
-    context.update({'movie': Movie.objects.current(), 'rating': Movie.get_rating_for(movie)})
+    movie = Movie.objects.current()
+    context.update({'movie': movie, 'rating': Movie.get_rating_for(movie)})
     return render_to_response(template_name, context)
 
