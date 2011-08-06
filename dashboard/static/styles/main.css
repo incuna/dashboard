@@ -19,6 +19,18 @@ ul {
     list-style: none;
 }
 
+#submit input {
+    background-image: -moz-linear-gradient(top, #4d90fe, #4787ed);
+    background-image: -webkit-linear-gradient(top, #4d90fe, #4787ed);
+    border: 0 none;
+    border-radius: 3px;
+    color: white;
+    font-size: 16px;
+    height: 30px;
+    text-transform: uppercase;
+    width: 200px;
+}
+
 #messages {
     margin: 0 auto;
     padding: 10px 0;
