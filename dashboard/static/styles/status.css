@@ -48,6 +48,11 @@ body {
     width: 1080px;
 }
 
+header {
+    background: none;
+    height: 0px;
+}
+
 #logo {
     width: 173px;
     height: 54px;
