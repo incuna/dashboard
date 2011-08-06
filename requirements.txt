@@ -15,7 +15,7 @@ south==0.7.3
 vobject==0.8.1c
 
 # incuna pypi
-django-profiles=0.1
+django-profiles==0.1
 incuna==1.3.1
 incuna-twitterstream==1.0
 
