@@ -7,7 +7,7 @@
         "last_name": "Hickman",
         "is_active": true,
         "is_staff": true,
-        "groups": [2],
+        "groups": [2, 5],
         "user_permissions": [],
         "password": "sha1$95749$c1cc8b74130fad18cf8755f4aef3623c175eaef6",
         "date_joined": "2011-05-07 12:53:56",
