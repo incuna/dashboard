@@ -21,4 +21,3 @@ incuna-twitterstream==1.0
 
 # hg
 hg+https://incuna@bitbucket.org/alberanid/imdbpy
-
