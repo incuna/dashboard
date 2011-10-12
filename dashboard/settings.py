@@ -115,6 +115,9 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.messages.middleware.MessageMiddleware',
 )
 
+from django.conf.global_settings import TEMPLATE_CONTEXT_PROCESSORS
+TEMPLATE_CONTEXT_PROCESSORS += ('django.core.context_processors.request',)
+
 ROOT_URLCONF = 'dashboard.urls'
 
 TEMPLATE_DIRS = (
@@ -138,6 +141,7 @@ INSTALLED_APPS = (
     'profiles',
     'south',
     'uni_form',
+    'incuna',
 
     'dashboard',
     'contacts',

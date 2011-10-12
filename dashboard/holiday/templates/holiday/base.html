@@ -1,11 +1,6 @@
 {% extends "base.html" %}
 {% load holidaytags %}
 
-{% block header %}
-{{super.header}}
-<h1>Incuna Holiday Requests</h1>
-{% endblock %}
-
 {% block nav %}{{super.nav}}
 {% menuitems %}
     {% navitem 'holiday_user' request.user.username %}My Requests{% endnavitem %}

@@ -19,8 +19,10 @@
             </tr>
         </thead>
         <tr>
-            <td class="col-this bottom">{{ request.user|days_left_by_year }}</td>
-            <td class="col-next bottom">{{ request.user|days_left_by_year:1 }}</td>
+            {% with request.user.get_profile as profile %}
+                <td class="col-this bottom">{{ profile|days_left_by_year }}</td>
+                <td class="col-next bottom">{{ profile|days_left_by_year:1 }}</td>
+            {% endwith %}
         </tr>
     </table>
 </div>
