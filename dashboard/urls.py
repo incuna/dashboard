@@ -19,6 +19,7 @@ except NotRegistered:
 urlpatterns = patterns('',
     url(r'^$', 'views.index', name='index'),
     url(r'^accounts/', include('django.contrib.auth.urls')),
+    url(r'^holiday/', include('holiday.urls')),
     url(r'^movie-club/', include('imc.urls')),
     url(r'^shopping-list/', include('status.modules.shoppinglist.urls')),
     url(r'^status/', include('status.urls')),

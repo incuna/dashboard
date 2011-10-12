@@ -78,6 +78,9 @@ STATIC_URL = '/static/'
 # Examples: "http://foo.com/static/admin/", "/static/admin/".
 ADMIN_MEDIA_PREFIX = '/static/admin/'
 
+# URL that handles the incuna specific media files
+INCUNA_MEDIA_URL = STATIC_URL + 'incuna/'
+
 # Additional locations of static files
 STATICFILES_DIRS = (
     # Put strings here, like "/home/html/static" or "C:/www/django/static".
@@ -138,6 +141,7 @@ INSTALLED_APPS = (
 
     'dashboard',
     'contacts',
+    'holiday',
     'imc',
     'password',
 
@@ -155,9 +159,13 @@ BBC_HOURLY_WEATHER = 'http://newsrss.bbc.co.uk/weather/forecast/25/ObservationsR
 
 BBC_WEEKLY_WEATHER = 'http://newsrss.bbc.co.uk/weather/forecast/25/Next3DaysRSS.xml'
 
-HOLIDAYCAL_URL = 'http://holiday.incuna.com'
+#HOLIDAYCAL_URL = 'http://holiday.incuna.com'
+
+HOLIDAY_DEFAULT_ANNUAL_DAYS = 20
 
 IMC_DEFAULT_PERIOD = 14
+
+AUTH_PROFILE_MODULE = 'profiles.Profile'
 
 # A sample logging configuration. The only tangible logging
 # performed by this configuration is to send an email to

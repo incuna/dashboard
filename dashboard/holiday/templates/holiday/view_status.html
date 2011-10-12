@@ -1,0 +1,58 @@
+{% extends "holiday/base.html" %}
+{% load holidaytags %}
+
+{% block title %}Incuna Holiday Requests - {{employee.get_full_name}}{% endblock %}
+
+{% block content %}
+    <div class="right">
+        <table class="days-left-table">
+            <thead>
+                <tr><th class="centre noborder" colspan="2">Days Remaining</th></tr>
+                <tr>
+                    <th class="col-this">This Year:</th>
+                    <th class="col-next">Next Year:</th>
+                </tr>
+            </thead>
+            <tr>
+                <td class="col-this bottom">{{ employee|days_left_by_year }}</td>
+                <td class="col-next bottom">{{ employee|days_left_by_year:1 }}</td>
+            </tr>
+        </table>
+    </div>
+    <h2>{{employee.get_full_name}}</h2>
+    <p>Allowance days: {{ employee.allowance_days }}</p>
+    <p><strong>Manager: </strong>{{employee.manager.get_full_name}}</p>
+    {% with holiday_requests.all as hol_reqs %}
+    {% if hol_reqs %}
+        <h3>Submitted Requests</h3>
+        <table class="standardtable" id="request-status">
+            {% for hol_req in hol_reqs %}
+            {% if forloop.first %}
+            <thead>
+            <tr>
+                <th class="col-time">Holiday Begins</th>
+                <th class="col-days">Days Requested</th>
+                <th class="col-comment1">Employee Comment</th>
+                <th class="col-comment2">Manager Comment</th>
+                <th class="col-status">Status</th>
+                <th class="col-link noborder"></th>
+            </tr>
+            </thead>
+            {% endif %}
+            <tr class="status{{ hol_req.status }}">
+                {% with hol_req.holiday_set.all|first as first_hol %}
+                <td class="col-time">{{ first_hol.date|date }}</td>
+                {% endwith %}
+                <td class="col-days">{{ hol_req.days_requested_total }}</td>
+                <td class="col-comment1">{% if hol_req.employee_comment %}{{ hol_req.employee_comment|truncchar:30 }}{% else %}---{% endif %}</td>
+                <td class="col-comment2">{% if hol_req.manager_comment %}{{ hol_req.manager_comment|truncchar:30 }}{% else %}---{% endif %}</td>
+                <td class="col-status">{{ hol_req.get_status_display }}{% if hol_req.administrator %} by {{ hol_req.administrator.get_full_name }}{% endif %}</td>
+                <td class="col-link"><a href="{% url holiday_request_details pk=hol_req.pk %}">Details</a></td>
+            </tr>
+            {% endfor %}
+        </table>
+    {% else %}
+        <h3>No Requests Submitted</h3>
+    {% endif %}
+    {% endwith %}
+{% endblock %}

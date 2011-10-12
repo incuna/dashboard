@@ -1,6 +1,11 @@
 from profiles.models import Profile, ProfileAdmin, ProfileForm
 
-Profile.register_extensions('dashboard.extensions.manager', 'dashboard.extensions.avatars', 'dashboard.extensions.ssh_key', 'permissions')
+Profile.register_extensions(
+    'dashboard.extensions.manager',
+    'dashboard.extensions.avatars',
+    'dashboard.extensions.ssh_key',
+    'dashboard.extensions.holidays',
+    'permissions')
 
 ProfileAdmin.fieldsets[0][1]['fields'].insert(0, 'username')
 
