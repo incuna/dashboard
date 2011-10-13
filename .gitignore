@@ -1,4 +1,5 @@
+*.pyc
+*.swp
+*.sqlite
 local_settings.py
-db.sqlite
 client_media
-static_media
