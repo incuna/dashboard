@@ -6,7 +6,7 @@ from django.core.urlresolvers import reverse
 from django.forms.models import inlineformset_factory
 from django.shortcuts import redirect, render_to_response
 from django.template import RequestContext
-from django.views.generic import CreateView, ListView
+from django.views.generic import CreateView, ListView, TemplateView
 
 from forms import MovieRatingForm, MovieRatingInlineForm, MovieSubmissionForm
 from models import Movie, Rating
@@ -56,13 +56,13 @@ def group_rating(request, slug=None, extra_context=None, template_name='imc/grou
     context.update({'formset': formset, 'movie': movie, 'rating': Rating.objects.get_rating(movie=movie)})
     return render_to_response(template_name, context)
 
-@login_required
-def index(request, extra_context=None, template_name='imc/index.html'):
-    context = RequestContext(request)
-    if extra_context != None:
-        context.update(extra_context)
-    context.update({'movie': Movie.objects.current()})
-    return render_to_response(template_name, context)
+class Index(TemplateView):
+    template_name = 'imc/index.html'
+
+    def get_context_data(self, **kwargs):
+        context = super(Index, self).get_context_data(**kwargs)
+        context.update({'movie': Movie.objects.current()})
+        return context
 
 class PreviousMovie(ListView):
     template_name = 'imc/previous.html'
