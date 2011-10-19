@@ -6,6 +6,7 @@ from django.contrib.admin.sites import NotRegistered
 from django.contrib.auth.models import User
 from django.contrib.sites.models import Site
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
+from django.views.generic import TemplateView
 
 admin.autodiscover()
 
@@ -19,7 +20,7 @@ except NotRegistered:
     pass
 
 urlpatterns = patterns('',
-    url(r'^$', 'views.index', name='index'),
+    url(r'^$', TemplateView.as_view(template_name='index.html'), name='index'),
     url(r'^accounts/', include('django.contrib.auth.urls')),
     url(r'^holiday/', include('holiday.urls')),
     url(r'^movie-club/', include('imc.urls')),
