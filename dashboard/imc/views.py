@@ -65,7 +65,7 @@ def index(request, extra_context=None, template_name='imc/index.html'):
     context.update({'movie': Movie.objects.current()})
     return render_to_response(template_name, context)
 
-class PreviousMovieListView(ListView):
+class PreviousMovie(ListView):
     template_name = 'imc/previous.html'
 
     def get_queryset(self):
