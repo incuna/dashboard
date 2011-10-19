@@ -2,10 +2,10 @@
 
 {% block content %}
 <table>
-    {% for movie in movies %}
+    {% for movie in object_list %}
     <tr class="movie">
         <td><a href="{% url movie movie.slug %}">{{ movie.name }}</a></td>
-        <td>{{ movie.start|date:"jS F" }} to {{ movie.finish|date:"jS F" }}</td>
+        <td>{{ movie.period.start|date:"jS F" }} to {{ movie.period.finish|date:"jS F" }}</td>
     </tr>
     {% endfor %}
 </table>
