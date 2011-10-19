@@ -4,10 +4,9 @@ from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.core.urlresolvers import reverse
 from django.forms.models import inlineformset_factory
-from django.http import HttpResponseRedirect
 from django.shortcuts import redirect, render_to_response
 from django.template import RequestContext
-from django.views.generic import ListView
+from django.views.generic import CreateView, ListView
 
 from forms import MovieRatingForm, MovieRatingInlineForm, MovieSubmissionForm
 from models import Movie, Rating
@@ -71,23 +70,18 @@ class PreviousMovie(ListView):
     def get_queryset(self):
         return Movie.objects.filter(period__finish__lt=datetime.now())
 
-@login_required
-def submit(request, extra_context=None, template_name='imc/submit.html'):
-    context = RequestContext(request)
-    if extra_context != None:
-        context.update(extra_context)
-    if request.method == 'POST':
-        form = MovieSubmissionForm(request.POST)
-        if form.is_valid():
-            new_film = form.save(commit=False)
-            new_film.added_by = request.user.profile
-            new_film.save()
-            return HttpResponseRedirect(reverse('movie-index'))
-    else:
-        form = MovieSubmissionForm()
+class SubmitMovie(CreateView):
+    form_class = MovieSubmissionForm
+    model = Movie
+    template_name = 'imc/submit.html'
 
-    context.update({'form': form})
-    return render_to_response(template_name, context)
+    def form_valid(self, form):
+        form.added_by = self.request.user
+        messages.info(self.request, '')
+        return super(SubmitMovie, self).form_valid(form)
+
+    def get_success_url(self):
+        return reverse('movie-submit')
 
 def widget(request, extra_context = None, template_name='imc/widget.html'):
     context = RequestContext(request)
