@@ -6,7 +6,9 @@ from django.contrib.admin.sites import NotRegistered
 from django.contrib.auth.models import User
 from django.contrib.sites.models import Site
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
+
 admin.autodiscover()
+
 try:
     admin.site.unregister(Site)
 except NotRegistered:
@@ -28,3 +30,4 @@ urlpatterns = patterns('',
 )
 
 urlpatterns += staticfiles_urlpatterns() + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
