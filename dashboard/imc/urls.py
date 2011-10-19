@@ -1,5 +1,7 @@
 from django.conf.urls.defaults import patterns, url
+from django.views.generic import DetailView
 
+from imc.models import Movie
 from imc.views import PreviousMovieListView
 
 urlpatterns = patterns('imc.views',
@@ -9,6 +11,6 @@ urlpatterns = patterns('imc.views',
     url(r'^previous/$', PreviousMovieListView.as_view(), name='movie-previous'),
     url(r'^submit/$', 'submit', name='movie-submit'),
     url(r'^widget/$', 'widget', name='movie-widget'),
-    url(r'^(?P<slug>.*)/$', 'movie', name='movie'),
+    url(r'^(?P<slug>.*)/$', DetailView.as_view(model=Movie), name='movie'),
 )
 

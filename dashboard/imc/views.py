@@ -5,7 +5,7 @@ from django.contrib.auth.decorators import login_required
 from django.core.urlresolvers import reverse
 from django.forms.models import inlineformset_factory
 from django.http import HttpResponseRedirect
-from django.shortcuts import get_object_or_404, redirect, render_to_response
+from django.shortcuts import redirect, render_to_response
 from django.template import RequestContext
 from django.views.generic import ListView
 
@@ -63,15 +63,6 @@ def index(request, extra_context=None, template_name='imc/index.html'):
     if extra_context != None:
         context.update(extra_context)
     context.update({'movie': Movie.objects.current()})
-    return render_to_response(template_name, context)
-
-@login_required
-def movie(request, slug, extra_context=None, template_name='imc/movie.html'):
-    context = RequestContext(request)
-    if extra_context != None:
-        context.update(extra_context)
-    movie = get_object_or_404(Movie, slug=slug)
-    context.update({'movie': movie, 'rating': Rating.objects.get_rating(movie=movie)})
     return render_to_response(template_name, context)
 
 class PreviousMovieListView(ListView):
