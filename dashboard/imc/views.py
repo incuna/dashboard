@@ -86,10 +86,15 @@ class SubmitMovie(CreateView):
     def get_success_url(self):
         return reverse('movie-submit')
 
-def widget(request, extra_context = None, template_name='imc/widget.html'):
-    context = RequestContext(request)
-    if extra_context != None:
-        context.update(extra_context)
-    context.update({'movie': Movie.objects.current(), 'rating': Movie.get_rating_for(movie)})
-    return render_to_response(template_name, context)
+class Widget(DetailView):
+    model = Movie
+    template_name = 'imc/widget.html'
+
+    def get_context_data(self, **kwargs):
+        context = super(Widget, self).get_context_data(**kwargs)
+        context['rating'] = Movie.get_rating_for(self.get_queryset())
+        return context
+
+    def get_object(self, queryset=None):
+        return Movie.objects.current()
 
