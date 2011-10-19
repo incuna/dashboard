@@ -1,0 +1,43 @@
+{% extends "holiday/base.html" %}
+{% load holidaytags %}
+
+{% block extrascript %}
+    {{ hol_sel_form.media.js }}
+    {{ form_set.media.js }}
+{% endblock %}
+
+{% block title %}Incuna Holiday Requests - New Request{% endblock %}
+
+{% block content %}
+<div class="right">
+    <table class="days-left-table">
+        <thead>
+            <tr><th class="centre noborder" colspan="2">Days Remaining</th></tr>
+            <tr>
+                <th class="col-this">This Year:</th>
+                <th class="col-next">Next Year:</th>
+            </tr>
+        </thead>
+        <tr>
+            {% with request.user.get_profile as profile %}
+                <td class="col-this bottom">{{ profile|days_left_by_year }}</td>
+                <td class="col-next bottom">{{ profile|days_left_by_year:1 }}</td>
+            {% endwith %}
+        </tr>
+    </table>
+</div>
+<h2>New Holiday Request</h2>
+<form method='POST'>
+    {% if form_set %}
+        {{ comment_form.as_p }}
+        {{ form_set.management_form }}
+        {% for form in form_set.forms %}
+            {{ form.as_p }}
+        {% endfor %}
+        <p><input type="submit" value="Confirm"></p>
+    {% else %}
+        {{ hol_sel_form.as_p }}
+        <p><input type="submit" value="Submit"></p>
+    {% endif %}
+</form>
+{% endblock %}

@@ -1,0 +1,14 @@
+Dear {{ hol_req.employee.get_full_name }},
+
+Your request for holiday leave on the following days:
+{% for day in hol_req.holiday_set.all %}
+    {{ day }}{% endfor %}
+
+has been {{ hol_req.get_status_display|lower }} by {{ hol_req.administrator.get_full_name }}.
+{% if hol_req.manager_comment %}
+{{ hol_req.administrator.get_full_name }} commented: "{{ hol_req.manager_comment }}".
+{% endif %}
+Regards,
+
+Holiday Request System
+(Powered by iceHol)

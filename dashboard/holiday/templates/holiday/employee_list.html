@@ -1,0 +1,30 @@
+{% extends "holiday/base.html" %}
+{% load holidaytags %}
+
+{% block title %}Incuna Holiday Requests - Staff{% endblock %}
+
+{% block content %}
+    <h2>All Staff</h2>
+    {% for o in object_list|dictsort:"last_name" %}
+        {% if forloop.first %}
+        <table class="standardtable">
+            <thead>
+            <tr>
+                <th>Name</th>
+                <th>Manager</th>
+                <th>Pending Requests</th>
+                <th>Annual Allowance</th>
+                <th>Days Left<br />(This/Next Year)</th>
+            </tr>
+            </thead>
+        {% endif %}
+            <tr>
+                <td><a href="{% url holiday_user username=o.username %}">{{o.get_full_name}}</a></td>
+                <td>{{ o.manager.get_full_name }}</td>
+                <td>{{ o.pending_requests.count }}</td>
+                <td>{{ o.holiday_per_annum }}</td>
+                <td>{{ o|days_left_by_year }} / {{ o|days_left_by_year:1 }}</td>
+            </tr>
+        {% if forloop.last %}</table>{% endif %}
+    {% endfor %}
+{% endblock %}

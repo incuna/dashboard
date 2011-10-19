@@ -1,0 +1,11 @@
+{% extends "holiday/base.html" %}
+
+{% block title %}Incuna Holiday Requests - Calendar{% endblock %}
+
+{% block content %}
+    <h2>You must be signed in to <a href="http://mail.incuna.com">Incuna Google Calendar</a></h2>
+    <iframe src="https://www.google.com/calendar/hosted/incuna.com/embed?showTitle=0&amp;showTabs=0&amp;showCalendars=0&amp;showTz=0&amp;height=600&amp;wkst=2&amp;bgcolor=%23999999&amp;src=holiday%40incuna.com&amp;color=%232952A3&amp;src=en.uk%23holiday%40group.v.calendar.google.com&amp;color=%23B1440E&amp;ctz=Europe%2FLondon"
+            style=" border-width:0 " width="940" height="600" frameborder="0" scrolling="no">
+        <p>Sorry, your browser doesn't support IFRAME.</p>
+    </iframe>
+{% endblock %}

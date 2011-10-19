@@ -19,6 +19,7 @@ def todays_holidays(request, extra_context = None):
     if extra_context != None:
         context.update(extra_context)
 
+    # TODO: #FIXME: As holiday is now part of the dashboard, integrate this correctly
     url = '%s/api/employees-on-holiday' % settings.HOLIDAYCAL_URL
 
     request = Request(url)
