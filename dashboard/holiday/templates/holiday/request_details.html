@@ -1,0 +1,70 @@
+{% extends "holiday/base.html" %}
+{% load holidaytags %}
+
+{% block title %}Incuna Holiday Requests - Request Details{% endblock %}
+
+{% block content %}
+    {% ifequal holiday_request.status 0 %}
+        {% with holiday_request|days_requested_by_year as days_req_0 %}
+        {% with holiday_request|days_requested_by_year:1 as days_req_1 %}
+        {% with holiday_request.employee|days_left_by_year as days_left_0 %}
+        {% with holiday_request.employee|days_left_by_year:1 as days_left_1 %}
+        <div class="right clear-right">
+            <table class="days-left-table">
+                <thead>
+                    <tr><th class="centre noborder" colspan="2">Before</th></tr>
+                    <tr>
+                        <th class="col-this">This Year:</th>
+                        <th class="col-next">Next Year:</th>
+                    </tr>
+                </thead>
+                <tr>
+                    <td class="col-this bottom">{{ days_left_0 }}</td>
+                    <td class="col-next bottom">{{ days_left_1 }}</td>
+                </tr>
+            </table>
+        </div>
+        <div class="right clear-right">
+            <table class="days-left-table">
+                <thead>
+                    <tr><th class="centre noborder" colspan="2">After</th></tr>
+                    <tr>
+                        <th class="col-this">This Year:</th>
+                        <th class="col-next">Next Year:</th>
+                    </tr>
+                </thead>
+                <tr>
+                    <td class="col-this bottom">{{ days_left_0|subtract:days_req_0 }}</td>
+                    <td class="col-next bottom">{{ days_left_1|subtract:days_req_1 }}</td>
+                </tr>
+            </table>
+        </div>
+        {% endwith %}{% endwith %}{% endwith %}{% endwith %}
+    {% endifequal %}
+    <h2>Details for {{holiday_request}}</h2>
+    <p><strong>Employee: </strong>{{holiday_request.employee.get_full_name}}</p>
+    <p><strong>Time Requested: </strong>{{ holiday_request.date_made|date }} {{holiday_request.date_made|date:"H:i"}}</p>
+    <p><strong>Status: </strong>{{ holiday_request.get_status_display }}{% if holiday_request.administrator %} by {{ holiday_request.administrator.get_full_name }} {% endif %}</p>
+    {% if holiday_request.employee_comment %}
+        <p><strong>{{holiday_request.employee.get_full_name}} commented:</strong></p>
+        <div class="container">{{ holiday_request.employee_comment }}</div>
+    {% endif %}
+    {% if not hol_auth_form %}
+        {% if holiday_request.manager_comment %}
+            <p><strong>{{ holiday_request.administrator.get_full_name }} Commented:</strong></p>
+            <div class="container">{{ holiday_request.manager_comment }}</div>
+        {% endif %}
+    {% endif %}
+    <p><strong>Days Requested:</strong></p>
+    <ul>
+    {% for day in holidays.all %}
+        <li>{{day}}</li>
+    {% endfor %}
+    </ul>
+    {% if hol_auth_form %}
+        <form method="POST">
+            {{hol_auth_form.as_p}}
+            <p class="clear"><input type="submit" value="Send"></p>
+        </form>
+    {% endif %}
+{% endblock %}

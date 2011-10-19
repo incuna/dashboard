@@ -1,0 +1,18 @@
+O Mighty {{ hol_req.employee.manager.get_full_name }},
+
+{{ hol_req.employee.get_full_name }} has requested holiday leave on the following days:
+{% for day in hol_req.holiday_set.all %}
+    {{ day }}{% endfor %}
+{% if hol_req.employee_comment %}
+{{ hol_req.employee.get_full_name }} commented: "{{ hol_req.employee_comment }}".
+{% endif %}
+Will you accept this pitiful cry for help or send this unworthy cur back to the grindstone to weep as they continue to work their grubby fingers down to the bone?
+
+Cast your judgement at the address below:
+http://{{site.domain}}{% url holiday_request_details pk=hol_req.pk %}
+
+Awaiting your decree,
+
+
+Holiday Request System
+(Powered by iceHol)

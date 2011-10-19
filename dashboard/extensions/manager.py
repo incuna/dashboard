@@ -1,7 +1,7 @@
 from django.db import models
 
 def register(cls, admin_cls):
-    cls.add_to_class('is_manager', models.BooleanField())
+    cls.add_to_class('is_manager', models.BooleanField(default=False))
 
     if admin_cls:
         if admin_cls.fieldsets:

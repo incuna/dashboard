@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% load holidaytags %}
+
+{% block nav %}{{super.nav}}
+{% menuitems %}
+    {% navitem 'holiday_user' request.user.username %}My Requests{% endnavitem %}
+    {% navitem 'holiday_make_request' %}Make Request{% endnavitem %}
+    {% if request.user.is_manager %}
+    {% navitem 'holiday_request_inbox' %}
+        {% with request.user.managed_pending_requests as my_pending %}
+            Pending Request Inbox{% if my_pending %} ({{ my_pending.count }}){% endif %}
+        {% endwith %}
+    {% endnavitem %}
+    {% navitem 'holiday_all_pending' %}
+        {% all_pending_requests as all_requests %}
+            All Pending Requests{% if all_requests %} ({{ all_requests.count }}){% endif %}
+    {% endnavitem %}
+    {% navitem 'holiday_employee_list' %}All Employees{% endnavitem %}
+    {% endif %}
+    {% navitem 'holiday_calendar_view' %}Calendar{% endnavitem %}
+{% endmenuitems %}
+{% endblock %}

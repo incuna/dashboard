@@ -1,0 +1,43 @@
+{% extends "holiday/base.html" %}
+{% load holidaytags %}
+
+{% block title %}Incuna Holiday Requests - Pending Requests{% endblock %}
+
+{% block content %}
+    <h2>Pending Holiday Requests</h2>
+    {% for p in holiday_requests.all|dictsortreversed:"date_made" %}
+        {% if forloop.first %}
+        <table id="pending-requests" class="standardtable">
+            <thead>
+            <tr>
+                <th>Holiday Begins</th>
+                <th>Managed By</th>
+                <th>Requested By</th>
+                <th>Days Requested<br />(This / Next Year)</th>
+                <th>Days Left Before<br />(This / Next Year)</th>
+                <th>Days Left After<br />(This / Next Year)</th>
+                <th class="noborder"></th>
+            </tr>
+            </thead>
+        {% endif %}
+        {% with p|days_requested_by_year as days_req_0 %}
+        {% with p|days_requested_by_year:1 as days_req_1 %}
+        {% with p.employee|days_left_by_year as days_left_0 %}
+        {% with p.employee|days_left_by_year:1 as days_left_1 %}
+            <tr>
+                {% with p.holiday_set.all|first as first_hol %}
+                    <td>{{ first_hol.date|date }}</td>
+                {% endwith %}
+                <td>{{ p.employee.manager.get_full_name }}</td>
+                <td>{{ p.employee.get_full_name }}</td>
+                <td>{{ days_req_0 }} / {{ days_req_1 }}</td>
+                <td>{{ days_left_0 }} / {{ days_left_1 }}</td>
+                <td>{{ days_left_0|subtract:days_req_0 }} / {{ days_left_1|subtract:days_req_1 }}</td>
+                <td><a href="{% url holiday_request_details pk=p.pk %}">{% ifnotequal p.employee request.user %}Manage{% else %}Details{% endifnotequal %}</a></td>
+            </tr>
+        {% endwith %}{% endwith %}{% endwith %}{% endwith %}
+        {% if forloop.last %}</table>{% endif %}
+    {% empty %}
+        <p>There are no pending requests</p>
+    {% endfor %}
+{% endblock %}
