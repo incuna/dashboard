@@ -6,36 +6,39 @@ from django.core.urlresolvers import reverse
 from django.forms.models import inlineformset_factory
 from django.shortcuts import redirect, render_to_response
 from django.template import RequestContext
-from django.views.generic import CreateView, ListView, TemplateView
+from django.views.generic import CreateView, DetailView, ListView, TemplateView
 
 from forms import MovieRatingForm, MovieRatingInlineForm, MovieSubmissionForm
 from models import Movie, Rating
 
-@login_required
-def current(request, extra_context=None, template_name='imc/current.html'):
-    context = RequestContext(request)
-    if extra_context != None:
-        context.update(extra_context)
+class Current(CreateView):
+    form_class = MovieRatingForm
+    model = Movie
+    template_name = 'imc/current.html'
 
-    movie = Movie.objects.current()
-    if request.method == 'POST':
-        form = MovieRatingForm(request.POST)
-        if form.is_valid():
-            if not hasattr(request.user, 'profile'):
-                messages.error(request, 'The admin cannot rate movies.')
-                return redirect(reverse('index'))
-            instance = form.save(commit=False)
-            instance.movie = movie
-            instance.user = request.user.profile
-            instance.save()
-            return redirect(reverse('movie-current'))
-    else:
-        form = MovieRatingForm()
-        if Rating.objects.filter(user=request.user, movie=movie):
-            context.update({'rating': Rating.objects.get_rating(movie=movie)})
+    def form_valid(self, form):
+        if not hasattr(self.request.user, 'profile'):
+            messages.error(self.request, 'The admin cannot rate movies.')
+            return redirect(reverse('index'))
+        messages.info(self.request, 'Thanks for rating!')
+        return super(Current, self).form_valid(form)
 
-    context.update({'form': form, 'movie': movie, 'user': request.user})
-    return render_to_response(template_name, context)
+    def get_context_data(self, **kwargs):
+        context = super(Current, self).get_context_data(**kwargs)
+        movie = Movie.objects.current()
+        context['movie'] = movie
+        if Rating.objects.filter(user=self.request.user, movie=movie):
+            context['rating'] = Rating.objects.get_rating(movie=movie)
+        return context
+
+    def get_form(self, form_class):
+        form = super(Current, self).get_form(form_class)
+        form.instance.movie = Movie.objects.current()
+        form.instance.user = self.request.user.profile
+        return form
+
+    def get_success_url(self):
+        return reverse('movie-current')
 
 @login_required
 def group_rating(request, slug=None, extra_context=None, template_name='imc/group_rating.html'):
