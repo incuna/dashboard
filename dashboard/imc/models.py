@@ -36,6 +36,7 @@ class Movie(models.Model):
     name = models.CharField(max_length=255)
     slug = models.SlugField(max_length=255)
     added_by = models.ForeignKey(Profile)
+    is_current = models.BooleanField()
 
     # imdb data
     imdb_id = models.CharField(max_length=7, null=True, blank=True)
