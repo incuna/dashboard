@@ -67,6 +67,10 @@ class Index(TemplateView):
         context.update({'movie': Movie.objects.current()})
         return context
 
+class Pool(ListView):
+    queryset = Movie.objects.filter(index__isnull=True)
+    template_name = 'imc/pool.html'
+
 class Previous(ListView):
     template_name = 'imc/previous.html'
 

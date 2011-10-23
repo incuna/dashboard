@@ -1,0 +1,12 @@
+{% extends "imc/base.html" %}
+
+{% block content %}
+<table>
+    {% for movie in object_list %}
+    <tr class="movie">
+        <td><a href="{% url movie movie.slug %}">{{ movie.name }}</a></td>
+    </tr>
+    {% endfor %}
+</table>
+{% endblock %}
+
