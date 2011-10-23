@@ -94,6 +94,9 @@ class RatingInlineForm(forms.ModelForm):
     class Meta:
         model = Rating
 
+class SelectForm(forms.ModelForm):
+    pass
+
 class SubmissionForm(forms.ModelForm):
 
     class Meta:

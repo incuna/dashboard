@@ -4,7 +4,7 @@ from django.core.urlresolvers import reverse
 from django.forms.models import inlineformset_factory
 from django.shortcuts import redirect, render_to_response
 from django.template import RequestContext
-from django.views.generic import CreateView, DetailView, ListView, TemplateView
+from django.views.generic import CreateView, DetailView, FormView, ListView, TemplateView
 
 from imc.forms import RatingForm, RatingInlineForm, SelectForm, SubmissionForm
 from imc.models import Movie, Rating
@@ -73,6 +73,17 @@ class Previous(ListView):
     queryset = Movie.objects.filter(index__isnull=False)
     template_name = 'imc/previous.html'
 
+class Select(FormView):
+    form_class = SelectForm
+
+    def get_initial(self):
+        # TODO: add the game theory to get a random movie here.
+        # TODO: the actual code needs to go on the model as a static method
+        # TODO: Can probably get away with putting this on the initial var if it's just a function
+        pass
+
+    def get_success_url(self):
+        return reverse('movie-index')
 
 class Submit(CreateView):
     form_class = SubmissionForm
