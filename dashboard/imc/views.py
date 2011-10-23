@@ -1,5 +1,3 @@
-from datetime import datetime
-
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.core.urlresolvers import reverse
@@ -72,10 +70,9 @@ class Pool(ListView):
     template_name = 'imc/pool.html'
 
 class Previous(ListView):
+    queryset = Movie.objects.filter(index__isnull=False)
     template_name = 'imc/previous.html'
 
-    def get_queryset(self):
-        return Movie.objects.filter(period__finish__lt=datetime.now())
 
 class Submit(CreateView):
     form_class = SubmissionForm
