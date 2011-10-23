@@ -16,6 +16,7 @@ class Movie(models.Model):
     slug = models.SlugField(max_length=255)
     added_by = models.ForeignKey(Profile)
     is_current = models.BooleanField()
+    index = models.IntegerField(unique=True, null=True, blank=True)
 
     # imdb data
     imdb_id = models.CharField(max_length=7, null=True, blank=True)
