@@ -88,13 +88,11 @@ class Submit(CreateView):
 
 class Widget(DetailView):
     model = Movie
+    queryset = Movie.objects.current()
     template_name = 'imc/widget.html'
 
     def get_context_data(self, **kwargs):
         context = super(Widget, self).get_context_data(**kwargs)
         context['rating'] = Movie.get_rating_for(self.get_queryset())
         return context
-
-    def get_object(self, queryset=None):
-        return Movie.objects.current()
 
