@@ -85,7 +85,8 @@ class RatingForm(forms.ModelForm):
         model = Rating
         fields = ('rating',)
 
-not_yet_rated = Profile.objects.exclude(id__in=Rating.objects.filter(movie=Movie.objects.current()).values('user'))
+current_movie_ratings = Rating.objects.filter(movie=Movie.objects.current()).values('user')
+not_yet_rated = Profile.objects.exclude(id__in=current_movie_ratings)
 class RatingInlineForm(forms.ModelForm):
     rating = forms.ChoiceField(choices=RATING_CHOICES, required=True,
             widget=RadioSelect(renderer=InputOnlyRadioRenderer))
