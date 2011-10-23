@@ -67,13 +67,13 @@ class Index(TemplateView):
         context.update({'movie': Movie.objects.current()})
         return context
 
-class PreviousMovie(ListView):
+class Previous(ListView):
     template_name = 'imc/previous.html'
 
     def get_queryset(self):
         return Movie.objects.filter(period__finish__lt=datetime.now())
 
-class SubmitMovie(CreateView):
+class Submit(CreateView):
     form_class = MovieSubmissionForm
     model = Movie
     template_name = 'imc/submit.html'
@@ -81,7 +81,7 @@ class SubmitMovie(CreateView):
     def form_valid(self, form):
         form.added_by = self.request.user
         messages.info(self.request, '')
-        return super(SubmitMovie, self).form_valid(form)
+        return super(Submit, self).form_valid(form)
 
     def get_success_url(self):
         return reverse('movie-submit')
