@@ -68,6 +68,13 @@ class Movie(models.Model):
         return movie['cover url']
 
     @staticmethod
+    def make_current(movie):
+        old = Movie.objects.get(is_current=True)
+        old.is_current = False
+        movie.is_current = True
+        movie.index = old.index + 1
+
+    @staticmethod
     def get_rating_for(movie):
         return Rating.objects.filter(movie=movie).aggregate(rating=Sum('rating'))['rating']
 
