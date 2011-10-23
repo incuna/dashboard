@@ -1,5 +1,14 @@
 from django.db.models import Avg, Manager
 
+class MovieManager(Manager):
+    def current(self):
+        movie_by_index = self.get_query_set().filter(index__isnull=False).order_by('-index')
+        try:
+            print movie_by_index
+            return movie_by_index[0]
+        except IndexError:
+            return None
+
 class PeriodManager(Manager):
     def last_finish(self):
         """Returns the latest Period by finish date"""

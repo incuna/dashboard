@@ -1,5 +1,4 @@
-from datetime import timedelta, datetime
-from random import choice
+from datetime import timedelta
 from re import compile
 
 from django.conf import settings
@@ -9,27 +8,7 @@ from django.template.defaultfilters import slugify
 from imdb import IMDb
 from profiles.models import Profile
 
-from managers import PeriodManager, RatingManager
-
-class MovieManager(models.Manager):
-    def current(self):
-        try:
-            return self.get_query_set().filter(period__finish__gte=datetime.now()).order_by('period__finish')[0]
-        except IndexError:
-            last_day = Period.objects.last_finish()
-            new_period = Period.objects.create(start=last_day.finish + timedelta(7 - last_day.finish.weekday()))
-            random_movie = choice(Movie.objects.unwatched())
-            random_movie.period = new_period
-            random_movie.save(imdb_update=False)
-            return random_movie
-
-    def previous(self):
-        """Return previously selected movies"""
-        return self.get_query_set().filter(finish__lt=datetime.now())
-
-    def unwatched(self):
-        """Return movies that aren't in a showing which has been watched"""
-        return self.get_query_set().filter()
+from imc.managers import MovieManager, PeriodManager, RatingManager
 
 class Movie(models.Model):
     period = models.OneToOneField('Period', null=True, blank=True)
