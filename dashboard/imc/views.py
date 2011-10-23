@@ -8,11 +8,11 @@ from django.shortcuts import redirect, render_to_response
 from django.template import RequestContext
 from django.views.generic import CreateView, DetailView, ListView, TemplateView
 
-from imc.forms import MovieRatingForm, MovieRatingInlineForm, MovieSubmissionForm
+from imc.forms import RatingForm, RatingInlineForm, SelectForm, SubmissionForm
 from imc.models import Movie, Rating
 
 class Current(CreateView):
-    form_class = MovieRatingForm
+    form_class = RatingForm
     model = Movie
     template_name = 'imc/current.html'
 
@@ -47,7 +47,7 @@ def group_rating(request, slug=None, extra_context=None, template_name='imc/grou
         context.update(extra_context)
 
     movie = Movie.objects.current()
-    MovieFormSet = inlineformset_factory(Movie, Rating, form=MovieRatingInlineForm)
+    MovieFormSet = inlineformset_factory(Movie, Rating, form=RatingInlineForm)
     if request.method == 'POST':
         formset = MovieFormSet(request.POST, instance=movie)
         if formset.is_valid():
@@ -74,7 +74,7 @@ class Previous(ListView):
         return Movie.objects.filter(period__finish__lt=datetime.now())
 
 class Submit(CreateView):
-    form_class = MovieSubmissionForm
+    form_class = SubmissionForm
     model = Movie
     template_name = 'imc/submit.html'
 

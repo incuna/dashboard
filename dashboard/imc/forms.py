@@ -77,7 +77,7 @@ RATING_CHOICES = (
     (9, 'Excellent'),
     (10, 'Perfect'),
 )
-class MovieRatingForm(forms.ModelForm):
+class RatingForm(forms.ModelForm):
     rating = forms.ChoiceField(choices=RATING_CHOICES, required=True,
             widget=RadioSelect(renderer=InputOnlyRadioRenderer))
 
@@ -86,7 +86,7 @@ class MovieRatingForm(forms.ModelForm):
         fields = ('rating',)
 
 not_yet_rated = Profile.objects.exclude(id__in=Rating.objects.filter(movie=Movie.objects.current()).values('user'))
-class MovieRatingInlineForm(forms.ModelForm):
+class RatingInlineForm(forms.ModelForm):
     rating = forms.ChoiceField(choices=RATING_CHOICES, required=True,
             widget=RadioSelect(renderer=InputOnlyRadioRenderer))
     user = forms.ModelChoiceField(queryset=not_yet_rated)
@@ -94,7 +94,7 @@ class MovieRatingInlineForm(forms.ModelForm):
     class Meta:
         model = Rating
 
-class MovieSubmissionForm(forms.ModelForm):
+class SubmissionForm(forms.ModelForm):
 
     class Meta:
         fields = ('imdb_link',)
