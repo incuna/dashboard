@@ -5,7 +5,7 @@ from django.utils.encoding import force_unicode
 from django.utils.safestring import mark_safe
 from profiles.models import Profile
 
-from models import Movie, Rating
+from imc.models import Movie, Rating
 
 class MovieAdminForm(forms.ModelForm):
 

@@ -8,8 +8,8 @@ from django.shortcuts import redirect, render_to_response
 from django.template import RequestContext
 from django.views.generic import CreateView, DetailView, ListView, TemplateView
 
-from forms import MovieRatingForm, MovieRatingInlineForm, MovieSubmissionForm
-from models import Movie, Rating
+from imc.forms import MovieRatingForm, MovieRatingInlineForm, MovieSubmissionForm
+from imc.models import Movie, Rating
 
 class Current(CreateView):
     form_class = MovieRatingForm
