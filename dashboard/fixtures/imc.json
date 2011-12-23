@@ -1,1 +1,48 @@
-[{"pk": 1, "model": "imc.movie", "fields": {"plot": "Self-proclaimed stuntman Rod Kimble is preparing for the jump of his life - to clear fifteen buses to raise money for his abusive stepfather Frank's life-saving heart operation.", "finish": "2011-05-27", "name": "Hot Rod", "image": "http://ia.media-imdb.com/images/M/MV5BNjYwNjA3OTY0Nl5BMl5BanBnXkFtZTcwNDMyNDUzMw@@.jpg", "writer": "Pam Brady", "thumbnail": "http://ia.media-imdb.com/images/M/MV5BNjYwNjA3OTY0Nl5BMl5BanBnXkFtZTcwNDMyNDUzMw@@._V1._SX94_SY140_.jpg", "imdb_id": "0787475", "director": "Akiva Schaffer", "start": "2011-05-02", "imdb_link": "http://www.imdb.com/title/tt0787475/", "imdb_rating": 6.5, "year": "2007", "slug": "hot-rod", "added_by": 2}}, {"pk": 2, "model": "imc.movie", "fields": {"plot": "An impromptu goodbye party for Professor John Oldman becomes a mysterious interrogation after the retiring...", "finish": "2011-06-24", "name": "The Man from Earth", "image": "http://ia.media-imdb.com/images/M/MV5BNjUwMDQ2NTQxMF5BMl5BanBnXkFtZTcwMDQ4NDIzMQ@@.jpg", "writer": "Jerome Bixby", "thumbnail": "http://ia.media-imdb.com/images/M/MV5BNjUwMDQ2NTQxMF5BMl5BanBnXkFtZTcwMDQ4NDIzMQ@@._V1._SX100_SY129_.jpg", "imdb_id": "0756683", "director": "Richard Schenkman", "start": "2011-05-30", "imdb_link": "http://www.imdb.com/title/tt0756683/", "imdb_rating": 8.0, "year": "2007", "slug": "the-man-from-earth", "added_by": 4}}]
+[
+  {
+    "pk": 1,
+    "model": "imc.movie",
+    "fields": {
+      "plot": "Self-proclaimed stuntman Rod Kimble is preparing for the jump of his life - to clear fifteen buses to raise money for his abusive stepfather Frank's life-saving heart operation.",
+      "name": "Hot Rod",
+      "image": "http://ia.media-imdb.com/images/M/MV5BNjYwNjA3OTY0Nl5BMl5BanBnXkFtZTcwNDMyNDUzMw@@.jpg",
+      "writer": "Pam Brady",
+      "period": null,
+      "imdb_id": "0787475",
+      "director": "Akiva Schaffer",
+      "thumbnail": "http://ia.media-imdb.com/images/M/MV5BNjYwNjA3OTY0Nl5BMl5BanBnXkFtZTcwNDMyNDUzMw@@._V1._SX94_SY140_.jpg",
+      "imdb_link": "http://www.imdb.com/title/tt0787475/",
+      "imdb_rating": 6.5,
+      "year": "2007",
+      "slug": "hot-rod",
+      "added_by": 2
+    }
+  },
+  {
+    "pk": 2,
+    "model": "imc.movie",
+    "fields": {
+      "plot": "An impromptu goodbye party for Professor John Oldman becomes a mysterious interrogation after the retiring...",
+      "name": "The Man from Earth",
+      "image": "http://ia.media-imdb.com/images/M/MV5BNjUwMDQ2NTQxMF5BMl5BanBnXkFtZTcwMDQ4NDIzMQ@@.jpg",
+      "writer": "Jerome Bixby",
+      "period": null,
+      "imdb_id": "0756683",
+      "director": "Richard Schenkman",
+      "thumbnail": "http://ia.media-imdb.com/images/M/MV5BNjUwMDQ2NTQxMF5BMl5BanBnXkFtZTcwMDQ4NDIzMQ@@._V1._SX100_SY129_.jpg",
+      "imdb_link": "http://www.imdb.com/title/tt0756683/",
+      "imdb_rating": 8.0,
+      "year": "2007",
+      "slug": "the-man-from-earth",
+      "added_by": 4
+    }
+  },
+  {
+    "pk": 1,
+    "model": "imc.period",
+    "fields": {
+      "start": "2011-01-01",
+      "finish": "2011-01-01"
+    }
+  }
+]
