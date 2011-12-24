@@ -1,7 +1,7 @@
 from django.contrib import admin
 
 from forms import MovieAdminForm
-from models import Movie, Period
+from models import Movie
 
 class MovieAdmin(admin.ModelAdmin):
     fields = ('name', 'slug', 'imdb_link', 'added_by')
@@ -26,5 +26,4 @@ class MovieAdmin(admin.ModelAdmin):
         return qs.filter(added_by=user)
 
 admin.site.register(Movie)
-admin.site.register(Period)
 

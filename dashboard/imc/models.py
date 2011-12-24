@@ -1,4 +1,3 @@
-from datetime import timedelta
 from re import compile
 
 from django.conf import settings
@@ -8,15 +7,17 @@ from django.template.defaultfilters import slugify
 from imdb import IMDb
 from profiles.models import Profile
 
-from imc.managers import MovieManager, PeriodManager, RatingManager
+from imc.managers import MovieManager, RatingManager
 
 class Movie(models.Model):
-    period = models.OneToOneField('Period', null=True, blank=True)
     name = models.CharField(max_length=255)
     slug = models.SlugField(max_length=255)
     added_by = models.ForeignKey(Profile)
     is_current = models.BooleanField()
     index = models.IntegerField(unique=True, null=True, blank=True)
+    begin = models.DateField(blank=True, null=True)
+    end = models.DateField(blank=True, null=True,
+                help_text='Defaults to %s days after start' % settings.IMC_DEFAULT_PERIOD)
 
     # imdb data
     imdb_id = models.CharField(max_length=7, null=True, blank=True)
@@ -77,23 +78,6 @@ class Movie(models.Model):
     @staticmethod
     def get_rating_for(movie):
         return Rating.objects.filter(movie=movie).aggregate(rating=Sum('rating'))['rating']
-
-class Period(models.Model):
-    start = models.DateField()
-    finish = models.DateField(blank=True, help_text='Defaults to %s days after start' % settings.IMC_DEFAULT_PERIOD)
-
-    objects = PeriodManager()
-
-    class Meta:
-        unique_together = ('start', 'finish')
-
-    def __unicode__(self):
-        return '%s to %s' % (self.start, self.finish)
-
-    def save(self, *args, **kwargs):
-        if not self.finish:
-            self.finish = self.start + timedelta(days=settings.IMC_DEFAULT_PERIOD)
-        super(Period, self).save(*args, **kwargs)
 
 class Rating(models.Model):
     user = models.ForeignKey(Profile)
