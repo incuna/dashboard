@@ -1,13 +1,21 @@
 #dashboard {
-    margin: 20px auto 0;
-    width: 925px;
+    margin: 0 auto;
+    overflow: auto;
+    padding: 40px 10px;
 }
 
 .service {
     cursor: pointer;
     float: left;
-    height: 185px;
-    margin: 10px 30px 20px;
+    height: 200px;
+    margin: 10px;
+    padding: 10px;
+    background-color: #fff;
+    width: 150px;
+    text-align: center;
+    border-radius: 20px;
+    border: 1px solid #eee;
+    box-shadow: 0 0 3px #ddd inset;
 }
 
 .service img {

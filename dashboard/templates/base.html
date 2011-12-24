@@ -2,6 +2,7 @@
 <html lang="en">
     <head>
         <link rel="stylesheet" type="text/css" charset="utf-8" href="{{ STATIC_URL }}styles/reset.css">
+        <link rel="stylesheet" type="text/css" href="//twitter.github.com/bootstrap/1.4.0/bootstrap.css" />
         <link rel="stylesheet" type="text/css" charset="utf-8" href="{{ STATIC_URL }}styles/main.css">
         <link rel="stylesheet" type="text/css" charset="utf-8" href="{{ STATIC_URL }}styles/header.css">
         {% block extrastyle %}{% endblock %}
@@ -20,23 +21,23 @@
         {% endif %}
     </head>
     <body id="{% block bodyid %}{% endblock %}">
-        <header>
+        <header class="topbar">
         {% block header %}
-            <div id="branding">
-                {% block branding %}
-                <h1 id="site-name"><a href="{% url index %}">Incuna Dashboard</a></h1>
-                {% endblock %}
+            <div class="topbar-inner">
+                <div class="container">
+                    {% block branding %}
+                    <a class="brand" href="{% url index %}">Incuna Dashboard</a>
+                    {% endblock %}
+                    {% if user.is_active and user.is_staff %}
+                        {% block userlinks %}
+                        <ul id="user-tools" class="nav secondary-nav">
+                            <li><a href="{% url admin:password_change %}">Change password</a></li>
+                            <li><a href="{% url admin:logout %}">Log out</a></li>
+                        </ul>
+                        {% endblock %}
+                    {% endif %}
+                </div>
             </div>
-            {% if user.is_active and user.is_staff %}
-            <div id="user-tools">
-                {% block userlinks %}
-                <ul>
-                    <li><a href="{% url admin:password_change %}">Change password</a></li>
-                    <li><a href="{% url admin:logout %}">Log out</a></li>
-                </ul>
-                {% endblock %}
-            </div>
-            {% endif %}
         {% endblock %}
         </header>
         {% if messages %}

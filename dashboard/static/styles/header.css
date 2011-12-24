@@ -1,59 +1,16 @@
-header, #header {
-    background-color: black;
-    background-image: url(../images/header_background.png);
-    height: 40px;
-}
-
-#branding {
-    float: left;
-    width: 15em;
-}
-#branding h1 {
-    font-family: "Lucida Grande", "DejaVu Sans", "Bitstream Vera Sans", Verdana, Arial, sans-serif;
-    font-size: 18px;
-    font-weight: normal;
-    line-height: 18px;
-    margin: 10px 0;
-    padding: 0 10px 0;
-}
-#branding h1 a {color: #ffa239 !important;}
-#branding h1 a:hover {text-decoration: none;}
-
-#user-tools {
-    height: 40px;
-    margin-right: 10px;
-    padding: 0;
-}
-#user-tools li {
-    display: inline-block;
-    height: 40px;
-    list-style: none;
-    margin: 0;
-    padding: 0 10px;
-}
-#user-tools a {
-    display: inline-block;
-    font-family: Helvetica, Arial, sans-serif;
-    font-size: 12px;
-    line-height: 40px;
-    text-align: center;
-    text-decoration: none;
-}
-#user-tools a:hover {
+.topbar .brand {
     color: #ffa239;
-    text-decoration: none;
-    text-shadow: white 0px 0px 1px;
+}
+.topbar .brand:hover {
+    color: #ffa239;
+    text-shadow: #ffa239 0 0 1px;
 }
 
-/* Specific styles for the admin section */
-#header #user-tools li {
-    margin-top: -2px;
+.topbar a {
+    -webkit-transition: text-shadow 0.5s
 }
 
-/* Specific styles for the non-admin sections */
-header #user-tools {
-    float: right;
+#user-tools a:hover {
+    text-shadow: #fff 0px 0px 1px;
 }
-header #user-tools a {
-    color: white;
-}
+
