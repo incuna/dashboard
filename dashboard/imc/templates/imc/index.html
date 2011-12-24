@@ -8,21 +8,33 @@
 
 {% block content %}
 <div id="imc-index">
-    <a id="current" href="{% url movie-current %}">
-        <img src="{{ movie.image }}" alt="Current Movie">
-        <p class="name">Current Movie</p>
-    </a>
     <a id="submit" href="{% url movie-submit %}">
         <img src="{{ STATIC_URL }}images/imc/icons/new-movie.jpeg" alt="Submit a Movie">
         <p class="name">Submit a Movie</p>
     </a>
-    <a id="group-rating" href="{% url movie-group-rating %}">
-        <img src="{{ STATIC_URL }}images/imc/icons/holiday.png" alt="Current Movie">
-        <p class="name">Group Rate a Movie</p>
-    </a>
-    <a id="group-rating" href="{% url movie-previous %}">
-        <img src="{{ STATIC_URL }}images/imc/icons/holiday.png" alt="Current Movie">
+    {% if movie %}
+        <a id="current" href="{% url movie-current %}">
+            <img src="{{ movie.image }}" alt="Current Movie">
+            <p class="name">Current Movie</p>
+        </a>
+    {% else %}
+        <div class="disabled"></div>
+    {% endif %}
+    <a id="previous" href="{% url movie-previous %}">
+        <!--
+        TODO: Build a templatetag that takes four movies and builds a collage
+        of their thumbnails scaled to 1/4 the size so they fit the dimensions of the layout.
+        -->
+        <img src="{{ STATIC_URL }}images/imc/icons/previous-movie.png" alt="Current Movie">
         <p class="name">Previous Movies</p>
+    </a>
+    <a id="pool" href="{% url movie-pool %}">
+        <img src="{{ STATIC_URL }}images/imc/icons/movie-pool.png" alt="View the Movie Pool">
+        <p class="name">Movie Pool</p>
+    </a>
+    <a id="group-rating" href="{% url movie-group-rating %}">
+        <img src="{{ STATIC_URL }}images/imc/icons/group-rating.png" alt="Group Rate a Movie">
+        <p class="name">Group Rate a Movie</p>
     </a>
 </div>
 {% endblock content %}

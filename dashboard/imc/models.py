@@ -1,42 +1,23 @@
-from datetime import date, datetime, timedelta
-from random import choice
 from re import compile
 
 from django.conf import settings
-from django.core.mail import mail_admins
 from django.db import models
 from django.db.models import Sum
 from django.template.defaultfilters import slugify
 from imdb import IMDb
 from profiles.models import Profile
 
-from managers import RatingManager
-
-class MovieManager(models.Manager):
-    def current(self):
-        try:
-            return self.get_query_set().filter(period__finish__gte=datetime.now()).order_by('period__finish')[0]
-        except IndexError:
-            last_day = Period.objects.last_finish()
-            new_period = Period.objects.create(start=last_day.finish + timedelta(7 - last_day.finish.weekday()))
-            random_movie = choice(Movie.objects.unwatched())
-            random_movie.period = new_period
-            random_movie.save(imdb_update=False)
-            return random_movie
-
-    def previous(self):
-        """Return previously selected movies"""
-        return self.get_query_set().filter(finish__lt=datetime.now())
-
-    def unwatched(self):
-        """Return movies that aren't in a showing which has been watched"""
-        return self.get_query_set().filter()
+from imc.managers import MovieManager, RatingManager
 
 class Movie(models.Model):
-    period = models.OneToOneField('Period', null=True, blank=True)
     name = models.CharField(max_length=255)
     slug = models.SlugField(max_length=255)
     added_by = models.ForeignKey(Profile)
+    is_current = models.BooleanField()
+    index = models.IntegerField(unique=True, null=True, blank=True)
+    begin = models.DateField(blank=True, null=True)
+    end = models.DateField(blank=True, null=True,
+                help_text='Defaults to %s days after start' % settings.IMC_DEFAULT_PERIOD)
 
     # imdb data
     imdb_id = models.CharField(max_length=7, null=True, blank=True)
@@ -53,18 +34,6 @@ class Movie(models.Model):
 
     def __unicode__(self):
         return self.name
-
-    def added_by_display(self):
-        # TODO: WTF does this do?!
-        return self.added_by.user.first_name
-
-    added_by_display.short_description = 'Added By'
-
-    # TODO: Fix this right up - looks horrid
-    def get_imdb_image_url(self, movie_id):
-        api = IMDb()
-        movie = api.get_movie(movie_id)
-        return movie['cover url']
 
     def save(self, imdb_update=True, *args, **kwargs):
         if imdb_update:
@@ -87,38 +56,28 @@ class Movie(models.Model):
                     pass
         return super(Movie, self).save(*args, **kwargs)
 
+    def added_by_display(self):
+        # TODO: WTF does this do?!
+        return self.added_by.user.first_name
+
+    added_by_display.short_description = 'Added By'
+
+    # TODO: Fix this right up - looks horrid
+    def get_imdb_image_url(self, movie_id):
+        api = IMDb()
+        movie = api.get_movie(movie_id)
+        return movie['cover url']
+
+    @staticmethod
+    def make_current(movie):
+        old = Movie.objects.get(is_current=True)
+        old.is_current = False
+        movie.is_current = True
+        movie.index = old.index + 1
+
     @staticmethod
     def get_rating_for(movie):
         return Rating.objects.filter(movie=movie).aggregate(rating=Sum('rating'))['rating']
-
-class PeriodManager(models.Manager):
-    def last_finish(self):
-        """Returns the latest Period by finish date"""
-        periods = self.get_query_set().all().order_by('-finish')
-        if periods:
-            return periods[0]
-        else:
-            mail_admins('No IMC Periods of Time',
-                    'The IMC app needs some attention, I\'ve created a blank one for'
-                    ' now until the default time away (imc/managers.py L11)')
-            return Period.objects.create(start=date.today())
-
-class Period(models.Model):
-    start = models.DateField()
-    finish = models.DateField(blank=True, help_text='Defaults to %s days after start' % settings.IMC_DEFAULT_PERIOD)
-
-    objects = PeriodManager()
-
-    class Meta:
-        unique_together = ('start', 'finish')
-
-    def __unicode__(self):
-        return '%s to %s' % (self.start, self.finish)
-
-    def save(self, *args, **kwargs):
-        if not self.finish:
-            self.finish = self.start + timedelta(days=settings.IMC_DEFAULT_PERIOD)
-        super(Period, self).save(*args, **kwargs)
 
 class Rating(models.Model):
     user = models.ForeignKey(Profile)
