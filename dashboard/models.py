@@ -31,3 +31,7 @@ def clean_posh_avatar(self):
         return clean_picture(posh_avatar, user)
 ProfileForm.clean_posh_avatar = clean_posh_avatar
 
+for field in Profile._meta.fields:
+    if field.name == 'is_staff':
+        field.default = True
+
