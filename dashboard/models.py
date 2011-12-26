@@ -4,7 +4,6 @@ Profile.register_extensions(
     'dashboard.extensions.manager',
     'dashboard.extensions.avatars',
     'dashboard.extensions.ssh_key',
-    'dashboard.extensions.holidays',
     'permissions'
 )
 
