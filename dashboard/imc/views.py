@@ -91,8 +91,10 @@ class Submit(CreateView):
     template_name = 'imc/submit.html'
 
     def form_valid(self, form):
-        form.added_by = self.request.user
         messages.info(self.request, '')
+        new_film = form.save(commit=False)
+        new_film.added_by = self.request.user.profile
+        new_film.save()
         return super(Submit, self).form_valid(form)
 
     def get_success_url(self):
