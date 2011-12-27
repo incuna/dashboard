@@ -50,8 +50,8 @@ class Movie(models.Model):
                     self.plot = movie['plot outline']
                     self.imdb_rating = movie['rating']
                     self.year = movie['year']
-                    self.director = join_person_list(movie['director'])
-                    self.writer = join_person_list(movie['writer'])
+                    self.director = ', '.join([person['name'] for person in movie['director']])
+                    self.writer = ', '.join([person['name'] for person in movie['writer']])
                 except KeyError:
                     pass
         return super(Movie, self).save(*args, **kwargs)
@@ -91,10 +91,4 @@ class Rating(models.Model):
 
     def __unicode__(self):
         return '%s rated %s: %s' % (self.user, self.movie.name, self.rating)
-
-def join_person_list(persons):
-    person_list = []
-    for person in persons:
-        person_list.append(person['name'])
-    return ', '.join(person_list)
 
