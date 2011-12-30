@@ -1,3 +1,5 @@
+from re import compile
+
 from django import forms
 from django.forms import RadioSelect
 from django.forms.widgets import flatatt, RadioFieldRenderer, RadioInput
@@ -103,4 +105,12 @@ class SubmissionForm(forms.ModelForm):
     class Meta:
         fields = ('imdb_link',)
         model = Movie
+
+    def clean(self, *args, **kwargs):
+        cleaned_data = super(SubmissionForm, self).clean(*args, **kwargs)
+        movie = Movie.exists(compile(r'.+\/tt(\d+)\/').match(cleaned_data['imdb_link']).group(1))
+        if movie:
+            raise forms.ValidationError('%s has already submitted this movie' %
+                                        movie.added_by.first_name.capitalize())
+        return cleaned_data
 

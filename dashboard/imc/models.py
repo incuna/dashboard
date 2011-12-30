@@ -23,7 +23,7 @@ class Movie(models.Model):
                 help_text='Defaults to %s days after start' % settings.IMC_DEFAULT_PERIOD)
 
     # imdb data
-    imdb_id = models.CharField(max_length=7, null=True, blank=True)
+    imdb_id = models.CharField(max_length=7, unique=True, null=True, blank=True)
     imdb_link = models.CharField('Enter your Film\'s IMDb Link', max_length=255, blank=True)
     image = models.ImageField(upload_to='imc/covers/', null=True)
     thumbnail = models.ImageField(upload_to='imc/covers/thumbs/', null=True)
@@ -81,6 +81,13 @@ class Movie(models.Model):
     @staticmethod
     def get_rating_for(movie):
         return Rating.objects.filter(movie=movie).aggregate(rating=Sum('rating'))['rating']
+
+    @staticmethod
+    def exists(imdb_id):
+        try:
+            return Movie.objects.get(imdb_id=imdb_id)
+        except Movie.DoesNotExist:
+            return None
 
     def _cache_image(self, field, url, slug, fn_suffix=''):
         """Store image locally"""
