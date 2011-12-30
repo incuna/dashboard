@@ -1,6 +1,9 @@
 from re import compile
+from urllib2 import urlopen
 
 from django.conf import settings
+from django.core.files import File
+from django.core.files.temp import NamedTemporaryFile
 from django.db import models
 from django.db.models import Sum
 from django.template.defaultfilters import slugify
@@ -22,8 +25,8 @@ class Movie(models.Model):
     # imdb data
     imdb_id = models.CharField(max_length=7, null=True, blank=True)
     imdb_link = models.CharField('Enter your Film\'s IMDb Link', max_length=255, blank=True)
-    thumbnail = models.CharField(max_length=255, null=True)
-    image = models.CharField(max_length=255, null=True)
+    image = models.ImageField(upload_to='imc/covers/', null=True)
+    thumbnail = models.ImageField(upload_to='imc/covers/thumbs/', null=True)
     plot = models.TextField(null=True, blank=True)
     director = models.CharField(max_length=255, null=True, blank=True)
     writer = models.CharField(max_length=255, null=True, blank=True)
@@ -45,8 +48,8 @@ class Movie(models.Model):
                 self.slug = slugify(movie['title'])
                 self.imdb_id = movie.movieID
                 try:
-                    self.thumbnail = movie['cover url']
-                    self.image = movie['full-size cover url']
+                    self._cache_image(self.image, movie['full-size cover url'], self.slug)
+                    self._cache_image(self.thumbnail, movie['cover url'], self.slug, '-thumb')
                     self.plot = movie['plot outline']
                     self.imdb_rating = movie['rating']
                     self.year = movie['year']
@@ -78,6 +81,15 @@ class Movie(models.Model):
     @staticmethod
     def get_rating_for(movie):
         return Rating.objects.filter(movie=movie).aggregate(rating=Sum('rating'))['rating']
+
+    def _cache_image(self, field, url, slug, fn_suffix=''):
+        """Store image locally"""
+        img_temp = NamedTemporaryFile(delete=True)
+        img_temp.write(urlopen(url).read())
+        img_temp.flush()
+        fn = '%s%s.%s' % (slug, fn_suffix, url.rsplit('.', 1)[1])
+        field.save(fn, File(img_temp), save=False)
+
 
 class Rating(models.Model):
     user = models.ForeignKey(Profile)
