@@ -5,7 +5,7 @@
     <h2 id="title">{{ movie.name }} ({{ movie.year }})</h2>
     <div id="movie-main">
         <p>Picked By: {{ movie.added_by.first_name }}</p>
-        <img src="{{ movie.image }}" alt="{{ movie.name }}">
+        <img src="{{ MEDIA_URL }}{{ movie.image }}" alt="{{ movie.name }}">
     </div>
     <div id="movie-info">
         <div id="plot"><p>{{ movie.plot }}</p></div>
