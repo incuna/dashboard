@@ -1,11 +1,14 @@
 from django.contrib import messages
+from django.contrib.auth.decorators import login_required
 from django.core.urlresolvers import reverse
 from django.shortcuts import redirect
 from django.views.generic import CreateView, DetailView, FormView, ListView, TemplateView
 
 from imc.forms import RatingForm, RatingFormSet, SelectForm, SubmissionForm
 from imc.models import Movie, Rating
+from utils import class_view_decorator
 
+@class_view_decorator(login_required)
 class Current(CreateView):
     form_class = RatingForm
     model = Movie
@@ -36,6 +39,7 @@ class Current(CreateView):
         return reverse('movie-current')
 
 
+@class_view_decorator(login_required)
 class GroupRating(CreateView):
     formset_class = RatingFormSet
     template_name = 'imc/group_rating.html'
@@ -66,6 +70,7 @@ class GroupRating(CreateView):
         return reverse('movie-group-rating')
 
 
+@class_view_decorator(login_required)
 class Index(TemplateView):
     template_name = 'imc/index.html'
 
@@ -74,14 +79,20 @@ class Index(TemplateView):
         context.update({'movie': Movie.objects.current()})
         return context
 
+
+@class_view_decorator(login_required)
 class Pool(ListView):
     queryset = Movie.objects.filter(index__isnull=True)
     template_name = 'imc/pool.html'
 
+
+@class_view_decorator(login_required)
 class Previous(ListView):
     queryset = Movie.objects.filter(index__isnull=False)
     template_name = 'imc/previous.html'
 
+
+@class_view_decorator(login_required)
 class Select(FormView):
     form_class = SelectForm
 
@@ -94,6 +105,8 @@ class Select(FormView):
     def get_success_url(self):
         return reverse('movie-index')
 
+
+@class_view_decorator(login_required)
 class Submit(CreateView):
     form_class = SubmissionForm
     model = Movie
@@ -109,6 +122,8 @@ class Submit(CreateView):
     def get_success_url(self):
         return reverse('movie-submit')
 
+
+@class_view_decorator(login_required)
 class Widget(DetailView):
     model = Movie
     queryset = Movie.objects.current()
