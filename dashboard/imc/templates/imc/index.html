@@ -14,7 +14,7 @@
     </a>
     {% if movie %}
         <a id="current" href="{% url movie-current %}">
-            <img src="{{ movie.image }}" alt="Current Movie">
+            <img src="{{ MEDIA_URL }}{{ movie.image }}" alt="Current Movie">
             <p class="name">Current Movie</p>
         </a>
     {% else %}

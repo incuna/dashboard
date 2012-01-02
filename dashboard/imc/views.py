@@ -1,12 +1,9 @@
 from django.contrib import messages
-from django.contrib.auth.decorators import login_required
 from django.core.urlresolvers import reverse
-from django.forms.models import inlineformset_factory
-from django.shortcuts import redirect, render_to_response
-from django.template import RequestContext
+from django.shortcuts import redirect
 from django.views.generic import CreateView, DetailView, FormView, ListView, TemplateView
 
-from imc.forms import RatingForm, RatingInlineForm, SelectForm, SubmissionForm
+from imc.forms import RatingForm, RatingFormSet, SelectForm, SubmissionForm
 from imc.models import Movie, Rating
 
 class Current(CreateView):
@@ -38,24 +35,36 @@ class Current(CreateView):
     def get_success_url(self):
         return reverse('movie-current')
 
-@login_required
-def group_rating(request, slug=None, extra_context=None, template_name='imc/group_rating.html'):
-    context = RequestContext(request)
-    if extra_context != None:
-        context.update(extra_context)
 
-    movie = Movie.objects.current()
-    MovieFormSet = inlineformset_factory(Movie, Rating, form=RatingInlineForm)
-    if request.method == 'POST':
-        formset = MovieFormSet(request.POST, instance=movie)
+class GroupRating(CreateView):
+    formset_class = RatingFormSet
+    template_name = 'imc/group_rating.html'
+    queryset = Rating.objects.none()
+
+    def formset_valid(self, formset):
+        for obj in formset.save(commit=False):
+            obj.movie = self.movie
+            obj.save()
+        return redirect(self.get_success_url())
+
+    def formset_invalid(self, formset):
+        return self.render_to_response(self.get_context_data(formset=formset))
+
+    def get_context_data(self, **kwargs):
+        context = super(GroupRating, self).get_context_data(**kwargs)
+        context['movie'] = Movie.objects.current()
+        context['formset'] = self.formset_class()
+        return context
+
+    def post(self, request, *args, **kwargs):
+        formset = self.formset_class(request.POST)
         if formset.is_valid():
-            formset.save()
-            return redirect(reverse('movie-index'))
-    else:
-        formset = MovieFormSet()
+            return self.formset_valid(formset)
+        return self.formset_invalid(formset)
 
-    context.update({'formset': formset, 'movie': movie, 'rating': Rating.objects.get_rating(movie=movie)})
-    return render_to_response(template_name, context)
+    def get_success_url(self):
+        return reverse('movie-group-rating')
+
 
 class Index(TemplateView):
     template_name = 'imc/index.html'
