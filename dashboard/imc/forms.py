@@ -2,6 +2,7 @@ from re import compile
 
 from django import forms
 from django.forms import RadioSelect
+from django.forms.models import modelformset_factory
 from django.forms.widgets import flatatt, RadioFieldRenderer, RadioInput
 from django.utils.encoding import force_unicode
 from django.utils.safestring import mark_safe
@@ -79,23 +80,30 @@ RATING_CHOICES = (
     (9, 'Excellent'),
     (10, 'Perfect'),
 )
-class RatingForm(forms.ModelForm):
+class BaseRatingForm(forms.ModelForm):
     rating = forms.ChoiceField(choices=RATING_CHOICES, required=True,
             widget=RadioSelect(renderer=InputOnlyRadioRenderer))
 
     class Meta:
+        abstract = True
         model = Rating
+
+
+class RatingForm(BaseRatingForm):
+    class Meta(BaseRatingForm.Meta):
         fields = ('rating',)
+
 
 current_movie_ratings = Rating.objects.filter(movie=Movie.objects.current()).values('user')
 not_yet_rated = Profile.objects.exclude(id__in=current_movie_ratings)
-class RatingInlineForm(forms.ModelForm):
-    rating = forms.ChoiceField(choices=RATING_CHOICES, required=True,
-            widget=RadioSelect(renderer=InputOnlyRadioRenderer))
+class GroupRatingForm(BaseRatingForm):
     user = forms.ModelChoiceField(queryset=not_yet_rated)
 
-    class Meta:
-        model = Rating
+    class Meta(BaseRatingForm.Meta):
+        exclude = ('movie',)
+
+RatingFormSet = modelformset_factory(Rating, form=GroupRatingForm, extra=3)
+
 
 class SelectForm(forms.ModelForm):
     pass
