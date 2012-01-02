@@ -109,5 +109,5 @@ class Rating(models.Model):
         unique_together = ('user', 'movie')
 
     def __unicode__(self):
-        return '%s rated %s: %s' % (self.user, self.movie.name, self.rating)
+        return '%s rated %s: %s' % (self.user.first_name.capitalize(), self.movie.name, self.rating)
 
