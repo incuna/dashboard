@@ -1,9 +1,19 @@
 import json
 
 from django.http import HttpResponse
+from django.views.generic import ListView
 from django.views.generic.list import BaseListView
 
 from models import Item
+
+
+class Index(ListView):
+    model = Item
+
+    def get_context_data(self, **kwargs):
+        context = super(Index, self).get_context_data(**kwargs)
+        print context
+        return context
 
 
 class Json(BaseListView):
