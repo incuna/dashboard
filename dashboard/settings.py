@@ -149,10 +149,10 @@ INSTALLED_APPS = (
     'holiday',
     'imc',
     'password',
+    'shoppinglist',
 
     'status',
     'status.modules.redmine',
-    'status.modules.shoppinglist',
     'status.modules.weather',
 )
 
