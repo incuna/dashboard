@@ -1,19 +1,22 @@
-from django.shortcuts import render_to_response
-from django.template import RequestContext
+import json
+
+from django.http import HttpResponse
+from django.views.generic.list import BaseListView
 
 from models import Item
 
-def index(request, extra_context = None):
-    context = RequestContext(request)
-    if extra_context != None:
-        context.update(extra_context)
 
-    items = Item.objects.filter(bought=False).order_by('created')
-    more = None
-    if items.count() > 9:
-        more = items.count() - 8
-        items = items[:8]
+class Json(BaseListView):
+    queryset = Item.objects.filter(bought=False).order_by('created')
 
-    context.update({'items': items, 'more': more})
-    return render_to_response('shoppinglist/index.html', context)
+    def get_json_data(self):
+        json_context = []
+        if self.object_list.count() > 9:
+            json_context.append({'more': self.object_list.count() - 8})
+            self.object_list = self.object_list[:8]
+        [json_context.append({'name': item.name}) for item in self.object_list]
+        return json_context
+
+    def render_to_response(self, context):
+        return HttpResponse(json.dumps(self.get_json_data()), mimetype='application/json')
 

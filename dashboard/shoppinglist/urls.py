@@ -1,5 +1,9 @@
 from django.conf.urls.defaults import patterns, url
 
-urlpatterns = patterns('status.modules.shoppinglist.views',
-    url(r'', 'index', name='shoppinglist'),
+from shoppinglist.views import Json
+
+
+urlpatterns = patterns('',
+    url(r'^json/$', Json.as_view(), name='json'),
 )
+

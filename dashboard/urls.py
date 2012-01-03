@@ -24,7 +24,7 @@ urlpatterns = patterns('',
     url(r'^accounts/', include('django.contrib.auth.urls')),
     url(r'^holiday/', include('holiday.urls')),
     url(r'^movie-club/', include('imc.urls')),
-    url(r'^shopping-list/', include('shoppinglist.urls'), namespace='shoppinglist'),
+    url(r'^shopping-list/', include('shoppinglist.urls')),
     url(r'^status/', include('status.urls')),
 
     url(r'^admin/', include(admin.site.urls)),
