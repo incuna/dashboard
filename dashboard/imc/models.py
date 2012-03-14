@@ -98,9 +98,9 @@ class PeriodManager(models.Manager):
         if periods:
             return periods[0]
         else:
-            mail_admins('No IMC Periods of Time',
-                    'The IMC app needs some attention, I\'ve created a blank one for'
-                    ' now until the default time away (imc/managers.py L11)')
+            # mail_admins('No IMC Periods of Time',
+            #         'The IMC app needs some attention, I\'ve created a blank one for'
+            #         ' now until the default time away (imc/managers.py L11)')
             return Period.objects.create(start=date.today())
 
 class Period(models.Model):
