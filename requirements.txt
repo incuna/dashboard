@@ -5,10 +5,11 @@ django==1.3.1
 django-extensions==0.6
 django-password==2.0
 django-uni-form==0.8.0
+django==1.3.1
 feedparser==5.0.1
 formencode==1.2.4 #required for SQLObject > IMDb
 gunicorn==0.12.2
-IMDbPY==4.7
+IMDbPY==4.8.2
 pillow==1.7.5
 psycopg2==2.4
 python-dateutil==1.5
@@ -21,6 +22,9 @@ django-extensible-profiles==0.2.1
 django-incuna==2.7.3
 incuna-twitterstream==1.0
 
+<<<<<<< HEAD
 # hg
 hg+https://incuna@bitbucket.org/alberanid/imdbpy
 
+=======
+>>>>>>> feature-imc

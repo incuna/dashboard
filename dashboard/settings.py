@@ -25,6 +25,7 @@ DATABASES = {
         'USER': 'redmine',
         'PASSWORD': 'moo',
         'HOST': 'redmine.incuna.com',
+        'HOST': 'dev.incuna.com',
         'PORT': '',
     }
 }

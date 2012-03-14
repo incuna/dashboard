@@ -1,11 +1,14 @@
+from re import compile
+
 from django import forms
 from django.forms import RadioSelect
+from django.forms.models import modelformset_factory
 from django.forms.widgets import flatatt, RadioFieldRenderer, RadioInput
 from django.utils.encoding import force_unicode
 from django.utils.safestring import mark_safe
 from profiles.models import Profile
 
-from models import Movie, Rating
+from imc.models import Movie, Rating
 
 class MovieAdminForm(forms.ModelForm):
 
@@ -77,26 +80,45 @@ RATING_CHOICES = (
     (9, 'Excellent'),
     (10, 'Perfect'),
 )
-class MovieRatingForm(forms.ModelForm):
+class BaseRatingForm(forms.ModelForm):
     rating = forms.ChoiceField(choices=RATING_CHOICES, required=True,
             widget=RadioSelect(renderer=InputOnlyRadioRenderer))
 
     class Meta:
+        abstract = True
         model = Rating
+
+
+class RatingForm(BaseRatingForm):
+    class Meta(BaseRatingForm.Meta):
         fields = ('rating',)
 
-not_yet_rated = Profile.objects.exclude(id__in=Rating.objects.filter(movie=Movie.objects.current()).values('user'))
-class MovieRatingInlineForm(forms.ModelForm):
-    rating = forms.ChoiceField(choices=RATING_CHOICES, required=True,
-            widget=RadioSelect(renderer=InputOnlyRadioRenderer))
+
+current_movie_ratings = Rating.objects.filter(movie=Movie.objects.current()).values('user')
+not_yet_rated = Profile.objects.exclude(id__in=current_movie_ratings)
+class GroupRatingForm(BaseRatingForm):
     user = forms.ModelChoiceField(queryset=not_yet_rated)
 
-    class Meta:
-        model = Rating
+    class Meta(BaseRatingForm.Meta):
+        exclude = ('movie',)
 
-class MovieSubmissionForm(forms.ModelForm):
+RatingFormSet = modelformset_factory(Rating, form=GroupRatingForm, extra=3)
+
+
+class SelectForm(forms.ModelForm):
+    pass
+
+class SubmissionForm(forms.ModelForm):
 
     class Meta:
         fields = ('imdb_link',)
         model = Movie
+
+    def clean(self, *args, **kwargs):
+        cleaned_data = super(SubmissionForm, self).clean(*args, **kwargs)
+        movie = Movie.exists(compile(r'.+\/tt(\d+)\/').match(cleaned_data['imdb_link']).group(1))
+        if movie:
+            raise forms.ValidationError('%s has already submitted this movie' %
+                                        movie.added_by.first_name.capitalize())
+        return cleaned_data
 

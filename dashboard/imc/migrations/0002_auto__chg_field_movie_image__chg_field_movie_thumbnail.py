@@ -8,44 +8,20 @@ class Migration(SchemaMigration):
 
     def forwards(self, orm):
         
-        # Removing unique constraint on 'UserRating', fields ['user', 'movie']
-        db.delete_unique('imc_userrating', ['user_id', 'movie_id'])
+        # Changing field 'Movie.image'
+        db.alter_column('imc_movie', 'image', self.gf('django.db.models.fields.files.ImageField')(max_length=100, null=True))
 
-        # Deleting model 'UserRating'
-        db.delete_table('imc_userrating')
-
-        # Adding model 'Rating'
-        db.create_table('imc_rating', (
-            ('id', self.gf('django.db.models.fields.AutoField')(primary_key=True)),
-            ('user', self.gf('django.db.models.fields.related.ForeignKey')(to=orm['imc.FilmBuff'])),
-            ('movie', self.gf('django.db.models.fields.related.ForeignKey')(to=orm['imc.Movie'])),
-            ('rating', self.gf('django.db.models.fields.IntegerField')(default=0, max_length=2, blank=True)),
-        ))
-        db.send_create_signal('imc', ['Rating'])
-
-        # Adding unique constraint on 'Rating', fields ['user', 'movie']
-        db.create_unique('imc_rating', ['user_id', 'movie_id'])
+        # Changing field 'Movie.thumbnail'
+        db.alter_column('imc_movie', 'thumbnail', self.gf('django.db.models.fields.files.ImageField')(max_length=100, null=True))
 
 
     def backwards(self, orm):
         
-        # Removing unique constraint on 'Rating', fields ['user', 'movie']
-        db.delete_unique('imc_rating', ['user_id', 'movie_id'])
+        # Changing field 'Movie.image'
+        db.alter_column('imc_movie', 'image', self.gf('django.db.models.fields.CharField')(max_length=255, null=True))
 
-        # Adding model 'UserRating'
-        db.create_table('imc_userrating', (
-            ('movie', self.gf('django.db.models.fields.related.ForeignKey')(to=orm['imc.Movie'])),
-            ('user', self.gf('django.db.models.fields.related.ForeignKey')(to=orm['imc.FilmBuff'])),
-            ('id', self.gf('django.db.models.fields.AutoField')(primary_key=True)),
-            ('rating', self.gf('django.db.models.fields.IntegerField')(default=0, max_length=2, blank=True)),
-        ))
-        db.send_create_signal('imc', ['UserRating'])
-
-        # Adding unique constraint on 'UserRating', fields ['user', 'movie']
-        db.create_unique('imc_userrating', ['user_id', 'movie_id'])
-
-        # Deleting model 'Rating'
-        db.delete_table('imc_rating')
+        # Changing field 'Movie.thumbnail'
+        db.alter_column('imc_movie', 'thumbnail', self.gf('django.db.models.fields.CharField')(max_length=255, null=True))
 
 
     models = {
@@ -70,7 +46,7 @@ class Migration(SchemaMigration):
             'groups': ('django.db.models.fields.related.ManyToManyField', [], {'to': "orm['auth.Group']", 'symmetrical': 'False', 'blank': 'True'}),
             'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
             'is_active': ('django.db.models.fields.BooleanField', [], {'default': 'True'}),
-            'is_staff': ('django.db.models.fields.BooleanField', [], {'default': 'False'}),
+            'is_staff': ('django.db.models.fields.BooleanField', [], {'default': 'True'}),
             'is_superuser': ('django.db.models.fields.BooleanField', [], {'default': 'False'}),
             'last_login': ('django.db.models.fields.DateTimeField', [], {'default': 'datetime.datetime.now'}),
             'last_name': ('django.db.models.fields.CharField', [], {'max_length': '30', 'blank': 'True'}),
@@ -85,26 +61,23 @@ class Migration(SchemaMigration):
             'model': ('django.db.models.fields.CharField', [], {'max_length': '100'}),
             'name': ('django.db.models.fields.CharField', [], {'max_length': '100'})
         },
-        'imc.filmbuff': {
-            'Meta': {'object_name': 'FilmBuff'},
-            'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
-            'is_film_buff': ('django.db.models.fields.BooleanField', [], {'default': 'False'}),
-            'user': ('django.db.models.fields.related.OneToOneField', [], {'to': "orm['auth.User']", 'unique': 'True'})
-        },
         'imc.movie': {
             'Meta': {'object_name': 'Movie'},
-            'added_by': ('django.db.models.fields.related.ForeignKey', [], {'to': "orm['imc.FilmBuff']"}),
+            'added_by': ('django.db.models.fields.related.ForeignKey', [], {'to': "orm['profiles.Profile']"}),
+            'begin': ('django.db.models.fields.DateField', [], {'null': 'True', 'blank': 'True'}),
             'director': ('django.db.models.fields.CharField', [], {'max_length': '255', 'null': 'True', 'blank': 'True'}),
-            'finish': ('django.db.models.fields.DateField', [], {}),
+            'end': ('django.db.models.fields.DateField', [], {'null': 'True', 'blank': 'True'}),
             'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
-            'image': ('django.db.models.fields.CharField', [], {'max_length': '255', 'null': 'True'}),
+            'image': ('django.db.models.fields.files.ImageField', [], {'max_length': '100', 'null': 'True'}),
             'imdb_id': ('django.db.models.fields.CharField', [], {'max_length': '7', 'null': 'True', 'blank': 'True'}),
-            'imdb_link': ('django.db.models.fields.CharField', [], {'max_length': '255'}),
+            'imdb_link': ('django.db.models.fields.CharField', [], {'max_length': '255', 'blank': 'True'}),
             'imdb_rating': ('django.db.models.fields.FloatField', [], {'null': 'True', 'blank': 'True'}),
+            'index': ('django.db.models.fields.IntegerField', [], {'unique': 'True', 'null': 'True', 'blank': 'True'}),
+            'is_current': ('django.db.models.fields.BooleanField', [], {'default': 'False'}),
             'name': ('django.db.models.fields.CharField', [], {'max_length': '255'}),
             'plot': ('django.db.models.fields.TextField', [], {'null': 'True', 'blank': 'True'}),
-            'start': ('django.db.models.fields.DateField', [], {}),
-            'thumbnail': ('django.db.models.fields.CharField', [], {'max_length': '255', 'null': 'True'}),
+            'slug': ('django.db.models.fields.SlugField', [], {'max_length': '255', 'db_index': 'True'}),
+            'thumbnail': ('django.db.models.fields.files.ImageField', [], {'max_length': '100', 'null': 'True'}),
             'writer': ('django.db.models.fields.CharField', [], {'max_length': '255', 'null': 'True', 'blank': 'True'}),
             'year': ('django.db.models.fields.CharField', [], {'max_length': '4', 'null': 'True', 'blank': 'True'})
         },
@@ -113,7 +86,15 @@ class Migration(SchemaMigration):
             'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
             'movie': ('django.db.models.fields.related.ForeignKey', [], {'to': "orm['imc.Movie']"}),
             'rating': ('django.db.models.fields.IntegerField', [], {'default': '0', 'max_length': '2', 'blank': 'True'}),
-            'user': ('django.db.models.fields.related.ForeignKey', [], {'to': "orm['imc.FilmBuff']"})
+            'user': ('django.db.models.fields.related.ForeignKey', [], {'to': "orm['profiles.Profile']"})
+        },
+        'profiles.profile': {
+            'Meta': {'object_name': 'Profile', '_ormbases': ['auth.User']},
+            'avatar': ('django.db.models.fields.files.ImageField', [], {'max_length': '100', 'null': 'True', 'blank': 'True'}),
+            'is_manager': ('django.db.models.fields.BooleanField', [], {'default': 'False'}),
+            'posh_avatar': ('django.db.models.fields.files.ImageField', [], {'max_length': '100', 'null': 'True', 'blank': 'True'}),
+            'ssh_key': ('django.db.models.fields.TextField', [], {'null': 'True', 'blank': 'True'}),
+            'user_ptr': ('django.db.models.fields.related.OneToOneField', [], {'to': "orm['auth.User']", 'unique': 'True', 'primary_key': 'True'})
         }
     }
 

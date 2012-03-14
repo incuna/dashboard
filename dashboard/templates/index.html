@@ -6,7 +6,7 @@
 {% endblock %}
 
 {% block content %}
-<div id="dashboard">
+<div id="dashboard" class="hero-unit">
     <div id="password" class="service" onclick="window.location = '{% url admin:password_password_changelist %}'">
         <img src="{{ STATIC_URL }}images/icons/password.png" alt="Incuna Password Icon">
         <p class="name">Passwords</p>
@@ -32,7 +32,7 @@
         <p class="name">Shopping List</p>
     </div>
     <div id="redmine" class="service" onclick="window.location = 'http://redmine.incuna.com'">
-        <img src="{{ STATIC_URL }}images/icons/redmine.png" alt="Redmine Icon">
+        <img src="{{ STATIC_URL }}images/icons/chili.png" alt="Redmine Icon">
         <p class="name">Redmine</p>
     </div>
     <div id="trac" class="service" onclick="window.location = 'http://trac.incuna.com/websites'">

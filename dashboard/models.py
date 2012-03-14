@@ -4,8 +4,8 @@ Profile.register_extensions(
     'dashboard.extensions.manager',
     'dashboard.extensions.avatars',
     'dashboard.extensions.ssh_key',
-    'dashboard.extensions.holidays',
-    'permissions')
+    'permissions'
+)
 
 ProfileAdmin.fieldsets[0][1]['fields'].insert(0, 'username')
 
@@ -29,4 +29,8 @@ def clean_posh_avatar(self):
     if posh_avatar:
         return clean_picture(posh_avatar, user)
 ProfileForm.clean_posh_avatar = clean_posh_avatar
+
+for field in Profile._meta.fields:
+    if field.name == 'is_staff':
+        field.default = True
 

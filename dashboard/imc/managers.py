@@ -1,5 +1,14 @@
 from django.db.models import Avg, Manager
 
+class MovieManager(Manager):
+    def current(self):
+        movie_by_index = self.get_query_set().filter(index__isnull=False).order_by('-index')
+        try:
+            return movie_by_index[0]
+        except IndexError:
+            return None
+
+
 class RatingManager(Manager):
     def get_rating(self, movie):
         """Return the rating for a movie"""

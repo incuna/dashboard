@@ -1,13 +1,22 @@
 #dashboard {
-    margin: 20px auto 0;
-    width: 925px;
+    margin: 0 auto;
+    overflow: auto;
+    padding: 40px 18px;
 }
 
 .service {
     cursor: pointer;
     float: left;
-    height: 185px;
-    margin: 10px 30px 20px;
+    height: 200px;
+    margin: 10px;
+    padding: 10px;
+    background-color: #fff;
+    width: 150px;
+    text-align: center;
+    border-radius: 20px;
+    border: 1px solid #eee;
+    box-shadow: 0 0 3px #ddd inset;
+    position: relative;
 }
 
 .service img {
@@ -16,6 +25,12 @@
 
 .service img, .service span {
     display: inline-block;
+}
+
+.service p {
+    position: absolute;
+    bottom: 5px;
+    width: 150px;
 }
 
 p.name {
@@ -30,6 +45,6 @@ p.name {
 #holiday img {margin-top: 22px;}
 #movieclub img {margin-top: 41px;}
 #password img {margin-top: 10px;}
-#redmine img {margin-top: 63px;}
+#redmine img {margin-top: 82px;}
 #status img {margin-top: 31px;}
 #trac img {margin-top: 21px;}
