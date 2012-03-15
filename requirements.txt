@@ -21,9 +21,3 @@ django-extensible-profiles==0.2.1
 django-incuna==2.7.3
 incuna-twitterstream==1.0
 
-<<<<<<< HEAD
-# hg
-hg+https://incuna@bitbucket.org/alberanid/imdbpy
-
-=======
->>>>>>> feature-imc
