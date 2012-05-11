@@ -5,9 +5,9 @@
 {% menuitems %}
     {% navitem 'holiday_user' request.user.username %}My Requests{% endnavitem %}
     {% navitem 'holiday_make_request' %}Make Request{% endnavitem %}
-    {% if request.user.is_manager %}
+    {% if request.user.profile.is_manager %}
     {% navitem 'holiday_request_inbox' %}
-        {% with request.user.managed_pending_requests as my_pending %}
+        {% with my_pending=request.user.profile.managed_pending_requests %}
             Pending Request Inbox{% if my_pending %} ({{ my_pending.count }}){% endif %}
         {% endwith %}
     {% endnavitem %}
