@@ -7,7 +7,7 @@ from django.template import RequestContext
 from django.contrib.auth.decorators import login_required, user_passes_test
 from django.forms.formsets import formset_factory
 from incuna.utils import class_view_decorator
-from django.views.generic import ListView
+from django.views.generic import ListView, TemplateView
 
 
 from holiday.models import HolidayRequest, BankHoliday
@@ -136,6 +136,6 @@ class EmployeeList(ListView):
     template_name = 'holiday/employee_list.html'
 
 
-@login_required
-def holiday_calendar(request):
-    return render_to_response('holiday/calendar.html', RequestContext(request))
+@class_view_decorator(login_required)
+class HolidayCalendar(TemplateView):
+    template_name = 'holiday/calendar.html'
