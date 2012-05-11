@@ -119,15 +119,20 @@ def request_details(request, pk):
     return render_to_response('holiday/request_details.html', context)
 
 
-@user_passes_test(is_manager)
-def request_inbox(request, show_all=False):
-    qs = HolidayRequest.objects.filter(status__exact=0)
-    if not show_all:
-        qs = qs.filter(employee__manager__username__exact=request.user.get_profile().username)
-    context = RequestContext(request, {
-        'holiday_requests': qs,
-    })
-    return render_to_response('holiday/pending_requests.html', context)
+@class_view_decorator(user_passes_test(is_manager))
+class AllPendingRequestsList(ListView):
+    model = HolidayRequest
+    template_name = 'holiday/pending_requests.html'
+
+    def get_queryset(self):
+        qs = super(AllPendingRequestsList, self).get_queryset()
+        return qs.filter(status=HolidayRequest.PENDING_STATUS)
+
+
+class PendingRequestsList(AllPendingRequestsList):
+    def get_queryset(self):
+        qs = super(PendingRequestsList, self).get_queryset()
+        return qs.filter(employee__manager__pk=self.request.user.pk)
 
 
 @class_view_decorator(user_passes_test(is_manager))
