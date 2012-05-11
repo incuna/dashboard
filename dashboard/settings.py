@@ -19,15 +19,15 @@ DATABASES = {
         'HOST': '127.0.0.1',
         'PORT': '',
     },
-    'redmine': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'redmine',
-        'USER': 'redmine',
-        'PASSWORD': 'moo',
-        'HOST': 'redmine.incuna.com',
-        'HOST': 'dev.incuna.com',
-        'PORT': '',
-    }
+    # 'redmine': {
+    #     'ENGINE': 'django.db.backends.postgresql_psycopg2',
+    #     'NAME': 'redmine',
+    #     'USER': 'redmine',
+    #     'PASSWORD': 'moo',
+    #     'HOST': 'redmine.incuna.com',
+    #     'HOST': 'dev.incuna.com',
+    #     'PORT': '',
+    # }
 }
 
 DATABASE_ROUTERS = ['status.modules.redmine.routers.RedmineRouter']
@@ -147,7 +147,7 @@ INSTALLED_APPS = (
     'dashboard',
     'contacts',
     'holiday',
-    'imc',
+    # 'imc',
     'password',
 
     'status',
