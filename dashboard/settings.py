@@ -57,6 +57,7 @@ MIDDLEWARE_CLASSES = (
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
+    'incuna.auth.middleware.LoginRequiredMiddleware',
 )
 
 AUTHENTICATION_BACKENDS = (
@@ -66,9 +67,10 @@ AUTHENTICATION_BACKENDS = (
 GOOGLE_OAUTH2_CLIENT_ID = '906873610360.apps.googleusercontent.com'
 GOOGLE_OAUTH2_CLIENT_SECRET  = 'g1zuOBlx25xB3FsYyJLTxDEe'
 
-# LOGIN_URL = '/login/'
+LOGIN_URL = '/login/'
 LOGIN_REDIRECT_URL = '/'
-# LOGIN_ERROR_URL = '/login-error/'
+LOGIN_ERROR_URL = '/login-error/'
+LOGIN_EXEMPT_URLS = ['^complete/*', '^login/*', '^login-error/']
 
 AUTH_MODEL = 'profiles.Profile'
 AUTH_PROFILE_MODULE = AUTH_MODEL
