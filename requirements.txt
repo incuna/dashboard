@@ -2,23 +2,22 @@
 
 boto==2.3.0
 django==1.4
-django-extensions==0.6
+django-extensions==0.8
 django-password==2.0
 django-storages==1.2a
-django-uni-form==0.8.0
-feedparser==5.0.1
+django-uni-form==0.9.0
+feedparser==5.1.2
 formencode==1.2.4 #required for SQLObject > IMDb
-gunicorn==0.12.2
+gunicorn==0.14.2
 IMDbPY==4.8.2
-pillow==1.7.5
-psycopg2==2.4
-python-dateutil==1.5
-south==0.7.3
+pillow>=1.7.7
+psycopg2==2.4.5
+python-dateutil==2.1
+south==0.7.5
 vobject==0.8.1c
-werkzeug==0.8.1
+werkzeug==0.8.3
 
 # incuna pypi
 django-extensible-profiles==0.2.1
 django-incuna==2.13.0
 incuna-twitterstream==1.0
-
