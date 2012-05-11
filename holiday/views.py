@@ -2,11 +2,12 @@ import datetime
 
 from django.http import Http404, HttpResponseRedirect
 from django.core.urlresolvers import reverse
-from django.views.generic.list_detail import object_list
 from django.shortcuts import render_to_response, get_object_or_404
 from django.template import RequestContext
 from django.contrib.auth.decorators import login_required, user_passes_test
 from django.forms.formsets import formset_factory
+from incuna.utils import class_view_decorator
+from django.views.generic import ListView
 
 
 from holiday.models import HolidayRequest, BankHoliday
@@ -128,9 +129,12 @@ def request_inbox(request, show_all=False):
     })
     return render_to_response('holiday/pending_requests.html', context)
 
-@user_passes_test(is_manager)
-def employee_list(*args, **kwargs):
-    return object_list(*args, **kwargs)
+
+@class_view_decorator(user_passes_test(is_manager))
+class EmployeeList(ListView):
+    model = Profile
+    template_name = 'holiday/employee_list.html'
+
 
 @login_required
 def holiday_calendar(request):
