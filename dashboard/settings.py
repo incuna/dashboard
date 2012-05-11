@@ -59,6 +59,21 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.messages.middleware.MessageMiddleware',
 )
 
+AUTHENTICATION_BACKENDS = (
+    'social_auth.backends.google.GoogleOAuth2Backend',
+    'django.contrib.auth.backends.ModelBackend',
+)
+GOOGLE_OAUTH2_CLIENT_ID = '906873610360.apps.googleusercontent.com'
+GOOGLE_OAUTH2_CLIENT_SECRET  = 'g1zuOBlx25xB3FsYyJLTxDEe'
+
+# LOGIN_URL = '/login/'
+# LOGIN_REDIRECT_URL = '/'
+# LOGIN_ERROR_URL = '/login-error/'
+
+AUTH_MODEL = 'profiles.Profile'
+AUTH_PROFILE_MODULE = AUTH_MODEL
+# SOCIAL_AUTH_USER_MODEL = AUTH_MODEL
+
 ROOT_URLCONF = 'dashboard.urls'
 SITE_ID = 1
 SECRET_KEY = '_o273km705m5xdai56i5g%bd3jiaj60h$f87q+#e2phuyvi2c4'
@@ -76,6 +91,7 @@ INSTALLED_APPS = (
     'gravatar',
     'gunicorn',
     'profiles',
+    'social_auth',
     'south',
     'storages',
     'uni_form',
@@ -106,8 +122,6 @@ BBC_WEEKLY_WEATHER = 'http://newsrss.bbc.co.uk/weather/forecast/25/Next3DaysRSS.
 HOLIDAY_DEFAULT_ANNUAL_DAYS = 20
 
 IMC_DEFAULT_PERIOD = 14
-
-AUTH_PROFILE_MODULE = 'profiles.Profile'
 
 LOGGING = {
     'version': 1,

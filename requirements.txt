@@ -6,6 +6,7 @@ django==1.4
 django-extensions==0.8
 django-gravatar==0.1.0
 django-password==3.0
+django-social-auth==0.6.9
 django-storages==1.2a
 django-uni-form==0.9.0
 feedparser==5.1.2

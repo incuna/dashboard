@@ -19,8 +19,13 @@ try:
 except NotRegistered:
     pass
 
+from django.http import HttpResponse
+def login_error(request, *args, **kwargs):
+    return HttpResponse('LOGIN ERROR!')
+
 urlpatterns = patterns('',
     url(r'^$', TemplateView.as_view(template_name='index.html'), name='index'),
+    url(r'^login-error', login_error),
     url(r'^accounts/', include('django.contrib.auth.urls')),
     url(r'^holiday/', include('holiday.urls')),
     # url(r'^movie-club/', include('imc.urls')),
@@ -28,6 +33,8 @@ urlpatterns = patterns('',
     url(r'^status/', include('status.urls')),
 
     url(r'^admin/', include(admin.site.urls)),
+
+    url(r'', include('social_auth.urls')),
 )
 
 urlpatterns += staticfiles_urlpatterns()
