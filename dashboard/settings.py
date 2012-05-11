@@ -67,7 +67,7 @@ GOOGLE_OAUTH2_CLIENT_ID = '906873610360.apps.googleusercontent.com'
 GOOGLE_OAUTH2_CLIENT_SECRET  = 'g1zuOBlx25xB3FsYyJLTxDEe'
 
 # LOGIN_URL = '/login/'
-# LOGIN_REDIRECT_URL = '/'
+LOGIN_REDIRECT_URL = '/'
 # LOGIN_ERROR_URL = '/login-error/'
 
 AUTH_MODEL = 'profiles.Profile'
