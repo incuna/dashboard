@@ -17,6 +17,6 @@ werkzeug==0.8.1
 
 # incuna pypi
 django-extensible-profiles==0.2.1
-django-incuna==2.7.3
+django-incuna==2.13.0
 incuna-twitterstream==1.0
 
