@@ -103,7 +103,7 @@ BBC_WEEKLY_WEATHER = 'http://newsrss.bbc.co.uk/weather/forecast/25/Next3DaysRSS.
 
 #HOLIDAYCAL_URL = 'http://holiday.incuna.com'
 
-HOLIDAY_DEFAULT_ANNUAL_DAYS = 20
+HOLIDAY_DEFAULT_ANNUAL_DAYS = 25
 
 IMC_DEFAULT_PERIOD = 14
 
