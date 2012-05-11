@@ -7,7 +7,7 @@ from django.template import RequestContext
 from django.contrib.auth.decorators import login_required, user_passes_test
 from django.forms.formsets import formset_factory
 from incuna.utils import class_view_decorator
-from django.views.generic import ListView, TemplateView
+from django.views.generic import ListView, TemplateView, RedirectView
 
 
 from holiday.models import HolidayRequest, BankHoliday
@@ -18,6 +18,13 @@ from profiles.models import Profile
 # for use with all the @user_passes_test stuff below
 def is_manager(user):
     return user.get_profile().is_manager
+
+
+@class_view_decorator(login_required)
+class HomeView(RedirectView):
+    def get_redirect_url(self, **kwargs):
+        username = self.request.user.username
+        return reverse('holiday_user', kwargs={'username': username})
 
 
 @login_required
@@ -74,20 +81,32 @@ def make_holiday_request(request):
     return render_to_response('holiday/make_request.html', context)
 
 
-@login_required
-def holiday_index(request, username=None):
-    if username is None:
-        return HttpResponseRedirect(reverse('holiday_user', kwargs={'username': request.user.username}))
-    user = get_object_or_404(Profile, username=username)
-    profile = request.user.get_profile()
-    if profile.is_manager == False and profile != user:
-        raise Http404('User does not have access')
-    qs = HolidayRequest.objects.filter(employee__exact=user, holiday__date__year=datetime.datetime.now().year).order_by('-start_date')
-    context = RequestContext(request, {
-        'holiday_requests': qs,
-        'employee': user,
-    })
-    return render_to_response('holiday/view_status.html', context)
+@class_view_decorator(login_required)
+class EmployeeRequestsList(ListView):
+    model = HolidayRequest
+    template_name = 'holiday/view_status.html'
+
+    def get(self, *args, **kwargs):
+        self.employee = self.get_employee()
+        return super(EmployeeRequestsList, self).get(*args, **kwargs)
+
+    def get_employee(self):
+        employee = get_object_or_404(Profile, username=self.kwargs['username'])
+        profile = self.request.user.get_profile()
+        if profile.is_manager == False and profile != employee:
+            raise Http404('User does not have access')
+        return employee
+
+    def get_queryset(self):
+        qs = super(EmployeeRequestsList, self).get_queryset()
+        return qs.filter(
+            employee__pk=self.employee.pk,
+            holiday__date__year=datetime.datetime.now().year
+        ).order_by('-start_date')
+
+    def get_context_data(self, **kwargs):
+        kwargs['employee'] = self.employee
+        return super(EmployeeRequestsList, self).get_context_data(**kwargs)
 
 
 @login_required

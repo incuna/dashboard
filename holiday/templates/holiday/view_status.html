@@ -20,9 +20,9 @@
         </table>
     </div>
     <h2>{{employee.get_full_name}}</h2>
-    <p>Allowance days: {{ employee.allowance_days }}</p>
+    <p>Allowance days: {{ employee|days_left_by_year }}</p>
     <p><strong>Manager: </strong>{{employee.manager.get_full_name}}</p>
-    {% with holiday_requests.all as hol_reqs %}
+    {% with holidayrequest_list.all as hol_reqs %}
     {% if hol_reqs %}
         <h3>Submitted Requests</h3>
         <table class="standardtable" id="request-status">
