@@ -2,6 +2,7 @@ from profiles.models import Profile, ProfileAdmin, ProfileForm
 
 Profile.register_extensions(
     'dashboard.extensions.manager',
+    'dashboard.extensions.holidays',
     'dashboard.extensions.avatars',
     'dashboard.extensions.ssh_key',
     'permissions'
@@ -33,4 +34,3 @@ ProfileForm.clean_posh_avatar = clean_posh_avatar
 for field in Profile._meta.fields:
     if field.name == 'is_staff':
         field.default = True
-
