@@ -25,9 +25,9 @@ def login_error(request, *args, **kwargs):
 
 urlpatterns = patterns('',
     url(r'^$', TemplateView.as_view(template_name='index.html'), name='index'),
-    url(r'^login-error', login_error),
-    url(r'^accounts/', include('django.contrib.auth.urls')),
     url(r'^holiday/', include('holiday.urls')),
+    url(r'^login/$', TemplateView.as_view(template_name='login.html'), name='login'),
+    url(r'^login-error', login_error),
     # url(r'^movie-club/', include('imc.urls')),
     url(r'^shopping-list/', include('status.modules.shoppinglist.urls')),
     url(r'^status/', include('status.urls')),

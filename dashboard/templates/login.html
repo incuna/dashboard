@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% block bodyid %}login{% endblock %}
+
+{% block extrastyle %}
+<link rel="stylesheet" type="text/css" charset="utf-8" href="{{ STATIC_URL }}styles/login.css">
+{% endblock %}
+
+
+{% block content %}
+<div id="content-main">
+    <a href="{% url socialauth_begin 'google-oauth2' %}">Enter using Google</a>
+</div>
+{% endblock %}
