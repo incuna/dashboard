@@ -5,7 +5,7 @@
 
 {% block content %}
     <h2>Pending Holiday Requests</h2>
-    {% for p in holiday_requests.all|dictsortreversed:"date_made" %}
+    {% for p in holidayrequest_list.all|dictsortreversed:"date_made" %}
         {% if forloop.first %}
         <table id="pending-requests" class="standardtable">
             <thead>
