@@ -2,6 +2,7 @@
 
 import os
 
+import dj_database_url
 from django.conf.global_settings import TEMPLATE_CONTEXT_PROCESSORS
 
 
@@ -15,27 +16,7 @@ ADMINS = (
 
 MANAGERS = ADMINS
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'dashboard',
-        'USER': 'dashboard',
-        'PASSWORD': 'X#u_7F54+a6gh,tQ',
-        'HOST': '127.0.0.1',
-        'PORT': '',
-    },
-    # 'redmine': {
-    #     'ENGINE': 'django.db.backends.postgresql_psycopg2',
-    #     'NAME': 'redmine',
-    #     'USER': 'redmine',
-    #     'PASSWORD': 'moo',
-    #     'HOST': 'redmine.incuna.com',
-    #     'HOST': 'dev.incuna.com',
-    #     'PORT': '',
-    # }
-}
-
-DATABASE_ROUTERS = ['status.modules.redmine.routers.RedmineRouter']
+DATABASES = {'default': dj_database_url.config()}
 
 TIME_ZONE = 'Europe/London'
 USE_TZ = True
