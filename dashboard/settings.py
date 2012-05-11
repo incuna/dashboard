@@ -44,19 +44,24 @@ LANGUAGE_CODE = 'en-GB'
 USE_I18N = False # Internationalization
 USE_L10N = True # Locale
 
+# S3 Backend
+AWS_ACCESS_KEY_ID = os.environ['AWS_ACCESS_KEY_ID']
+AWS_SECRET_ACCESS_KEY = os.environ['AWS_SECRET_ACCESS_KEY']
+AWS_STORAGE_BUCKET_NAME = os.environ['AWS_STORAGE_BUCKET_NAME']
+DEFAULT_FILE_STORAGE = 'storages.backends.s3boto.S3BotoStorage'
+
+# Static
 MEDIA_ROOT = os.path.join(DIRNAME, 'client_media')
 MEDIA_URL = '/media/'
 STATIC_ROOT = os.path.join(DIRNAME, 'static_media')
-STATIC_URL = '/static/'
-ADMIN_MEDIA_PREFIX = '/static/admin/'
+STATIC_URL = 'http://{0}.s3.amazonaws.com/'.format(AWS_STORAGE_BUCKET_NAME)
 INCUNA_MEDIA_URL = STATIC_URL + 'incuna/'
-STATICFILES_DIRS = (
-    ('', os.path.join(DIRNAME, 'static')),
-)
+STATICFILES_DIRS = (('', os.path.join(DIRNAME, 'static')),)
 STATICFILES_FINDERS = (
     'django.contrib.staticfiles.finders.FileSystemFinder',
     'django.contrib.staticfiles.finders.AppDirectoriesFinder',
 )
+STATICFILES_STORAGE = 'storages.backends.s3boto.S3BotoStorage'
 
 TEMPLATE_DIRS = (os.path.join(DIRNAME, 'templates'),)
 TEMPLATE_LOADERS = (
@@ -90,6 +95,7 @@ INSTALLED_APPS = (
     'gunicorn',
     'profiles',
     'south',
+    'storages',
     'uni_form',
     'incuna',
 
@@ -121,11 +127,6 @@ IMC_DEFAULT_PERIOD = 14
 
 AUTH_PROFILE_MODULE = 'profiles.Profile'
 
-# A sample logging configuration. The only tangible logging
-# performed by this configuration is to send an email to
-# the site admins on every HTTP 500 error.
-# See http://docs.djangoproject.com/en/dev/topics/logging for
-# more details on how to customize your logging configuration.
 LOGGING = {
     'version': 1,
     'disable_existing_loggers': False,

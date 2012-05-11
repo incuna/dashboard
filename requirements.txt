@@ -1,8 +1,10 @@
 --extra-index-url http://incuna:fishand@pypi.incuna.com/
 
+boto==2.3.0
 django==1.4
 django-extensions==0.6
 django-password==2.0
+django-storages==1.2a
 django-uni-form==0.8.0
 feedparser==5.0.1
 formencode==1.2.4 #required for SQLObject > IMDb
