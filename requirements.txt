@@ -4,6 +4,7 @@ boto==2.3.0
 dj-database-url==0.1.3
 django==1.4
 django-extensions==0.8
+django-gravatar==0.1.0
 django-password==2.0
 django-storages==1.2a
 django-uni-form==0.9.0

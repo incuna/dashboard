@@ -73,6 +73,7 @@ INSTALLED_APPS = (
     'django.contrib.admin',
 
     'django_extensions',
+    'gravatar',
     'gunicorn',
     'profiles',
     'south',
@@ -93,7 +94,7 @@ INSTALLED_APPS = (
 )
 
 SOUTH_MIGRATION_MODULES = {
-    'profiles': 'project_migrations.profiles',
+    'profiles': 'dashboard.project_migrations.profiles',
 }
 
 BBC_HOURLY_WEATHER = 'http://newsrss.bbc.co.uk/weather/forecast/25/ObservationsRSS.xml'
