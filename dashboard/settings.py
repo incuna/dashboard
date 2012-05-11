@@ -97,7 +97,7 @@ INSTALLED_APPS = (
     'contacts',
     'holiday',
     # 'imc',
-    'password',
+    # 'password',
 
     'status',
     'status.modules.redmine',
