@@ -86,12 +86,12 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django.contrib.admin',
+    'social_auth',
 
     'django_extensions',
     'gravatar',
     'gunicorn',
     'profiles',
-    'social_auth',
     'south',
     'storages',
     'uni_form',
