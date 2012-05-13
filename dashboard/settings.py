@@ -72,9 +72,7 @@ LOGIN_REDIRECT_URL = '/'
 LOGIN_ERROR_URL = '/login-error/'
 LOGIN_EXEMPT_URLS = ['^complete/*', '^login/*', '^login-error/']
 
-AUTH_MODEL = 'profiles.Profile'
-AUTH_PROFILE_MODULE = AUTH_MODEL
-# SOCIAL_AUTH_USER_MODEL = AUTH_MODEL
+SOCIAL_AUTH_USER_MODEL = 'profiles.Profile'
 
 ROOT_URLCONF = 'dashboard.urls'
 SITE_ID = 1
