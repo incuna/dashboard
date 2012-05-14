@@ -1,12 +1,13 @@
-from django.conf import settings
 from django.conf.urls.defaults import include, patterns, url
-from django.conf.urls.static import static
 from django.contrib import admin
 from django.contrib.admin.sites import NotRegistered
 from django.contrib.auth.models import User
 from django.contrib.sites.models import Site
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 from django.views.generic import TemplateView
+
+from .views import AuthComplete
+
 
 admin.autodiscover()
 
@@ -34,6 +35,7 @@ urlpatterns = patterns('',
 
     url(r'^admin/', include(admin.site.urls)),
 
+    url(r'^complete/(?P<backend>[^/]+)/$', AuthComplete.as_view()),
     url(r'', include('social_auth.urls')),
 )
 
