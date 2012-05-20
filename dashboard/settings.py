@@ -76,6 +76,7 @@ INSTALLED_APPS = (
     'gravatar',
     'gunicorn',
     'profiles',
+    'raven.contrib.django',
     'south',
     'storages',
     'uni_form',
@@ -109,6 +110,7 @@ IMC_DEFAULT_PERIOD = 14
 
 AUTH_PROFILE_MODULE = 'profiles.Profile'
 
+SENTRY_DSN = 'http://e14704ffb3bd45a49c2411066163acd2:daf162a3a494436e9acc82ba8788e8c6@sentry.incuna.com/14'
 LOGGING = {
     'version': 1,
     'disable_existing_loggers': False,
