@@ -11,33 +11,13 @@
         <img src="{{ STATIC_URL }}images/icons/password.png" alt="Incuna Password Icon">
         <p class="name">Passwords</p>
     </div>
-    <!--<div id="expenses" class="service" onclick="window.location = 'http://dashboard.incuna.com'">-->
-        <!--<img src="{{ STATIC_URL }}images/icons/expenses.png" alt="Incuna Expenses Icon">-->
-        <!--<p class="name">Expenses</p>-->
-    <!--</div>-->
     <div id="holiday" class="service" onclick="window.location = '{% url holiday_index %}'">
         <img src="{{ STATIC_URL }}images/icons/holiday.png" alt="Incuna Holiday Icon">
         <p class="name">Holiday</p>
     </div>
-    <div id="status" class="service" onclick="window.location = '{% url statusboard %}'">
-        <img src="{{ STATIC_URL }}images/icons/status.png" alt="Incuna Status Board Icon">
-        <p class="name">Status</p>
-    </div>
-    {# <div id="movieclub" class="service" onclick="window.location = '{% url movie-index %}'"> #}
-    {#     <img src="{{ STATIC_URL }}images/icons/movie_club.png" alt="Incuna Movie Club Icon"> #}
-    {#     <p class="name">Movie Club</p> #}
-    {# </div> #}
-    <div id="shoppinglist" class="service" onclick="window.location = '{% url admin:shoppinglist_item_changelist %}'">
-        <img src="{{ STATIC_URL }}images/icons/shopping_list.png" alt="Incuna Shopping List Icon">
-        <p class="name">Shopping List</p>
-    </div>
     <div id="redmine" class="service" onclick="window.location = 'http://redmine.incuna.com'">
         <img src="{{ STATIC_URL }}images/icons/chili.png" alt="Redmine Icon">
         <p class="name">Redmine</p>
-    </div>
-    <div id="trac" class="service" onclick="window.location = 'http://trac.incuna.com/websites'">
-        <img src="{{ STATIC_URL }}images/icons/trac.png" alt="Trac Icon" title="blah">
-        <p class="name">Trac</p>
     </div>
     <div id="email" class="service" onclick="window.location = 'http://mail.incuna.com'">
         <img src="{{ STATIC_URL }}images/icons/mail.png" alt="GMail Icon">
@@ -46,10 +26,6 @@
     <div id="calendar" class="service" onclick="window.location = 'http://calendar.incuna.com'">
         <img src="{{ STATIC_URL }}images/icons/calendar.png" alt="Google Calendar Icon">
         <p class="name">Calendar</p>
-    </div>
-    <div id="contacts" class="service" onclick="window.location = '{% url admin:contacts_contact_changelist %}'">
-        <img src="{{ STATIC_URL }}images/icons/contacts.png" alt="Incuna Contacts Icon">
-        <p class="name">Contacts</p>
     </div>
 </div>
 {% endblock %}
