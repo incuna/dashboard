@@ -7,25 +7,35 @@
 
 {% block content %}
 <div id="dashboard" class="hero-unit">
-    <div id="password" class="service" onclick="window.location = '{% url admin:password_password_changelist %}'">
-        <img src="{{ STATIC_URL }}images/icons/password.png" alt="Incuna Password Icon">
-        <p class="name">Passwords</p>
-    </div>
-    <div id="holiday" class="service" onclick="window.location = '{% url holiday_index %}'">
-        <img src="{{ STATIC_URL }}images/icons/holiday.png" alt="Incuna Holiday Icon">
-        <p class="name">Holiday</p>
-    </div>
-    <div id="redmine" class="service" onclick="window.location = 'http://redmine.incuna.com'">
-        <img src="{{ STATIC_URL }}images/icons/chili.png" alt="Redmine Icon">
-        <p class="name">Redmine</p>
-    </div>
-    <div id="email" class="service" onclick="window.location = 'http://mail.incuna.com'">
-        <img src="{{ STATIC_URL }}images/icons/mail.png" alt="GMail Icon">
-        <p class="name">Email</p>
-    </div>
-    <div id="calendar" class="service" onclick="window.location = 'http://calendar.incuna.com'">
-        <img src="{{ STATIC_URL }}images/icons/calendar.png" alt="Google Calendar Icon">
-        <p class="name">Calendar</p>
-    </div>
+    <a href="{% url admin:password_password_changelist %}">
+        <div id="password" class="service">
+            <img src="{{ STATIC_URL }}images/icons/password.png" alt="Incuna Password Icon">
+            <p class="name">Passwords</p>
+        </div>
+    </a>
+    <a href="{% url holiday_index %}">
+        <div id="holiday" class="service">
+            <img src="{{ STATIC_URL }}images/icons/holiday.png" alt="Incuna Holiday Icon">
+            <p class="name">Holiday</p>
+        </div>
+    </a>
+    <a href="http://redmine.incuna.com">
+        <div id="redmine" class="service">
+            <img src="{{ STATIC_URL }}images/icons/chili.png" alt="Redmine Icon">
+            <p class="name">Redmine</p>
+        </div>
+    </a>
+    <a href="http://mail.incuna.com">
+        <div id="email" class="service">
+            <img src="{{ STATIC_URL }}images/icons/mail.png" alt="GMail Icon">
+            <p class="name">Email</p>
+        </div>
+    </a>
+    <a href="http://calendar.incuna.com">
+        <div id="calendar" class="service">
+            <img src="{{ STATIC_URL }}images/icons/calendar.png" alt="Google Calendar Icon">
+            <p class="name">Calendar</p>
+        </div>
+    </a>
 </div>
 {% endblock %}
