@@ -15,6 +15,7 @@ IMDbPY==4.8.2
 pillow>=1.7.7
 psycopg2==2.4.5
 python-dateutil==2.1
+raven==1.9.1
 south==0.7.5
 vobject==0.8.1c
 werkzeug==0.8.3
