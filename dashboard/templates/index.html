@@ -51,5 +51,8 @@
         <img src="{{ STATIC_URL }}images/icons/contacts.png" alt="Incuna Contacts Icon">
         <p class="name">Contacts</p>
     </div>
+    <div class="service">
+        <a href="{% url socialauth_begin 'google-oauth2' %}">Enter using Google</a>
+    </div>
 </div>
 {% endblock %}
