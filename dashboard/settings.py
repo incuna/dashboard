@@ -106,7 +106,6 @@ INSTALLED_APPS = (
     'password',
 
     'status',
-    'status.modules.redmine',
     'status.modules.shoppinglist',
     'status.modules.weather',
 )
@@ -146,9 +145,6 @@ HOLIDAY_DEFAULT_ANNUAL_DAYS = 20
 
 # imc
 IMC_DEFAULT_PERIOD = 14
-
-# Redmine
-#HOLIDAYCAL_URL = 'http://holiday.incuna.com'
 
 # South
 SOUTH_MIGRATION_MODULES = {
