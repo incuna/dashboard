@@ -7,10 +7,10 @@
 
 {% block content %}
 <div id="dashboard" class="hero-unit">
-    {# <div id="password" class="service" onclick="window.location = '{% url admin:password_password_changelist %}'"> #}
-    {#     <img src="{{ STATIC_URL }}images/icons/password.png" alt="Incuna Password Icon"> #}
-    {#     <p class="name">Passwords</p> #}
-    {# </div> #}
+    <div id="password" class="service" onclick="window.location = '{% url admin:password_password_changelist %}'">
+        <img src="{{ STATIC_URL }}images/icons/password.png" alt="Incuna Password Icon">
+        <p class="name">Passwords</p>
+    </div>
     <!--<div id="expenses" class="service" onclick="window.location = 'http://dashboard.incuna.com'">-->
         <!--<img src="{{ STATIC_URL }}images/icons/expenses.png" alt="Incuna Expenses Icon">-->
         <!--<p class="name">Expenses</p>-->
@@ -50,6 +50,9 @@
     <div id="contacts" class="service" onclick="window.location = '{% url admin:contacts_contact_changelist %}'">
         <img src="{{ STATIC_URL }}images/icons/contacts.png" alt="Incuna Contacts Icon">
         <p class="name">Contacts</p>
+    </div>
+    <div class="service">
+        <a href="{% url socialauth_begin 'google-oauth2' %}">Enter using Google</a>
     </div>
 </div>
 {% endblock %}

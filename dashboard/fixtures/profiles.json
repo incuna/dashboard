@@ -21,8 +21,6 @@
     "fields": {
         "ssh_key": "",
         "is_manager": false,
-        "posh_avatar": "",
-        "avatar": "images/avatars/george.jpg",
         "groups": [2],
         "user_permissions": []
     }
@@ -49,8 +47,6 @@
     "fields": {
         "ssh_key": "",
         "is_manager": true,
-        "posh_avatar": "",
-        "avatar": "images/avatars/james.jpg",
         "groups": [1, 2],
         "user_permissions": []
     }
@@ -77,8 +73,6 @@
     "fields": {
         "ssh_key": "",
         "is_manager": true,
-        "posh_avatar": "",
-        "avatar": "images/avatars/max.jpg",
         "groups": [1, 2],
         "user_permissions": []
     }
@@ -105,8 +99,6 @@
     "fields": {
         "ssh_key": "",
         "is_manager": false,
-        "posh_avatar": "",
-        "avatar": "images/avatars/jim.jpg",
         "groups": [2],
         "user_permissions": []
     }
@@ -133,8 +125,6 @@
     "fields": {
         "ssh_key": "",
         "is_manager": true,
-        "posh_avatar": "",
-        "avatar": "images/avatars/cyan.jpg",
         "groups": [1, 2],
         "user_permissions": []
     }
@@ -161,8 +151,6 @@
     "fields": {
         "ssh_key": "",
         "is_manager": false,
-        "posh_avatar": "",
-        "avatar": "images/avatars/katia.jpg",
         "groups": [2],
         "user_permissions": []
     }
@@ -189,8 +177,6 @@
     "fields": {
         "ssh_key": "",
         "is_manager": false,
-        "posh_avatar": "",
-        "avatar": "images/avatars/charlie.jpg",
         "groups": [2],
         "user_permissions": []
     }
@@ -217,8 +203,6 @@
     "fields": {
         "ssh_key": "",
         "is_manager": true,
-        "posh_avatar": "",
-        "avatar": "images/avatars/matt.jpg",
         "groups": [1, 2],
         "user_permissions": []
     }
@@ -245,8 +229,6 @@
     "fields": {
         "ssh_key": "",
         "is_manager": false,
-        "posh_avatar": "",
-        "avatar": "images/avatars/jamie.jpg",
         "groups": [2],
         "user_permissions": []
     }
@@ -273,8 +255,6 @@
     "fields": {
         "ssh_key": "",
         "is_manager": false,
-        "posh_avatar": "",
-        "avatar": "images/avatars/carla.jpg",
         "groups": [2],
         "user_permissions": []
     }
@@ -301,8 +281,6 @@
     "fields": {
         "ssh_key": "",
         "is_manager": false,
-        "posh_avatar": "",
-        "avatar": "images/avatars/will.jpg",
         "groups": [2],
         "user_permissions": []
     }
@@ -329,8 +307,6 @@
     "fields": {
         "ssh_key": "",
         "is_manager": true,
-        "posh_avatar": "",
-        "avatar": "images/avatars/annika.jpg",
         "groups": [2],
         "user_permissions": []
     }
@@ -357,8 +333,6 @@
     "fields": {
         "ssh_key": "",
         "is_manager": false,
-        "posh_avatar": "",
-        "avatar": "images/avatars/pauline.jpg",
         "groups": [2],
         "user_permissions": []
     }
@@ -385,8 +359,6 @@
     "fields": {
         "ssh_key": "",
         "is_manager": false,
-        "posh_avatar": "",
-        "avatar": "images/avatars/miranda.jpg",
         "groups": [2],
         "user_permissions": []
     }
@@ -413,8 +385,6 @@
     "fields": {
         "ssh_key": "",
         "is_manager": false,
-        "posh_avatar": "",
-        "avatar": "images/avatars/megan.jpg",
         "groups": [2],
         "user_permissions": []
     }
@@ -441,8 +411,6 @@
     "fields": {
         "ssh_key": "",
         "is_manager": true,
-        "posh_avatar": "",
-        "avatar": "images/avatars/peter.jpg",
         "groups": [2],
         "user_permissions": []
     }
@@ -469,8 +437,6 @@
     "fields": {
         "ssh_key": "",
         "is_manager": true,
-        "posh_avatar": "",
-        "avatar": "images/avatars/rupert.jpg",
         "groups": [1, 2],
         "user_permissions": []
     }
@@ -497,8 +463,6 @@
     "fields": {
         "ssh_key": "",
         "is_manager": true,
-        "posh_avatar": "",
-        "avatar": "images/avatars/cassie.jpg",
         "groups": [2],
         "user_permissions": []
     }
