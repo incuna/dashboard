@@ -1,4 +1,4 @@
---extra-index-url http://incuna:fishand@pypi.incuna.com/
+--extra-index-url http://incuna:vY3en9bw9d9XHxRcec@pypi.incuna.com/
 
 django==1.3.1
 
